@@ -27,7 +27,7 @@ namespace SzakDolgozat
             app.UseStaticFiles();
             app.UseAntiforgery();
 
-            app.MapRazorComponents<App>()
+            app.MapRazorComponents<Registration>()
                 .AddInteractiveServerRenderMode();
 
             app.Run();

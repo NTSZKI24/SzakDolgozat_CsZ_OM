@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Components\styles.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Components\styles.css" />
+  </ItemGroup>
+
 </Project>

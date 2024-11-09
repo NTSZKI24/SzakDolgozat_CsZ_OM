@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3AF1B03D-2E5C-48F7-99DC-FD3D818B7562}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3AF1B03D-2E5C-48F7-99DC-FD3D818B7562}|SzakDolgozat.csproj|solutionrelative:components\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3AF1B03D-2E5C-48F7-99DC-FD3D818B7562}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3AF1B03D-2E5C-48F7-99DC-FD3D818B7562}|SzakDolgozat.csproj|solutionrelative:components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3AF1B03D-2E5C-48F7-99DC-FD3D818B7562}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3AF1B03D-2E5C-48F7-99DC-FD3D818B7562}|SzakDolgozat.csproj|solutionrelative:components\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3AF1B03D-2E5C-48F7-99DC-FD3D818B7562}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\registration.styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -53,8 +53,7 @@
               "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\wwwroot\\favicon.png",
               "RelativeToolTip": "wwwroot\\favicon.png",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2024-11-09T16:37:39.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T16:37:39.078Z"
             },
             {
               "$type": "Document",
@@ -66,8 +65,7 @@
               "RelativeToolTip": "wwwroot\\app.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-09T16:37:29.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T16:37:29.829Z"
             },
             {
               "$type": "Document",
@@ -79,18 +77,17 @@
               "RelativeToolTip": "Components\\_Imports.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-09T16:37:18.562Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T16:37:18.562Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Routes.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\Components\\Routes.razor",
               "RelativeDocumentMoniker": "Components\\Routes.razor",
-              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\Components\\Routes.razor",
-              "RelativeToolTip": "Components\\Routes.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\Components\\Routes.razor*",
+              "RelativeToolTip": "Components\\Routes.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-09T16:32:24.878Z",
               "EditorCaption": ""
@@ -105,8 +102,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T16:05:55.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-09T16:05:55.844Z"
             },
             {
               "$type": "Document",
@@ -135,13 +131,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Registration.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\Components\\Registration.razor",
               "RelativeDocumentMoniker": "Components\\Registration.razor",
-              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\Components\\Registration.razor",
-              "RelativeToolTip": "Components\\Registration.razor",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACUAAAAKAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\SzakDolgozat\\Components\\Registration.razor*",
+              "RelativeToolTip": "Components\\Registration.razor*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-06T16:55:43.572Z",
               "EditorCaption": ""

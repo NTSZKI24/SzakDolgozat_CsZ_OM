@@ -19,10 +19,7 @@ C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.SzakDolgozat.props
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.SzakDolgozat.props
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
-C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\scopedcss\bundle\SzakDolgozat.styles.css
-C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\scopedcss\projectbundle\SzakDolgozat.bundle.scp.css
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\SzakDolgozat.dll
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\refint\SzakDolgozat.dll
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\SzakDolgozat\obj\Debug\net8.0\SzakDolgozat.pdb

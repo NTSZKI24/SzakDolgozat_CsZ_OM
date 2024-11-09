@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Components\styles.css" />
+    <None Remove="Components\Registration.styles.css" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Components\styles.css" />
+    <Content Include="Components\Registration.styles.css" />
   </ItemGroup>
 
 </Project>

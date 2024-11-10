@@ -1,6 +1,6 @@
-using SzakDolgozat.Components;
+using BlazorApp6.Components;
 
-namespace SzakDolgozat
+namespace BlazorApp6
 {
     public class Program
     {
@@ -9,8 +9,7 @@ namespace SzakDolgozat
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddRazorComponents()
-                .AddInteractiveServerComponents();
+            builder.Services.AddRazorComponents();
 
             var app = builder.Build();
 
@@ -27,8 +26,7 @@ namespace SzakDolgozat
             app.UseStaticFiles();
             app.UseAntiforgery();
 
-            app.MapRazorComponents<Registration>()
-                .AddInteractiveServerRenderMode();
+            app.MapRazorComponents<App>();
 
             app.Run();
         }

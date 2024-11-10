@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-10T00:27:25.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-09T23:09:00.815Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

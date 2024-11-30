@@ -27,3 +27,4 @@ C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\BlazorApp6\obj\Debug\ne
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\BlazorApp6\obj\Debug\net8.0\BlazorApp6.pdb
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\BlazorApp6\obj\Debug\net8.0\BlazorApp6.genruntimeconfig.cache
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\BlazorApp6\obj\Debug\net8.0\ref\BlazorApp6.dll
+C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\BlazorApp6\obj\Debug\net8.0\scopedcss\Components\Pages\Home.razor.rz.scp.css

@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F409FB9B-9EA9-4665-B7FC-B3A81CA30222}|BlazorApp6.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\blazorapp6\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -54,11 +50,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Home.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
@@ -71,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "_Imports.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\_Imports.razor",
               "RelativeDocumentMoniker": "Components\\_Imports.razor",
@@ -83,20 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainLayout.razor.css",
-              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Layout\\MainLayout.razor.css",
-              "RelativeDocumentMoniker": "Components\\Layout\\MainLayout.razor.css",
-              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Layout\\MainLayout.razor.css",
-              "RelativeToolTip": "Components\\Layout\\MainLayout.razor.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-30T15:20:10.148Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Routes.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Routes.razor",
               "RelativeDocumentMoniker": "Components\\Routes.razor",
@@ -108,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Home.razor.css",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Pages\\Home.razor.css",
               "RelativeDocumentMoniker": "Components\\Pages\\Home.razor.css",
@@ -120,19 +103,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "App.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\App.razor",
               "RelativeDocumentMoniker": "Components\\App.razor",
               "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\App.razor",
               "RelativeToolTip": "Components\\App.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T15:19:19.044Z"
+              "WhenOpened": "2024-11-30T15:19:19.044Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -140,8 +124,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T15:27:57.105Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T15:27:57.105Z"
             },
             {
               "$type": "Document",
@@ -158,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "Registration.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Pages\\Registration.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Registration.razor",
@@ -170,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "Login.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\Components\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Login.razor",
@@ -182,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "app.css",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\BlazorApp6\\wwwroot\\app.css",
               "RelativeDocumentMoniker": "wwwroot\\app.css",

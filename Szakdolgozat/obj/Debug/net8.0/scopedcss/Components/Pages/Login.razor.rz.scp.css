@@ -1,0 +1,48 @@
+.container[b-0qpt97wp5p] {
+    background-color: black;
+}
+
+#id="text_textbox"[b-0qpt97wp5p] {
+    background-color: rgba(119, 104, 113, 1);
+    border-radius: 20px;
+}
+
+form[b-0qpt97wp5p] {
+    background-color: gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+}
+
+label[b-0qpt97wp5p] {
+    color: black;
+    font-size: larger;
+}
+
+input[b-0qpt97wp5p] {
+    margin-bottom: 6px;
+    border-radius: 8px;
+}
+
+h1[b-0qpt97wp5p] {
+    text-align: center;
+    color: white;
+}
+
+#button[b-0qpt97wp5p] {
+    text-align: center;
+}
+
+#Bejelentkezes[b-0qpt97wp5p] {
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: black;
+    color: white;
+}
+
+#Bejelentkezes:hover[b-0qpt97wp5p] {
+    background-color: darkgray;
+    color: white;
+    transition-duration: 0.5s;
+}

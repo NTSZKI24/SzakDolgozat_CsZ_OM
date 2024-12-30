@@ -1,0 +1,48 @@
+﻿.container {
+    background-color: black;
+}
+
+#id="text_textbox" {
+    background-color: rgba(119, 104, 113, 1);
+    border-radius: 20px;
+}
+
+form {
+    background-color: gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+}
+
+label {
+    color: black;
+    font-size: larger;
+}
+
+input {
+    margin-bottom: 6px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+#button {
+    text-align: center;
+}
+
+#Bejelentkezes {
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: black;
+    color: white;
+}
+
+#Bejelentkezes:hover {
+    background-color: darkgray;
+    color: white;
+    transition-duration: 0.5s;
+}

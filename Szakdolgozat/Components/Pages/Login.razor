@@ -9,11 +9,17 @@
         <div class="col-4 col-lg-4 col-sm-12">
             <h1>Bejelentkezés</h1>
             <form>
-                <label>Név:</label><br />
-                <input type="text" id="nev" name="nev" required /><br />
-                <label>Jelszó:</label><br />
-                <input type="password" id="jelszo" name="jelszo" required /><br />
-                <input type="submit" value="Regisztráció" id="Regisztracio" name="Regisztracio" required /><br />
+                <div id="text_textbox">
+                    <label>Név</label><br />
+                    <input type="text" id="nev" class="form-control" name="nev" required /><br />
+               </div>
+                <div id="text_textbox">
+                    <label>Jelszó</label><br />
+                    <input type="password" id="jelszo" class="form-control" name="jelszo" required /><br />
+                </div>
+                <div id="button">
+                    <input type="submit" value="Bejelentkezés" id="Bejelentkezes" class="btn btn-lg btn-outline-dark" name="Bejelentkezes" required /><br />
+                </div>
             </form>
         </div>
         <div class="col-4">

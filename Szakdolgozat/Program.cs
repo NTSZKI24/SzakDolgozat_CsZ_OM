@@ -1,6 +1,6 @@
-using Szakdolgozat.Components;
+using SzakDolgozat.Components;
 
-namespace Szakdolgozat
+namespace SzakDolgozat
 {
     public class Program
     {

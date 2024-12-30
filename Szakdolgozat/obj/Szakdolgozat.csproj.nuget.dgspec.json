@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Szakdolgozat.csproj": {}
+    "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Szakdolgozat.csproj": {
+    "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Szakdolgozat.csproj",
-        "projectName": "Szakdolgozat",
-        "projectPath": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Szakdolgozat.csproj",
+        "projectUniqueName": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+        "projectName": "SzakDolgozat",
+        "projectPath": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
         "packagesPath": "C:\\Users\\csonk\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
         "projectStyle": "PackageReference",

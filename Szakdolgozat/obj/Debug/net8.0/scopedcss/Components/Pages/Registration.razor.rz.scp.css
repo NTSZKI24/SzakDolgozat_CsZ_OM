@@ -1,0 +1,41 @@
+.container[b-5ykacv9ikv] {
+    background-color: black;
+
+}
+#id="text_textbox"[b-5ykacv9ikv] {
+    background-color: rgba(119, 104, 113, 1);
+    border-radius: 20px;
+}
+form[b-5ykacv9ikv] {
+    background-color: gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+}
+label[b-5ykacv9ikv]{
+    color:black;
+    font-size:larger;
+}
+input[b-5ykacv9ikv] {
+    margin-bottom: 6px;
+    border-radius: 8px;
+}
+h1[b-5ykacv9ikv]{
+    text-align:center;
+    color:white;
+}
+#button[b-5ykacv9ikv] {
+    text-align: center;
+}
+#Regisztracio[b-5ykacv9ikv] {
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color:black;
+    color:white;
+}
+    #Regisztracio:hover[b-5ykacv9ikv] {
+        background-color: darkgray;
+        color: white;
+        transition-duration: 0.5s;
+    }

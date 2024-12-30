@@ -1,83 +1,21 @@
-/* _content/Szakdolgozat/Components/Layout/MainLayout.razor.rz.scp.css */
-.page[b-dsi8mxeefp] {
+/* _content/SzakDolgozat/Components/App.razor.rz.scp.css */
+body[b-qx9drh8u4j] {
+    background-color: black;
+    height: 100%;
+}
+/* _content/SzakDolgozat/Components/Layout/MainLayout.razor.rz.scp.css */
+.page[b-yzlp9qlq2i] {
     position: relative;
     display: flex;
     flex-direction: column;
+    background-color: black;
 }
 
-main[b-dsi8mxeefp] {
+main[b-yzlp9qlq2i] {
     flex: 1;
 }
 
-.sidebar[b-dsi8mxeefp] {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
-}
-
-.top-row[b-dsi8mxeefp] {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-}
-
-    .top-row[b-dsi8mxeefp]  a, .top-row[b-dsi8mxeefp]  .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-        text-decoration: none;
-    }
-
-    .top-row[b-dsi8mxeefp]  a:hover, .top-row[b-dsi8mxeefp]  .btn-link:hover {
-        text-decoration: underline;
-    }
-
-    .top-row[b-dsi8mxeefp]  a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-@media (max-width: 640.98px) {
-    .top-row[b-dsi8mxeefp] {
-        justify-content: space-between;
-    }
-
-    .top-row[b-dsi8mxeefp]  a, .top-row[b-dsi8mxeefp]  .btn-link {
-        margin-left: 0;
-    }
-}
-
-@media (min-width: 641px) {
-    .page[b-dsi8mxeefp] {
-        flex-direction: row;
-    }
-
-    .sidebar[b-dsi8mxeefp] {
-        width: 250px;
-        height: 100vh;
-        position: sticky;
-        top: 0;
-    }
-
-    .top-row[b-dsi8mxeefp] {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }
-
-    .top-row.auth[b-dsi8mxeefp]  a:first-child {
-        flex: 1;
-        text-align: right;
-        width: 0;
-    }
-
-    .top-row[b-dsi8mxeefp], article[b-dsi8mxeefp] {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
-    }
-}
-
-#blazor-error-ui[b-dsi8mxeefp] {
+#blazor-error-ui[b-yzlp9qlq2i] {
     background: lightyellow;
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
@@ -89,14 +27,103 @@ main[b-dsi8mxeefp] {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss[b-dsi8mxeefp] {
+    #blazor-error-ui .dismiss[b-yzlp9qlq2i] {
         cursor: pointer;
         position: absolute;
         right: 0.75rem;
         top: 0.5rem;
     }
-/* _content/Szakdolgozat/Components/Pages/Home.razor.rz.scp.css */
-h1[b-kyto5p289t]{
-    color: red;
-    background-color: blue;
+
+/* _content/SzakDolgozat/Components/Pages/Home.razor.rz.scp.css */
+
+/* _content/SzakDolgozat/Components/Pages/Login.razor.rz.scp.css */
+.container[b-0qpt97wp5p] {
+    background-color: black;
 }
+
+#id="text_textbox"[b-0qpt97wp5p] {
+    background-color: rgba(119, 104, 113, 1);
+    border-radius: 20px;
+}
+
+form[b-0qpt97wp5p] {
+    background-color: gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+}
+
+label[b-0qpt97wp5p] {
+    color: black;
+    font-size: larger;
+}
+
+input[b-0qpt97wp5p] {
+    margin-bottom: 6px;
+    border-radius: 8px;
+}
+
+h1[b-0qpt97wp5p] {
+    text-align: center;
+    color: white;
+}
+
+#button[b-0qpt97wp5p] {
+    text-align: center;
+}
+
+#Bejelentkezes[b-0qpt97wp5p] {
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: black;
+    color: white;
+}
+
+#Bejelentkezes:hover[b-0qpt97wp5p] {
+    background-color: darkgray;
+    color: white;
+    transition-duration: 0.5s;
+}
+/* _content/SzakDolgozat/Components/Pages/Registration.razor.rz.scp.css */
+.container[b-5ykacv9ikv] {
+    background-color: black;
+
+}
+#id="text_textbox"[b-5ykacv9ikv] {
+    background-color: rgba(119, 104, 113, 1);
+    border-radius: 20px;
+}
+form[b-5ykacv9ikv] {
+    background-color: gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    border-radius: 8px;
+}
+label[b-5ykacv9ikv]{
+    color:black;
+    font-size:larger;
+}
+input[b-5ykacv9ikv] {
+    margin-bottom: 6px;
+    border-radius: 8px;
+}
+h1[b-5ykacv9ikv]{
+    text-align:center;
+    color:white;
+}
+#button[b-5ykacv9ikv] {
+    text-align: center;
+}
+#Regisztracio[b-5ykacv9ikv] {
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color:black;
+    color:white;
+}
+    #Regisztracio:hover[b-5ykacv9ikv] {
+        background-color: darkgray;
+        color: white;
+        transition-duration: 0.5s;
+    }

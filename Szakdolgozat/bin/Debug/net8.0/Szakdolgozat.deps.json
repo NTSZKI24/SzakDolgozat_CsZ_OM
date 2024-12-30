@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Szakdolgozat/1.0.0": {
+      "SzakDolgozat/1.0.0": {
         "runtime": {
-          "Szakdolgozat.dll": {}
+          "SzakDolgozat.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "Szakdolgozat/1.0.0": {
+    "SzakDolgozat/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

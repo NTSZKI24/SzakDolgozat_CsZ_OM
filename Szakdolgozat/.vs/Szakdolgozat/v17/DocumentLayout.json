@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E092BAB4-00A7-4138-BDB1-3255416E96E3}|Szakdolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E092BAB4-00A7-4138-BDB1-3255416E96E3}|Szakdolgozat.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\pages\\registration.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|solutionrelative:components\\pages\\registration.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E092BAB4-00A7-4138-BDB1-3255416E96E3}|Szakdolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\pages\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E092BAB4-00A7-4138-BDB1-3255416E96E3}|Szakdolgozat.csproj|solutionrelative:components\\pages\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\pages\\login.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|solutionrelative:components\\pages\\login.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E092BAB4-00A7-4138-BDB1-3255416E96E3}|Szakdolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\pages\\home.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{E092BAB4-00A7-4138-BDB1-3255416E96E3}|Szakdolgozat.csproj|solutionrelative:components\\pages\\home.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|solutionrelative:components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|c:\\users\\csonk\\onedrive\\asztali g\u00E9p\\szakdolgozat_csz_om\\szakdolgozat\\components\\pages\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{51F6CD96-106B-4BED-A70B-ECA5AAECDB1A}|SzakDolgozat.csproj|solutionrelative:components\\pages\\registration.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,39 +31,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "App.razor",
-              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\App.razor",
-              "RelativeDocumentMoniker": "Components\\App.razor",
-              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\App.razor*",
-              "RelativeToolTip": "Components\\App.razor*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-01T17:08:32.548Z",
+              "Title": "Registration.razor.css",
+              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Registration.razor.css",
+              "RelativeDocumentMoniker": "Components\\Pages\\Registration.razor.css",
+              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Registration.razor.css",
+              "RelativeToolTip": "Components\\Pages\\Registration.razor.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-12-29T21:48:39.79Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Home.razor.css",
-              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Home.razor.css",
-              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor.css",
-              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Home.razor.css",
-              "RelativeToolTip": "Components\\Pages\\Home.razor.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Login.razor.css",
+              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Login.razor.css",
+              "RelativeDocumentMoniker": "Components\\Pages\\Login.razor.css",
+              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Login.razor.css",
+              "RelativeToolTip": "Components\\Pages\\Login.razor.css",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAqwC4AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-01T16:49:40.711Z"
+              "WhenOpened": "2024-12-29T21:42:42.26Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Registration.razor",
               "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Registration.razor",
               "RelativeDocumentMoniker": "Components\\Pages\\Registration.razor",
               "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Registration.razor",
               "RelativeToolTip": "Components\\Pages\\Registration.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-01T16:46:29.835Z"
+              "WhenOpened": "2024-12-28T22:25:22.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\csonk\\OneDrive\\Asztali g\u00E9p\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "Components\\Pages\\Login.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAACJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T22:25:28.618Z",
+              "EditorCaption": ""
             }
           ]
         }

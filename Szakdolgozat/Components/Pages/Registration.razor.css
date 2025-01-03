@@ -39,3 +39,6 @@ h1{
         color: white;
         transition-duration: 0.5s;
     }
+a {
+    margin-top: 5px;
+}

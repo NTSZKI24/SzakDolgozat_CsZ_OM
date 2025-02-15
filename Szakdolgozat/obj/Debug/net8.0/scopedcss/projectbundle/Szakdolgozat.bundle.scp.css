@@ -1,6 +1,6 @@
 /* _content/SzakDolgozat/Components/App.razor.rz.scp.css */
 body[b-qx9drh8u4j] {
-    background-color: black;
+    background-color: antiquewhite;
     height: 100%;
     color: white;
 }
@@ -38,9 +38,7 @@ main[b-yzlp9qlq2i] {
 /* _content/SzakDolgozat/Components/Pages/Home.razor.rz.scp.css */
 
 /* _content/SzakDolgozat/Components/Pages/Login.razor.rz.scp.css */
-.container[b-0qpt97wp5p] {
-    background-color: black;
-}
+
 
 #id="text_textbox"[b-0qpt97wp5p] {
     background-color: rgba(119, 104, 113, 1);
@@ -90,10 +88,7 @@ a[b-0qpt97wp5p]{
     margin-top: 5px;
 }
 /* _content/SzakDolgozat/Components/Pages/Registration.razor.rz.scp.css */
-.container[b-5ykacv9ikv] {
-    background-color: black;
 
-}
 #id="text_textbox"[b-5ykacv9ikv] {
     background-color: rgba(119, 104, 113, 1);
     border-radius: 20px;

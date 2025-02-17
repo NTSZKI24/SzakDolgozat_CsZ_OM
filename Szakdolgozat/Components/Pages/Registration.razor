@@ -1,4 +1,7 @@
-﻿@page "/Regisztracio"
+﻿
+@page "/Regisztracio"
+<RadzenTheme Theme="material"  />
+
 
 <PageTitle>Regisztráció</PageTitle>
 
@@ -24,7 +27,7 @@
                 </div>
                 <div class="rz-p-12 rz-text-align-center">
                     <label>Jelszó</label><br />
-                    <RadzenPassword @bind-Value=value Placeholder="Enter password..." aria-label="enter password"  style="border-radius: 15px;"/>
+                    <RadzenPassword @bind-Value=value Placeholder="Enter password..." aria-label="enter password"  style="border-radius: 15px;" required/>
                 </div>
                 <br />
 

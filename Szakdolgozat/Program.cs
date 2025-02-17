@@ -1,3 +1,4 @@
+using Radzen;
 using SzakDolgozat.Components;
 
 namespace SzakDolgozat
@@ -11,7 +12,10 @@ namespace SzakDolgozat
             // Add services to the container.
             builder.Services.AddRazorComponents();
 
+
+
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

@@ -1,29 +1,62 @@
 ﻿@page "/Bejelentkezes"
-
+<RadzenTheme Theme="material" />
 <PageTitle>Bejelentkezés</PageTitle>
 
-<div class="container" >
+<div class="container">
     <div class="row">
         <div class="col-4">
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
-            <h1>Bejelentkezés</h1>
-            <form>
-                <div id="text_textbox">
-                    <label>Név</label><br />
-                    <input type="text" id="nev" class="form-control" name="nev" required /><br />
-               </div>
-                <div id="text_textbox">
-                    <label>Jelszó</label><br />
-                    <input type="password" id="jelszo" class="form-control" name="jelszo" required /><br />
-                </div>
-                <div id="button">
-                    <input type="submit" value="Bejelentkezés" id="Bejelentkezes" class="btn btn-lg btn-outline-dark" name="Bejelentkezes" required /><br />
-                </div>
+            <h1 style="color:black">Bejelentkezés</h1> <br />
+
+            <form style="background-color:#84ACCE; max-width:500px">
+                <RadzenRow Gap="2rem" RowGap="2rem">
+                    <RadzenColumn Size="12">
+                        <RadzenCard Style="background-color:#084C61; border-radius:15px; margin-top:20px">
+                            <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" style="font-size:20px; color:white">Írja be a nevét</RadzenText>
+                            <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" />
+                        </RadzenCard>
+                    </RadzenColumn>
+
+                </RadzenRow>
+               
+                
+                <br />
+                <RadzenRow Gap="2rem" RowGap="2rem">
+                    <RadzenColumn Size="12">
+                        <RadzenCard Style="background-color:#084C61; border-radius:15px">
+                            <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" style="font-size:20px; color:white">Jelszó</RadzenText>
+                            <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" />
+                        </RadzenCard>
+                    </RadzenColumn>
+
+                </RadzenRow>
+                <br />
+
+                <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+
+                    <RadzenButton Click=@(args => OnClick("Primary button")) Text="Bejelentkezés" ButtonStyle="ButtonStyle.Primary" style="margin-left:100px; font-size:15px;" />
+                    <label>Nincs regisztrált fiókja ?  <RadzenLink Path="Regisztracio" Text="Ugrás a regisztrációhoz" style="text-decoration:none; font-size:15px; color:darkred" /></label>
+                </RadzenStack>
             </form>
         </div>
-        <div class="col-4">
-            <a href="/Regisztracio">Regisztrácio</a>
-        </div>
+       
     </div>
 </div>
+
+
+
+
+
+<EventConsole @ref=@console />
+
+@code {
+    string value2;
+
+    EventConsole console;
+
+    void OnChange(string value, string name)
+    {
+        /*console.Log($"{name} value changed to {value2}");*/
+    }
+}

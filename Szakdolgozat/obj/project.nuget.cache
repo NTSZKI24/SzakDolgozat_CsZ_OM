@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fx992Vix1Vk=",
+  "dgSpecHash": "pfKwajVXPE8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.13\\microsoft.netcore.app.host.win-x64.8.0.13.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\OlahMa\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

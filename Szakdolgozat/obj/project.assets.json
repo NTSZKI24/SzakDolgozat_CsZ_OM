@@ -1644,23 +1644,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\OlahMa\\.nuget\\packages\\": {},
+    "C:\\Users\\CsonkaZo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OlahMa\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+      "projectUniqueName": "C:\\Users\\CsonkaZo\\Source\\Repos\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
       "projectName": "SzakDolgozat",
-      "projectPath": "C:\\Users\\OlahMa\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
-      "packagesPath": "C:\\Users\\OlahMa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OlahMa\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
+      "projectPath": "C:\\Users\\CsonkaZo\\Source\\Repos\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+      "packagesPath": "C:\\Users\\CsonkaZo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\CsonkaZo\\Source\\Repos\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\OlahMa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CsonkaZo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

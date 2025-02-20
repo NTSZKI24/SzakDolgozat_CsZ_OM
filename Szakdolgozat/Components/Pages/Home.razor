@@ -2,16 +2,17 @@
 
 <PageTitle>Home</PageTitle>
 
-<div class="container" style="background-color:antiquewhite">
-    <div class="row">
-        <div class="col-4">
-        </div>
-        <div class="col-4 col-lg-4 col-sm-12" style="">
-            <h1 style="color:black; text-align:left">Főoldal</h1>
-            <a href="/Regisztracio" style="text-decoration:none; color:black">Regisztráció</a>
-             <a href="/Bejelentkezes" style="text-decoration:none; color:black; border:solid, 1px">Bejelentkezés</a>
-        </div>
-        <div class="col-4">
-        </div>
-    </div>
-</div>
+<RadzenLayout>
+    <RadzenHeader Style="background-color:#84ACCE">
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
+
+            <RadzenLink Path="Regisztracio" Text="Regisztráció " style="text-decoration:none; font-size:15px; font-size:20px; margin-right:20px; margin-left:20px" /> <br />
+            <RadzenLink Path="Bejelentkezes" Text="Bejelentkezés" style="text-decoration:none; font-size:15px; font-size:20px; text-align:center" />
+            <RadzenImage Path="C:\Users\user\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat/right-arrow.png"></RadzenImage>
+        </RadzenStack>
+    </RadzenHeader>
+</RadzenLayout>
+
+@code {
+    bool sidebar1Expanded = true;
+}

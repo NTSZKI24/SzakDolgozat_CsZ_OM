@@ -1,0 +1,30 @@
+﻿@page "/Munkalapok/Hozzaad"
+
+<PageTitle>Hozzaad</PageTitle>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4 col-lg-4 col-sm-12">
+            <h1 style="color:black">Hozzáadás</h1> <br />
+            <form style="background-color:#84ACCE; max-width:500px">
+                
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<EventConsole @ref=@console />
+
+@code {
+    string value;
+
+    EventConsole console;
+
+    void OnChange(string value, string name)
+    {
+        //console.Log($"{name} value changed to {value}");
+    }
+}

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {}
+    "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {
+    "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+        "projectUniqueName": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
         "projectName": "SzakDolgozat",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
+        "projectPath": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+        "packagesPath": "C:\\Users\\csonk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\csonk\\OneDrive\\Asztali gép\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\csonk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,13 +44,20 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
             "Radzen.Blazor": {
               "target": "Package",
               "version": "[6.0.6, )"
@@ -66,12 +74,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.13, 8.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -80,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -320,7 +320,7 @@
           }
         }
       },
-      "Radzen.Blazor/6.0.6": {
+      "Radzen.Blazor/6.1.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "8.0.0",
@@ -1465,10 +1465,10 @@
         "microsoft.jsinterop.nuspec"
       ]
     },
-    "Radzen.Blazor/6.0.6": {
-      "sha512": "uAtVkaPHVAEAXnbWJmU53t5QtXdDVH6bPaPOhbVMatZsTYtJJoaX2FlJzcJexQHCpi+x4GY9cXrTNoOUfr6lcA==",
+    "Radzen.Blazor/6.1.6": {
+      "sha512": "bN8mGSXtM/wy6tN91vON0ps107AFDNGCwGaPlnD6FJ0Rauq/tDK4tFKU/2r3HDjo1WsjfsbXKSlE6r7goypH9g==",
       "type": "package",
-      "path": "radzen.blazor/6.0.6",
+      "path": "radzen.blazor/6.1.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1488,7 +1488,7 @@
         "lib/net8.0/Radzen.Blazor.xml",
         "lib/net9.0/Radzen.Blazor.dll",
         "lib/net9.0/Radzen.Blazor.xml",
-        "radzen.blazor.6.0.6.nupkg.sha512",
+        "radzen.blazor.6.1.6.nupkg.sha512",
         "radzen.blazor.nuspec",
         "staticwebassets/Radzen.Blazor.js",
         "staticwebassets/css/dark-base.css",
@@ -1640,27 +1640,27 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Radzen.Blazor >= 6.0.6"
+      "Radzen.Blazor >= 6.1.6"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\OlahMa\\.nuget\\packages\\": {},
+    "C:\\Users\\user\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OlahMa\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
       "projectName": "SzakDolgozat",
-      "projectPath": "C:\\Users\\OlahMa\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
-      "packagesPath": "C:\\Users\\OlahMa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OlahMa\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
+      "projectPath": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\OlahMa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1669,7 +1669,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1687,7 +1686,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -1695,7 +1695,7 @@
         "dependencies": {
           "Radzen.Blazor": {
             "target": "Package",
-            "version": "[6.0.6, )"
+            "version": "[6.1.6, )"
           }
         },
         "imports": [
@@ -1709,6 +1709,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.13, 8.0.13]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1717,7 +1723,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

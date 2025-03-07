@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SzakDolgozat.SQL
+namespace SzakDolgozat.SQL.Classes
 {
-    public class Admin__munkalapok_View_
+    public class Admin__munkalapok__View
     {
 
         [Required]

@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Radzen;
 using SzakDolgozat.Components;
+using SzakDolgozat.SQL.Classes;
 
 namespace SzakDolgozat
 {
@@ -13,6 +15,8 @@ namespace SzakDolgozat
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
             builder.Services.AddRadzenComponents();
+            builder.Services.AddDbContext<AppDbContext>(c =>
+                c.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
             var app = builder.Build();

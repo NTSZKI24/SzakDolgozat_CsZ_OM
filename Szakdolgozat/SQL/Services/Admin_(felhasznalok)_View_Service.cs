@@ -23,7 +23,7 @@ namespace SzakDolgozat.SQL.Services
             var club = await _context.Admin__felhasznalok__Viewes.FindAsync(Id);
             if (club == null)
             {
-                throw new Exception("club not found");
+                throw new Exception("Admin__felhasznalok__View_Service not found");
             }
             return club;
         }

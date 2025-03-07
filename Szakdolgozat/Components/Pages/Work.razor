@@ -1,20 +1,17 @@
-﻿@page "/"
+﻿@page "/szerelo"
 
-<PageTitle>Home</PageTitle>
 
 <div class="rz-p-sm-12" style="margin-bottom: 200px;">
     <RadzenMenu Click="OnParentClicked">
-        
+
         <RadzenMenuItem Text="Lehetőségek">
-            <RadzenLink Path="/worker" Text="Szerelő" /><br />
-            <RadzenLink Path="buttons" Text="Titkár" />
-            
+            <RadzenLink Path="/finished" Text="Befejezett" /><br />
+            <RadzenLink Path="/started" Text="Elkezdett " />
+            <RadzenLink Path="/workflow" Text="Munkafolyamat " />
+
         </RadzenMenuItem>
     </RadzenMenu>
 </div>
-
-<EventConsole @ref=@console />
-
 @code {
     EventConsole console;
 
@@ -25,6 +22,6 @@
 
     void OnChildClicked(MenuItemEventArgs args)
     {
-       // console.Log($"{args.Text} from child clicked");
+        // console.Log($"{args.Text} from child clicked");
     }
 }

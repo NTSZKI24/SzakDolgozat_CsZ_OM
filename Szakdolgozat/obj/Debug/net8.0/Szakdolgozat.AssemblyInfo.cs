@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SzakDolgozat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5997809dddb91c1ad503c85ac9e2d004c48c9f2")]
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d08345819230f654e8e7cd419b0d08b12d8b3a22")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4edaebc33e5b520333214864e0164a3c6792a39f")]
+>>>>>>> main
 [assembly: System.Reflection.AssemblyProductAttribute("SzakDolgozat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SzakDolgozat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

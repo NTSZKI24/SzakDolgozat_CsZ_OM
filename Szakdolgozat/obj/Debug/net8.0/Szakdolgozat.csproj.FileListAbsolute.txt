@@ -160,7 +160,6 @@ C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8
 C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
 C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
 C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\scopedcss\Components\Pages\Login.razor.rz.scp.css
-C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\scopedcss\Components\Pages\Registration.razor.rz.scp.css
 C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\scopedcss\bundle\SzakDolgozat.styles.css
 C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\scopedcss\projectbundle\SzakDolgozat.bundle.scp.css
 C:\Users\OlahMa\Documents\GitHub\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.dll

@@ -1,9 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SzakDolgozat.SQL
+namespace SzakDolgozat.SQL.Classes
 {
-    public class Admin__felhasznalok__View
+    [Table("Felhasznalok")]
+    public class Felhasznalo
     {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
+
         [Required]
         public required string Felhasznalonev { get; set; }
 
@@ -17,6 +22,6 @@ namespace SzakDolgozat.SQL
         public required string Jelszo { get; set; }
 
         [Required]
-        public required string RoleNev { get; set; }
+        public required Guid RoleID { get; set; }
     }
 }

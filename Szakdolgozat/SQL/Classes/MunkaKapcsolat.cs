@@ -1,22 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SzakDolgozat.SQL
+namespace SzakDolgozat.SQL.Classes
 {
-    [Table("MunkaFolyamatok")]
-
-    public class MunkaFolyamat
+    [Table("MunkaKapcsolatok")]
+    public class MunkaKapcsolat
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required Guid MunkaID { get; set; }
+        public Guid TitkarID { get; set; }
 
         [Required]
-        public required string Folyamat { get; set; }
+        public Guid SzereloID { get; set; }
 
         [Required]
-        public required long Koltseg { get; set; }
+        public Guid MunkaID { get; set; }
     }
 }

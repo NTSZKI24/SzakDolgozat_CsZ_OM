@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SzakDolgozat.SQL
+namespace SzakDolgozat.SQL.Classes
 {
     public class Autok_TulajNev_View
     {

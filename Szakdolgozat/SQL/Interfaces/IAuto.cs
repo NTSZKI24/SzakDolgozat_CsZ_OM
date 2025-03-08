@@ -4,10 +4,10 @@ namespace SzakDolgozat.SQL.Interfaces
 {
     public interface IAuto
     {
-        Task<List<Auto>> GetClubs();
-        Task<Auto> GetClub(Guid Id);
-        Task AddClub(Auto auto);
-        Task UpdateClub(Auto auto);
-        Task DeleteClub(Guid Id);
+        Task<List<Auto>> GetAutok();
+        Task<Auto> GetAuto(Guid Id);
+        Task AddAuto(Auto auto);
+        Task UpdateAuto(Auto auto);
+        Task DeleteAuto(Guid Id);
     }
 }

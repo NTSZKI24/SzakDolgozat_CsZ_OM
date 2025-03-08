@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Radzen;
 using SzakDolgozat.Components;
 using SzakDolgozat.SQL.Classes;
+using SzakDolgozat.SQL.Interfaces;
+using SzakDolgozat.SQL.Services;
 
 namespace SzakDolgozat
 {
@@ -17,6 +19,17 @@ namespace SzakDolgozat
             builder.Services.AddRadzenComponents();
             builder.Services.AddDbContext<AppDbContext>(c =>
                 c.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IAdmin__felhasznalok__View, Admin__felhasznalok__View_Service>();
+            builder.Services.AddScoped<IAdmin__munkalapok__View, Admin__munkalapok__View_Service>();
+            builder.Services.AddScoped<IAdmin__tulajok__View, Admin__tulajok__View_Service>();
+            builder.Services.AddScoped<IAuto, Auto_Service>();
+            builder.Services.AddScoped<IAutok_TulajNev_View, Autok_TulajNev_View_Service>();
+            builder.Services.AddScoped<IAutoTulaj, AutoTulaj_Service>();
+            builder.Services.AddScoped<IFelhasznalo, Felhasznalo_Service>();
+            builder.Services.AddScoped<IMunkaFolyamat, MunkaFolyamat_Service>();
+            builder.Services.AddScoped<IMunkaKapcsolat, MunkaKapcsolat_Service>();
+            builder.Services.AddScoped<IMunkalap, Munkalap_Service>();
+            builder.Services.AddScoped<IRole, Role_Service>();
 
 
             var app = builder.Build();

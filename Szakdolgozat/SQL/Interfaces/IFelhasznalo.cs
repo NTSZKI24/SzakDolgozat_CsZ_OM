@@ -4,10 +4,10 @@ namespace SzakDolgozat.SQL.Interfaces
 {
     public interface IFelhasznalo
     {
-        Task<List<Felhasznalo>> GetClubs();
-        Task<Felhasznalo> GetClub(Guid Id);
-        Task AddClub(Felhasznalo felhasznalo);
-        Task UpdateClub(Felhasznalo felhasznalo);
-        Task DeleteClub(Guid Id);
+        Task<List<Felhasznalo>> GetFelhasznalok();
+        Task<Felhasznalo> GetFelhasznalo(Guid Id);
+        Task AddFelhasznalo(Felhasznalo felhasznalo);
+        Task UpdateFelhasznalo(Felhasznalo felhasznalo);
+        Task DeleteFelhasznalo(Guid Id);
     }
 }

@@ -4,10 +4,10 @@ namespace SzakDolgozat.SQL.Interfaces
 {
     public interface IRole
     {
-        Task<List<Role>> GetClubs();
-        Task<Role> GetClub(Guid Id);
-        Task AddClub(Role role);
-        Task UpdateClub(Role role);
-        Task DeleteClub(Guid Id);
+        Task<List<Role>> GetRolek();
+        Task<Role> GetRole(Guid Id);
+        Task AddRole(Role role);
+        Task UpdateRole(Role role);
+        Task DeleteRole(Guid Id);
     }
 }

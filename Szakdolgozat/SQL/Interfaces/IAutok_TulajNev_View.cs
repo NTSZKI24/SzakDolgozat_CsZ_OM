@@ -4,10 +4,10 @@ namespace SzakDolgozat.SQL.Interfaces
 {
     public interface IAutok_TulajNev_View
     {
-        Task<List<Autok_TulajNev_View>> GetClubs();
-        Task<Autok_TulajNev_View> GetClub(Guid Id);
-        Task AddClub(Autok_TulajNev_View autok_TulajNev_View);
-        Task UpdateClub(Autok_TulajNev_View autok_TulajNev_View);
-        Task DeleteClub(Guid Id);
+        Task<List<Autok_TulajNev_View>> GetAutok_TulajNev_Viewok();
+        Task<Autok_TulajNev_View> GetAutok_TulajNev_View(Guid Id);
+        Task AddAutok_TulajNev_View(Autok_TulajNev_View autok_TulajNev_View);
+        Task UpdateAutok_TulajNev_View(Autok_TulajNev_View autok_TulajNev_View);
+        Task DeleteAutok_TulajNev_View(Guid Id);
     }
 }

@@ -4,10 +4,10 @@ namespace SzakDolgozat.SQL.Interfaces
 {
     public interface IMunkaKapcsolat
     {
-        Task<List<MunkaKapcsolat>> GetClubs();
-        Task<MunkaKapcsolat> GetClub(Guid Id);
-        Task AddClub(MunkaKapcsolat munkaKapcsolat);
-        Task UpdateClub(MunkaKapcsolat munkaKapcsolat);
-        Task DeleteClub(Guid Id);
+        Task<List<MunkaKapcsolat>> GetMunkaKapcsolatok();
+        Task<MunkaKapcsolat> GetMunkaKapcsolat(Guid Id);
+        Task AddMunkaKapcsolat(MunkaKapcsolat munkaKapcsolat);
+        Task UpdateMunkaKapcsolat(MunkaKapcsolat munkaKapcsolat);
+        Task DeleteMunkaKapcsolat(Guid Id);
     }
 }

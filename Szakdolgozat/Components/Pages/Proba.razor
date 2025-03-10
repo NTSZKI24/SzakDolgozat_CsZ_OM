@@ -1,4 +1,5 @@
 ﻿@page "/p"
+@inherits AppDbContext
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject SzakDolgozat.SQL.Interfaces.IAuto Auto_Service
@@ -38,10 +39,10 @@ else
 
 }
 
-<button class="btn btn-primary" @onclick="OpenAddClubModal">Add New Club</button>
+@* <button class="btn btn-primary" @onclick="OpenAddClubModal">Add New Club</button>*@
 
-@code {
+@* @code {
     private List<SQL.Classes.Auto> autok;
 
 
-}
+} *@

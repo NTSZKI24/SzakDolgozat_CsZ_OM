@@ -1,18 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SzakDolgozat.SQL.Classes
+namespace SzakDolgozat.SQL.Models
 {
-    public class Admin__tulajok__View
+    public class Autok_TulajNev_View
     {
 
         [Required]
+        public required string AlvazSzam { get; set; }
+
+        [Required]
         public required string AutoTulaj { get; set; }
-
-        [Required]
-        public required string Telefonszam { get; set; }
-
-        [Required]
-        public required string Email { get; set; }
 
         [Required]
         public required string Marka { get; set; }
@@ -28,11 +25,5 @@ namespace SzakDolgozat.SQL.Classes
 
         [Required]
         public required string Motor { get; set; }
-
-        [Required]
-        public required string AlvazSzam { get; set; }
-
-        [Required]
-        public required string Leiras { get; set; }
     }
 }

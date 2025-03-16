@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SzakDolgozat.SQL.Classes
+namespace SzakDolgozat.SQL.Models
 {
     [Table("MunkaFolyamatok")]
 
@@ -18,5 +18,6 @@ namespace SzakDolgozat.SQL.Classes
 
         [Required]
         public required long Koltseg { get; set; }
+
     }
 }

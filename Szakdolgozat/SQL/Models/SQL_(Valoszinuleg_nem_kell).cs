@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Radzen.Blazor.Rendering;
 
-namespace SzakDolgozat.SQL.Classes
+namespace SzakDolgozat.SQL.Models
 {
     public class SQL : DbContext
     {

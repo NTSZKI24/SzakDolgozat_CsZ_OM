@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Radzen;
 using SzakDolgozat.Components;
-using SzakDolgozat.SQL.Classes;
+using SzakDolgozat.SQL.Models;
 using SzakDolgozat.SQL.Interfaces;
 using SzakDolgozat.SQL.Services;
 

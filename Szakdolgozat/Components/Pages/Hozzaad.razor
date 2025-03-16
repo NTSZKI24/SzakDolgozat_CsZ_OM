@@ -1,5 +1,9 @@
 ﻿@page "/Munkalapok/Hozzaad"
 <RadzenTheme Theme="material" />
+@inject NavigationManager Navigation
+@using SzakDolgozat.SQL.Models
+@inject SzakDolgozat.SQL.Interfaces.IAuto Auto_Service
+@inject SzakDolgozat.SQL.Interfaces.IAutoTulaj AutoTulaj_Service
 <PageTitle>Hozzaad</PageTitle>
 
 <div class="container">
@@ -8,16 +12,47 @@
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
             <h1 style="color:black">Hozzáadás</h1> <br />
-            <RadzenTemplateForm TItem="MyObject" Data=@obj Submit=@OnSubmit>
+            <RadzenTemplateForm TItem="Auto_AutoTulaj" Data=@auto_AutoTulaj Submit=@OnSubmit>
                 <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
+
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
                     <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
                                 Name="Phone" @bind-Value=@obj.Phone Change=@(args => OnChange(args, "Telefonszám"))
                                 Style="width: 100%;" aria-label="Telefonszám" />
                     <RadzenRequiredValidator Component="Phone" Text="A telefonszám megadása kötelező!" />
+
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tulajdonos Neve</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" />
+                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="TulajNeve"  />
                     <RadzenRequiredValidator Component="TulajNeve" Text="A tulaj nevének megadása kötelező!" />
+
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Leírás</RadzenText>
+                    <RadzenTextArea Change=@(args => OnChange(args, "TextArea")) Style="width: 100%" aria-label="TextArea"/>
+
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email cim</RadzenText>
+                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Email" />
+                    <RadzenRequiredValidator Component="Email" Text="Az Email-cím megadása kötelező!" />
+                    <RadzenEmailValidator Component="Email" Text="Érvénytelen email formátum!" />
+
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Márka</RadzenText>
+                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Marka" />
+                    <RadzenRequiredValidator Component="Marka" Text="A Márka megadása kötelező!" />
+
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Rendszám</RadzenText>
+                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Rendszam" />
+                    <RadzenRequiredValidator Component="Rendszam" Text="A Rendszám megadása kötelező!" />
+
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tipus</RadzenText>
+                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Tipus" />
+                    <RadzenRequiredValidator Component="Tipus" Text="A Tipus megadása kötelező!" />
+
+                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Üzemanyag</RadzenText>
+                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Uzemanyag" />
+                    <RadzenRequiredValidator Component="Uzemanyag" Text="A Üzemanyag megadása kötelező!" />
+
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
+                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Motor" />
+                    <RadzenRequiredValidator Component="Motor" Text="A Motor megadása kötelező!" />
+
                     <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" />
                 </RadzenCard>
             </RadzenTemplateForm>
@@ -29,23 +64,50 @@
 <EventConsole @ref=@console />
 
 @code {
-    public class MyObject
+    public class Auto_AutoTulaj
     {
-        public string Phone { get; set; }
-        public string TulajNeve { get; set; }
+        public Auto Auto { get; set; } = new();
+        public AutoTulaj AutoTulaj { get; set; } = new();
     }
+    private Auto_AutoTulaj auto_AutoTulaj = new();
+    private RadzenNotification notification;
 
-    MyObject obj = new MyObject();
-
-    EventConsole console;
-
-    void OnChange(string value, string name)
+    private async Task OnSubmit()
     {
-        Console.WriteLine($"{name} value changed to {value}");
-    }
+        var auto = new Auto
+            {
+                Marka = auto_AutoTulaj.Auto.Marka,
+                Rendszam = auto_AutoTulaj.Auto.Rendszam,
+                Tipus = auto_AutoTulaj.Auto.Tipus,
+                Uzemanyag = auto_AutoTulaj.Auto.Uzemanyag,
+                Motor = auto_AutoTulaj.Auto.Motor,
+                AlvazSzam = auto_AutoTulaj.Auto.AlvazSzam
+            };
 
-    void OnSubmit(MyObject arg)
-    {
-        Console.WriteLine($"Form submitted with values {JsonSerializer.Serialize(arg)}");
+        var autoTulaj = new AutoTulaj
+            {
+                Telefonszam = formModel.Address.Street,
+                Nev = formModel.Address.City,
+                Le = formModel.User.Name,
+                Email = formModel.User.Email
+                
+            };
+
+        // Mentés az adatbázisba
+        AppDbContext.Users.Add(user);
+        AppDbContext.Addresses.Add(address);
+        await dbContext.SaveChangesAsync();
+
+        // Értesítés a sikeres mentésről
+        notification.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Success,
+                Summary = "Siker",
+                Detail = "Az adatok mentése sikeres!",
+                Duration = 3000
+            });
+
+        // Kiüríti a mezőket
+        auto_AutoTulaj = new Auto_AutoTulaj();
     }
 }

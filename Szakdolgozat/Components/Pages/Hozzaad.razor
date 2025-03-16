@@ -14,43 +14,43 @@
             <h1 style="color:black">Hozzáadás</h1> <br />
             <RadzenTemplateForm TItem="Auto_AutoTulaj" Data=@auto_AutoTulaj Submit=@OnSubmit>
                 <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
-
+                    f
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
                     <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
-                                Name="Phone" @bind-Value=@obj.Phone Change=@(args => OnChange(args, "Telefonszám"))
+                                Name="Phone"
                                 Style="width: 100%;" aria-label="Telefonszám" />
                     <RadzenRequiredValidator Component="Phone" Text="A telefonszám megadása kötelező!" />
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tulajdonos Neve</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="TulajNeve"  />
+                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="TulajNeve"  />
                     <RadzenRequiredValidator Component="TulajNeve" Text="A tulaj nevének megadása kötelező!" />
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Leírás</RadzenText>
-                    <RadzenTextArea Change=@(args => OnChange(args, "TextArea")) Style="width: 100%" aria-label="TextArea"/>
+                    <RadzenTextArea Style="width: 100%" aria-label="TextArea"/>
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email cim</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Email" />
+                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" />
                     <RadzenRequiredValidator Component="Email" Text="Az Email-cím megadása kötelező!" />
                     <RadzenEmailValidator Component="Email" Text="Érvénytelen email formátum!" />
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Márka</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Marka" />
+                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Marka" />
                     <RadzenRequiredValidator Component="Marka" Text="A Márka megadása kötelező!" />
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Rendszám</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Rendszam" />
+                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Rendszam" />
                     <RadzenRequiredValidator Component="Rendszam" Text="A Rendszám megadása kötelező!" />
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tipus</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Tipus" />
+                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Tipus" />
                     <RadzenRequiredValidator Component="Tipus" Text="A Tipus megadása kötelező!" />
 
                      <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Üzemanyag</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Uzemanyag" />
+                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Uzemanyag" />
                     <RadzenRequiredValidator Component="Uzemanyag" Text="A Üzemanyag megadása kötelező!" />
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" Name="Motor" />
+                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" />
                     <RadzenRequiredValidator Component="Motor" Text="A Motor megadása kötelező!" />
 
                     <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" />
@@ -61,13 +61,14 @@
     </div>
 </div>
 
-<EventConsole @ref=@console />
 
 @code {
     public class Auto_AutoTulaj
     {
         public Auto Auto { get; set; } = new();
         public AutoTulaj AutoTulaj { get; set; } = new();
+
+
     }
     private Auto_AutoTulaj auto_AutoTulaj = new();
     private RadzenNotification notification;
@@ -86,17 +87,18 @@
 
         var autoTulaj = new AutoTulaj
             {
-                Telefonszam = formModel.Address.Street,
-                Nev = formModel.Address.City,
-                Le = formModel.User.Name,
-                Email = formModel.User.Email
+                Telefonszam = auto_AutoTulaj.AutoTulaj.Telefonszam,
+                Nev = auto_AutoTulaj.AutoTulaj.Nev,
+                Leiras = auto_AutoTulaj.AutoTulaj.Leiras,
+                Email = auto_AutoTulaj.AutoTulaj.Email
                 
             };
 
         // Mentés az adatbázisba
-        AppDbContext.Users.Add(user);
-        AppDbContext.Addresses.Add(address);
-        await dbContext.SaveChangesAsync();
+        AppDbContext.autok.Add(auto);
+        AppDbContext.autoTulajok.Add(autoTulaj);
+
+        await AppDbContext.SaveChangesAsync();
 
         // Értesítés a sikeres mentésről
         notification.Notify(new NotificationMessage

@@ -1,47 +1,10 @@
 ﻿@page "/p"
 @rendermode InteractiveServer
-@inject NavigationManager Navigation
-@inject SzakDolgozat.SQL.Interfaces.IAuto Auto_Service
 <h3>Club Table</h3>
 
-@if (autok == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Márka</th>
-                <th>Rendszám</th>
-                <th>Tipus</th>
-                <th>Üzemanyag</th>
-                <th>Motor</th>
-                <th>AlvaóázSzám</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var auto in autok)
-            {
-                <tr>
-                    <td>@auto.Marka</td>
-                    <td>@auto.Rendszam</td>
-                    <td>@auto.Tipus</td>
-                    <td>@auto.Uzemanyag</td>
-                    <td>@auto.Motor</td>
-                    <td>@auto.AlvazSzam</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-}
-
-<button class="btn btn-primary" @onclick="OpenAddClubModal">Add New Club</button>
 
 @code {
-    private List<SQL.Classes.Auto> autok;
+
 
 
 }

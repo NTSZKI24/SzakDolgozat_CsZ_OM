@@ -2,12 +2,12 @@
 
 namespace SzakDolgozat.SQL.Interfaces
 {
-    public interface IAdmin__tulajok__View
+    public interface IAdmin_tulajok_View
     {
-        Task<List<Admin__tulajok__View>> GetAdmin__tulajok__Viewok();
-        Task<Admin__tulajok__View> GetAdmin__tulajok__View(Guid Id);
-        Task AddAdmin__tulajok__View(Admin__tulajok__View admin__tulajok__View);
-        Task UpdateAdmin__tulajok__View(Admin__tulajok__View admin__tulajok__View);
-        Task DeleteAdmin__tulajok__View(Guid Id);
+        Task<List<Admin_tulajok_View>> GetAdmin_tulajok_Viewok();
+        Task<Admin_tulajok_View> GetAdmin_tulajok_View(Guid Id);
+        Task AddAdmin_tulajok_View(Admin_tulajok_View admin_tulajok_View);
+        Task UpdateAdmin_tulajok_View(Admin_tulajok_View admin_tulajok_View);
+        Task DeleteAdmin_tulajok_View(Guid Id);
     }
 }

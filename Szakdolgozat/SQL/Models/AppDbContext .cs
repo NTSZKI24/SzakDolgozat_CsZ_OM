@@ -9,9 +9,9 @@ namespace SzakDolgozat.SQL.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Admin__felhasznalok__View>().ToView("Admin_(/felhasznalok)_View").HasNoKey();
-            modelBuilder.Entity<Admin__munkalapok__View>().ToView("Admin_(/munkalapok_View)").HasNoKey();
-            modelBuilder.Entity<Admin__tulajok__View>().ToView("Admin_(/tulajok)_View");
+            modelBuilder.Entity<Admin_felhasznalok_View>().ToView("Admin_felhasznalok_View").HasNoKey();
+            modelBuilder.Entity<Admin_munkalapok_View>().ToView("Admin_munkalapok_View").HasNoKey();
+            modelBuilder.Entity<Admin_tulajok_View>().ToView("Admin_tulajok_View");
             modelBuilder.Entity<Autok_TulajNev_View>().ToView("Autok_TulajNev_View");
 
             base.OnModelCreating(modelBuilder);
@@ -23,9 +23,9 @@ namespace SzakDolgozat.SQL.Models
         public DbSet<MunkaKapcsolat> munkaKapcsolatok { get; set; }
         public DbSet<Munkalap> munkaLapok { get; set; }
         public DbSet<Role> rolok { get; set; }
-        public DbSet<Admin__felhasznalok__View> admin__felhasznalok__Viewes { get; set; }
-        public DbSet<Admin__munkalapok__View> admin__munkalapok__Viewes { get; set; }
-        public DbSet<Admin__tulajok__View> admin__tulajok__Viewes { get; set; }
+        public DbSet<Admin_felhasznalok_View> admin_felhasznalok_Viewes { get; set; }
+        public DbSet<Admin_munkalapok_View> admin_munkalapok_Viewes { get; set; }
+        public DbSet<Admin_tulajok_View> admin_tulajok_Viewes { get; set; }
         public DbSet<Autok_TulajNev_View> autok_TulajNev_Viewes { get; set; }
 
     }

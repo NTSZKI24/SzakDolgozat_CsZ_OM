@@ -2,7 +2,7 @@
 
 namespace SzakDolgozat.SQL.Models
 {
-    public class Admin__munkalapok__View
+    public class Admin_munkalapok_View
     {
 
         [Required]

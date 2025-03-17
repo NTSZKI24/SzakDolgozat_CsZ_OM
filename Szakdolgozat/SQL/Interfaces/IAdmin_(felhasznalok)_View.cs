@@ -2,12 +2,12 @@
 
 namespace SzakDolgozat.SQL.Interfaces
 {
-    public interface IAdmin__felhasznalok__View
+    public interface IAdmin_felhasznalok_View
     {
-        Task<List<Admin__felhasznalok__View>> GetAdmin__felhasznalok__Viewok();
-        Task<Admin__felhasznalok__View> GetAdmin__felhasznalok__View(Guid Id);
-        Task AddAdmin__felhasznalok__View(Admin__felhasznalok__View admin__felhasznalok__View);
-        Task UpdateAdmin__felhasznalok__View(Admin__felhasznalok__View admin__felhasznalok__View);
-        Task DeleteAdmin__felhasznalok__View(Guid Id);
+        Task<List<Admin_felhasznalok_View>> GetAdmin_felhasznalok_Viewok();
+        Task<Admin_felhasznalok_View> GetAdmin_felhasznalok_View(Guid Id);
+        Task AddAdmin_felhasznalok_View(Admin_felhasznalok_View admin_felhasznalok_View);
+        Task UpdateAdmin_felhasznalok_View(Admin_felhasznalok_View admin_felhasznalok_View);
+        Task DeleteAdmin_felhasznalok_View(Guid Id);
     }
 }

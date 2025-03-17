@@ -2,7 +2,7 @@
 
 namespace SzakDolgozat.SQL.Models
 {
-    public class Admin__tulajok__View
+    public class Admin_tulajok_View
     {
 
         [Required]

@@ -2,8 +2,7 @@
 <RadzenTheme Theme="material" />
 @inject NavigationManager Navigation
 @using SzakDolgozat.SQL.Models
-@inject SzakDolgozat.SQL.Interfaces.IAuto Auto_Service
-@inject SzakDolgozat.SQL.Interfaces.IAutoTulaj AutoTulaj_Service
+
 <PageTitle>Hozzaad</PageTitle>
 
 <div class="container">
@@ -12,13 +11,12 @@
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
             <h1 style="color:black">Hozzáadás</h1> <br />
-            <RadzenTemplateForm TItem="Auto_AutoTulaj" Data=@auto_AutoTulaj Submit=@OnSubmit>
                 <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
-                    f
+                    
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
                     <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
                                 Name="Phone"
-                                Style="width: 100%;" aria-label="Telefonszám" />
+                                Style="width: 100%;" aria-label="Telefonszám" @bind-Value="autoTulaj.Telefonszam" />
                     <RadzenRequiredValidator Component="Phone" Text="A telefonszám megadása kötelező!" />
 
                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tulajdonos Neve</RadzenText>
@@ -53,63 +51,9 @@
                     <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" />
                     <RadzenRequiredValidator Component="Motor" Text="A Motor megadása kötelező!" />
 
-                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" />
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
                 </RadzenCard>
-            </RadzenTemplateForm>
         </div>
 
     </div>
 </div>
-
-
-@code {
-    public class Auto_AutoTulaj
-    {
-        public Auto Auto { get; set; } = new();
-        public AutoTulaj AutoTulaj { get; set; } = new();
-
-
-    }
-    private Auto_AutoTulaj auto_AutoTulaj = new();
-    private RadzenNotification notification;
-
-    private async Task OnSubmit()
-    {
-        var auto = new Auto
-            {
-                Marka = auto_AutoTulaj.Auto.Marka,
-                Rendszam = auto_AutoTulaj.Auto.Rendszam,
-                Tipus = auto_AutoTulaj.Auto.Tipus,
-                Uzemanyag = auto_AutoTulaj.Auto.Uzemanyag,
-                Motor = auto_AutoTulaj.Auto.Motor,
-                AlvazSzam = auto_AutoTulaj.Auto.AlvazSzam
-            };
-
-        var autoTulaj = new AutoTulaj
-            {
-                Telefonszam = auto_AutoTulaj.AutoTulaj.Telefonszam,
-                Nev = auto_AutoTulaj.AutoTulaj.Nev,
-                Leiras = auto_AutoTulaj.AutoTulaj.Leiras,
-                Email = auto_AutoTulaj.AutoTulaj.Email
-                
-            };
-
-        // Mentés az adatbázisba
-        AppDbContext.autok.Add(auto);
-        AppDbContext.autoTulajok.Add(autoTulaj);
-
-        await AppDbContext.SaveChangesAsync();
-
-        // Értesítés a sikeres mentésről
-        notification.Notify(new NotificationMessage
-            {
-                Severity = NotificationSeverity.Success,
-                Summary = "Siker",
-                Detail = "Az adatok mentése sikeres!",
-                Duration = 3000
-            });
-
-        // Kiüríti a mezőket
-        auto_AutoTulaj = new Auto_AutoTulaj();
-    }
-}

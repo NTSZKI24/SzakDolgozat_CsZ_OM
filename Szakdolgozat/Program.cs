@@ -19,9 +19,9 @@ namespace SzakDolgozat
             builder.Services.AddRadzenComponents();
             builder.Services.AddDbContext<AppDbContext>(c =>
                 c.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddScoped<IAdmin__felhasznalok__View, Admin__felhasznalok__View_Service>();
-            builder.Services.AddScoped<IAdmin__munkalapok__View, Admin__munkalapok__View_Service>();
-            builder.Services.AddScoped<IAdmin__tulajok__View, Admin__tulajok__View_Service>();
+            builder.Services.AddScoped<IAdmin_felhasznalok_View, Admin_felhasznalok_View_Service>();
+            builder.Services.AddScoped<IAdmin_munkalapok_View, Admin_munkalapok_View_Service>();
+            builder.Services.AddScoped<IAdmin_tulajok_View, Admin_tulajok_View_Service>();
             builder.Services.AddScoped<IAuto, Auto_Service>();
             builder.Services.AddScoped<IAutok_TulajNev_View, Autok_TulajNev_View_Service>();
             builder.Services.AddScoped<IAutoTulaj, AutoTulaj_Service>();

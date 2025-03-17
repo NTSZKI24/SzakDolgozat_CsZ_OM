@@ -2,7 +2,7 @@
 
 namespace SzakDolgozat.SQL.Models
 {
-    public class Admin__felhasznalok__View
+    public class Admin_felhasznalok_View
     {
         [Required]
         public required string Felhasznalonev { get; set; }

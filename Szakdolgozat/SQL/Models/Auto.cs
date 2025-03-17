@@ -10,22 +10,22 @@ namespace SzakDolgozat.SQL.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required string Marka { get; set; }
+        public string Marka { get; set; }
 
         [Required]
-        public required string Rendszam { get; set; }
+        public string Rendszam { get; set; }
 
         [Required]
-        public required string Tipus { get; set; }
+        public string Tipus { get; set; }
 
         [Required]
-        public required string Uzemanyag { get; set; }
+        public string Uzemanyag { get; set; }
 
         [Required]
-        public required string Motor { get; set; }
+        public string Motor { get; set; }
 
         [Required]
-        public required string AlvazSzam { get; set; }
+        public string AlvazSzam { get; set; }
 
     }
 }

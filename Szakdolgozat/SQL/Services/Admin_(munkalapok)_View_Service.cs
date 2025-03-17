@@ -4,48 +4,48 @@ using SzakDolgozat.SQL.Interfaces;
 
 namespace SzakDolgozat.SQL.Services
 {
-    public class Admin__munkalapok__View_Service : IAdmin__munkalapok__View
+    public class Admin_munkalapok_View_Service : IAdmin_munkalapok_View
     {
         private readonly AppDbContext _context;
 
-        public Admin__munkalapok__View_Service(AppDbContext context)
+        public Admin_munkalapok_View_Service(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<Admin__munkalapok__View>> GetAdmin__munkalapok__Viewok()
+        public async Task<List<Admin_munkalapok_View>> GetAdmin_munkalapok_Viewok()
         {
-            return await _context.admin__munkalapok__Viewes.ToListAsync();
+            return await _context.admin_munkalapok_Viewes.ToListAsync();
         }
 
-        public async Task<Admin__munkalapok__View> GetAdmin__munkalapok__View(Guid Id)
+        public async Task<Admin_munkalapok_View> GetAdmin_munkalapok_View(Guid Id)
         {
-            var admin__munkalapok__View = await _context.admin__munkalapok__Viewes.FindAsync(Id);
-            if (admin__munkalapok__View == null)
+            var admin_munkalapok_View = await _context.admin_munkalapok_Viewes.FindAsync(Id);
+            if (admin_munkalapok_View == null)
             {
-                throw new Exception("Admin__munkalapok__View not found");
+                throw new Exception("Admin_munkalapok_View not found");
             }
-            return admin__munkalapok__View;
+            return admin_munkalapok_View;
         }
 
-        public async Task AddAdmin__munkalapok__View(Admin__munkalapok__View admin__munkalapok__View)
+        public async Task AddAdmin_munkalapok_View(Admin_munkalapok_View admin_munkalapok_View)
         {
-            _context.admin__munkalapok__Viewes.Add(admin__munkalapok__View);
+            _context.admin_munkalapok_Viewes.Add(admin_munkalapok_View);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAdmin__munkalapok__View(Admin__munkalapok__View admin__munkalapok__View)
+        public async Task UpdateAdmin_munkalapok_View(Admin_munkalapok_View admin_munkalapok_View)
         {
-            _context.Entry(admin__munkalapok__View).State = EntityState.Modified;
+            _context.Entry(admin_munkalapok_View).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAdmin__munkalapok__View(Guid Id)
+        public async Task DeleteAdmin_munkalapok_View(Guid Id)
         {
-            var admin__munkalapok__View = await _context.admin__munkalapok__Viewes.FindAsync(Id);
-            if (admin__munkalapok__View != null)
+            var admin_munkalapok_View = await _context.admin_munkalapok_Viewes.FindAsync(Id);
+            if (admin_munkalapok_View != null)
             {
-                _context.admin__munkalapok__Viewes.Remove(admin__munkalapok__View);
+                _context.admin_munkalapok_Viewes.Remove(admin_munkalapok_View);
                 await _context.SaveChangesAsync();
             }
         }

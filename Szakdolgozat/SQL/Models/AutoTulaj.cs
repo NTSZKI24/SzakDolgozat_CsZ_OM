@@ -9,17 +9,18 @@ namespace SzakDolgozat.SQL.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required string Telefonszam { get; set; }
+        public string Telefonszam { get; set; }
 
 
         [Required]
-        public required string Nev { get; set; }
+        public string Nev { get; set; }
 
         public string? Leiras { get; set; }
 
         [Required]
-        public required string Email { get; set; }
+        public string Email { get; set; }
 
+        [Required]
         public Guid AutoID { get; set; }
 
     }

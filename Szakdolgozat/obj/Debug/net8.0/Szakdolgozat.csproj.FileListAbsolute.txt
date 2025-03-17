@@ -325,3 +325,13 @@ C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\Szakdolgozat\bin\Debug\
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\Szakdolgozat\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.csproj.AssemblyReference.cache
 C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolg.9E79185C.Up2Date
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.csproj.AssemblyReference.cache
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.AssemblyInfoInputs.cache
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.AssemblyInfo.cs
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.csproj.CoreCompileInputs.cache
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.sourcelink.json
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.dll
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\refint\SzakDolgozat.dll
+C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\obj\Debug\net8.0\SzakDolgozat.pdb

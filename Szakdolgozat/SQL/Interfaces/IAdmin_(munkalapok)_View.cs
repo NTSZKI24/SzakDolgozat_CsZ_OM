@@ -2,12 +2,12 @@
 
 namespace SzakDolgozat.SQL.Interfaces
 {
-    public interface IAdmin__munkalapok__View
+    public interface IAdmin_munkalapok_View
     {
-        Task<List<Admin__munkalapok__View>> GetAdmin__munkalapok__Viewok();
-        Task<Admin__munkalapok__View> GetAdmin__munkalapok__View(Guid Id);
-        Task AddAdmin__munkalapok__View(Admin__munkalapok__View admin__munkalapok__View);
-        Task UpdateAdmin__munkalapok__View(Admin__munkalapok__View admin__munkalapok__View);
-        Task DeleteAdmin__munkalapok__View(Guid Id);
+        Task<List<Admin_munkalapok_View>> GetAdmin_munkalapok_Viewok();
+        Task<Admin_munkalapok_View> GetAdmin_munkalapok_View(Guid Id);
+        Task AddAdmin_munkalapok_View(Admin_munkalapok_View admin_munkalapok_View);
+        Task UpdateAdmin_munkalapok_View(Admin_munkalapok_View admin_munkalapok_View);
+        Task DeleteAdmin_munkalapok_View(Guid Id);
     }
 }

@@ -3,7 +3,6 @@ using Radzen;
 using SzakDolgozat.SQL.Models;
 using SzakDolgozat.SQL.Services;
 using Microsoft.AspNetCore.Components;
-
 namespace SzakDolgozat.Components.Pages
 {
     public partial class Hozzaad
@@ -23,85 +22,171 @@ namespace SzakDolgozat.Components.Pages
         Auto auto = new Auto();
         AutoTulaj autoTulaj = new AutoTulaj();
 
-        public string notificationMessage = string.Empty;
-        public string messageColor = "color:black;";
-
         private async Task OnSubmit()
         {
-            notificationMessage = "";
-            messageColor = "color:black;";
             if (string.IsNullOrWhiteSpace(autoTulaj.Nev))
             {
-                notificationMessage = "A név megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "A név megadása kötelező!",
+                    Duration = 3000,
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(autoTulaj.Email))
+            else if (string.IsNullOrWhiteSpace(autoTulaj.Email))
             {
-                notificationMessage = "Az email cím megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "Az email cím megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (!autoTulaj.Email.Contains("@") || !autoTulaj.Email.Contains("."))
+            else if (!autoTulaj.Email.Contains("@") || !autoTulaj.Email.Contains("."))
             {
-                notificationMessage = "Érvénytelen email cím formátum!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "Érvénytelen email cím formátum!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(autoTulaj.Telefonszam))
+            else if (string.IsNullOrWhiteSpace(autoTulaj.Telefonszam))
             {
-                notificationMessage = "A Telefonszám megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "A Telefonszám megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (autoTulaj.Telefonszam.Length != 14 || !autoTulaj.Telefonszam[0].Equals("+"))
+            else if (autoTulaj.Telefonszam.Length != 14 || !autoTulaj.Telefonszam[0].Equals("+"))
             {
-                notificationMessage = "A Telefonszám formátuma érvénytelen!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "A Telefonszám formátuma érvénytelen!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(auto.Marka))
+            else if (string.IsNullOrWhiteSpace(auto.Marka))
             {
-                notificationMessage = "A Márka megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "A Márka megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(auto.Rendszam))
+            else if (string.IsNullOrWhiteSpace(auto.Rendszam))
             {
-                notificationMessage = "A Rendszám megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "A Rendszám megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(auto.AlvazSzam))
+            else if (string.IsNullOrWhiteSpace(auto.AlvazSzam))
             {
-                notificationMessage = "Az Alvázszám megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "Az Alvázszám megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (auto.AlvazSzam.Length != 17)
+            else if (auto.AlvazSzam.Length != 17)
             {
-                notificationMessage = "Az Alvázszám formátuma érvénytelen!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "Az Alvázszám formátuma érvénytelen!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(auto.Tipus))
+            else if (string.IsNullOrWhiteSpace(auto.Tipus))
             {
-                notificationMessage = "A Tipus megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style = Colors.Danger,
+                    Detail = "A Tipus megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(auto.Uzemanyag))
+            else if (string.IsNullOrWhiteSpace(auto.Uzemanyag))
             {
-                notificationMessage = "Az Üzemanyag megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Style =Colors.Danger,
+                    Detail = "Az Üzemanyag megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            if (string.IsNullOrWhiteSpace(auto.Motor))
+            else if (string.IsNullOrWhiteSpace(auto.Motor))
             {
-                notificationMessage = "A Motor megadása kötelező!";
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Motor megadása kötelező!",
+                    Duration = 3000
+                });
                 return;
             }
-            // Mentés az adatbázisba
+            else
+            {
+                // Mentés az adatbázisba
+                
+                _appDbContext.autok.Add(auto);
+                await _appDbContext.SaveChangesAsync();
+                _appDbContext.autoTulajok.Add(autoTulaj);
+                await _appDbContext.SaveChangesAsync();
+                
 
-            /*
-            _appDbContext.autok.Add(auto);
-            await _appDbContext.SaveChangesAsync();
-            _appDbContext.autoTulajok.Add(autoTulaj);
-            await _appDbContext.SaveChangesAsync();
-            */
-            // Értesítés a sikeres mentésről
-
-            notificationMessage = "Sikeres adatfelvitel";
-            messageColor = "color:black;";
+                // Értesítés a sikeres mentésről
+                notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Siker",
+                    Style = Colors.Black,
+                    Detail = "Sikeres adatfelvitel!",
+                    Duration = 3000
+                });
+            }
         }
     }
 }

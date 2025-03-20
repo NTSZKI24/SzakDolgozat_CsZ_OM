@@ -2,7 +2,6 @@
 <RadzenTheme Theme="material" />
 @inject NavigationManager Navigation
 @using SzakDolgozat.SQL.Models
-
 <PageTitle>Hozzaad</PageTitle>
 
 <div class="container">
@@ -46,10 +45,9 @@
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
 
-                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" Style="@messageColor">@notificationMessage</RadzenText>
-                <p style="@messageColor">@notificationMessage</p>
-
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+
+                <p>@notificationService</p>
 
                  
             </RadzenCard>

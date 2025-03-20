@@ -11,13 +11,13 @@ namespace SzakDolgozat.SQL.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required Guid MunkaID { get; set; }
+        public Guid MunkaID { get; set; }
 
         [Required]
-        public required string Folyamat { get; set; }
+        public string Folyamat { get; set; }
 
         [Required]
-        public required long Koltseg { get; set; }
+        public long Koltseg { get; set; }
 
     }
 }

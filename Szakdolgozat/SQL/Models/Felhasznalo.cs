@@ -10,16 +10,16 @@ namespace SzakDolgozat.SQL.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required string Felhasznalonev { get; set; }
+        public string Felhasznalonev { get; set; }
 
         [Required]
-        public required string Nev { get; set; }
+        public string Nev { get; set; }
 
         [Required]
-        public required string Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        public required string Jelszo { get; set; }
+        public string Jelszo { get; set; }
 
 
         public Guid RoleID { get; set; }

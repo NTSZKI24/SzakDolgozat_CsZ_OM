@@ -23,8 +23,8 @@ namespace SzakDolgozat.Components.Pages
         Auto auto = new Auto();
         AutoTulaj autoTulaj = new AutoTulaj();
 
-        private string notificationMessage = string.Empty;
-        private string messageColor = "color:black;";
+        public string notificationMessage = string.Empty;
+        public string messageColor = "color:black;";
 
         private async Task OnSubmit()
         {

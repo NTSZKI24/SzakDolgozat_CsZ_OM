@@ -10,6 +10,6 @@ namespace SzakDolgozat.SQL.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required string RoleNev { get; set; }
+        public string RoleNev { get; set; }
     }
 }

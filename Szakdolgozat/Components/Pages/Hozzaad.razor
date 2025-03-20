@@ -11,44 +11,47 @@
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
             <h1 style="color:black">Hozzáadás</h1> <br />
-                <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
+            <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tulajdonos Neve</RadzenText>
-                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="TulajNeve" @bind-Value="autoTulaj.Nev"/>
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tulajdonos Neve</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="TulajNeve" @bind-Value="autoTulaj.Nev"/>
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email cim</RadzenText>
-                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="autoTulaj.Email" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email cim</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="autoTulaj.Email" />
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
-                    <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
-                            Name="Phone"
-                            Style="width: 100%;" aria-label="Telefonszám" @bind-Value="autoTulaj.Telefonszam" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
+                <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
+                        Name="Phone"
+                        Style="width: 100%;" aria-label="Telefonszám" @bind-Value="autoTulaj.Telefonszam" />
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Leírás</RadzenText>
-                    <RadzenTextArea Style="width: 100%" aria-label="TextArea" Placeholder="Adja meg ha tud valamit az autó esetleges hibáiról " @bind-Value="autoTulaj.Leiras" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Leírás</RadzenText>
+                <RadzenTextArea Style="width: 100%" aria-label="TextArea" Placeholder="Adja meg ha tud valamit az autó esetleges hibáiról " @bind-Value="autoTulaj.Leiras" />
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Márka</RadzenText>
-                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Marka" @bind-Value="auto.Marka" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Márka</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Marka" @bind-Value="auto.Marka" />
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Rendszám</RadzenText>
-                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Rendszam" @bind-Value="auto.Rendszam" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Rendszám</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Rendszam" @bind-Value="auto.Rendszam" />
 
-                    <RadzenMask Mask="*****************"  Placeholder="XXXXXXXXXXXXXXXXX"
-                            Name="Alvazszam"
-                            Style="width: 100%;" aria-label="Telefonszám" @bind-Value="auto.AlvazSzam" />
+                <RadzenMask Mask="*****************"  Placeholder="XXXXXXXXXXXXXXXXX"
+                        Name="Alvazszam"
+                        Style="width: 100%;" aria-label="Telefonszám" @bind-Value="auto.AlvazSzam" />
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tipus</RadzenText>
-                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Tipus" @bind-Value="auto.Tipus" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tipus</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Tipus" @bind-Value="auto.Tipus" />
 
-                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Üzemanyag</RadzenText>
-                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Uzemanyag" @bind-Value="auto.Uzemanyag" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Üzemanyag</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Uzemanyag" @bind-Value="auto.Uzemanyag" />
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
-                    <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
 
-                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" Style="@messageColor">@notificationMessage</RadzenText>
+                <p style="@messageColor">@notificationMessage</p>
 
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" Style="@messageColor">@notificationMessage</RadzenText>
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+
+                 
             </RadzenCard>
         </div>
 

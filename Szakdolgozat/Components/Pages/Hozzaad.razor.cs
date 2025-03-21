@@ -21,28 +21,30 @@ namespace SzakDolgozat.Components.Pages
 
         Auto auto = new Auto();
         AutoTulaj autoTulaj = new AutoTulaj();
-
+        void ShowNotification(NotificationMessage message)
+        {
+            NotificationService.Notify(message);
+        }
         private async Task OnSubmit()
         {
             if (string.IsNullOrWhiteSpace(autoTulaj.Nev))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "A név megadása kötelező!",
                     Duration = 3000,
+                    
                 });
                 return;
             }
             else if (string.IsNullOrWhiteSpace(autoTulaj.Email))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "Az email cím megadása kötelező!",
                     Duration = 3000
                 });
@@ -50,11 +52,10 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (!autoTulaj.Email.Contains("@") || !autoTulaj.Email.Contains("."))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "Érvénytelen email cím formátum!",
                     Duration = 3000
                 });
@@ -62,35 +63,21 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (string.IsNullOrWhiteSpace(autoTulaj.Telefonszam))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "A Telefonszám megadása kötelező!",
-                    Duration = 3000
-                });
-                return;
-            }
-            else if (autoTulaj.Telefonszam.Length != 14 || !autoTulaj.Telefonszam[0].Equals("+"))
-            {
-                notificationService.Notify(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Error,
-                    Summary = "Hiba",
-                    Style = Colors.Danger,
-                    Detail = "A Telefonszám formátuma érvénytelen!",
                     Duration = 3000
                 });
                 return;
             }
             else if (string.IsNullOrWhiteSpace(auto.Marka))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "A Márka megadása kötelező!",
                     Duration = 3000
                 });
@@ -98,11 +85,10 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (string.IsNullOrWhiteSpace(auto.Rendszam))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "A Rendszám megadása kötelező!",
                     Duration = 3000
                 });
@@ -110,11 +96,10 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (string.IsNullOrWhiteSpace(auto.AlvazSzam))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "Az Alvázszám megadása kötelező!",
                     Duration = 3000
                 });
@@ -122,11 +107,10 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (auto.AlvazSzam.Length != 17)
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "Az Alvázszám formátuma érvénytelen!",
                     Duration = 3000
                 });
@@ -134,11 +118,10 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (string.IsNullOrWhiteSpace(auto.Tipus))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style = Colors.Danger,
                     Detail = "A Tipus megadása kötelező!",
                     Duration = 3000
                 });
@@ -146,11 +129,10 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (string.IsNullOrWhiteSpace(auto.Uzemanyag))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
-                    Style =Colors.Danger,
                     Detail = "Az Üzemanyag megadása kötelező!",
                     Duration = 3000
                 });
@@ -158,7 +140,7 @@ namespace SzakDolgozat.Components.Pages
             }
             else if (string.IsNullOrWhiteSpace(auto.Motor))
             {
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Error,
                     Summary = "Hiba",
@@ -178,11 +160,10 @@ namespace SzakDolgozat.Components.Pages
                 
 
                 // Értesítés a sikeres mentésről
-                notificationService.Notify(new NotificationMessage
+                ShowNotification(new NotificationMessage
                 {
                     Severity = NotificationSeverity.Success,
                     Summary = "Siker",
-                    Style = Colors.Black,
                     Detail = "Sikeres adatfelvitel!",
                     Duration = 3000
                 });

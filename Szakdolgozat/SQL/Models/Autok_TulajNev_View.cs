@@ -6,10 +6,16 @@ namespace SzakDolgozat.SQL.Models
     {
 
         [Required]
-        public required string AlvazSzam { get; set; }
+        public required string Nev { get; set; }
 
         [Required]
-        public required string AutoTulaj { get; set; }
+        public required string Email { get; set; }
+
+        [Required]
+        public required string Telefonszam { get; set; }
+
+        [Required]
+        public required string AlvazSzam { get; set; }
 
         [Required]
         public required string Marka { get; set; }
@@ -22,8 +28,11 @@ namespace SzakDolgozat.SQL.Models
 
         [Required]
         public required string Uzemanyag { get; set; }
-
         [Required]
         public required string Motor { get; set; }
+        [Required]
+        public required string Leiras { get; set; }
+        [Required]
+        public required string Statusz { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@page "/Munkalapok/Hozzaad"
-<RadzenTheme Theme="material" />
+@rendermode InteractiveServer
 @inject NavigationManager Navigation
+@inject NotificationService NotificationService
 @using SzakDolgozat.SQL.Models
 <PageTitle>Hozzaad</PageTitle>
 
@@ -47,9 +48,6 @@
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
 
-                <p>@notificationService</p>
-
-                 
             </RadzenCard>
         </div>
 

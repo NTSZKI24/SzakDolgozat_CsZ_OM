@@ -34,5 +34,8 @@ namespace SzakDolgozat.SQL.Models
         public required string Leiras { get; set; }
         [Required]
         public required string Statusz { get; set; }
+        
+        [Required]
+        public required string DolgozoNev { get; set; }
     }
 }

@@ -22,8 +22,9 @@ namespace SzakDolgozat
             builder.Services.AddScoped<IAdmin_felhasznalok_View, Admin_felhasznalok_View_Service>();
             builder.Services.AddScoped<IAdmin_munkalapok_View, Admin_munkalapok_View_Service>();
             builder.Services.AddScoped<IAdmin_tulajok_View, Admin_tulajok_View_Service>();
+            builder.Services.AddScoped<ITitkar_Munkalapok_View, Titkar_Munkalapok_View_Service>();
+            builder.Services.AddScoped<ISzerelo_Munka_View, Szerelo_Munka_View_Service>();
             builder.Services.AddScoped<IAuto, Auto_Service>();
-            builder.Services.AddScoped<IAutok_TulajNev_View, Autok_TulajNev_View_Service>();
             builder.Services.AddScoped<IAutoTulaj, AutoTulaj_Service>();
             builder.Services.AddScoped<IFelhasznalo, Felhasznalo_Service>();
             builder.Services.AddScoped<IMunkaFolyamat, MunkaFolyamat_Service>();

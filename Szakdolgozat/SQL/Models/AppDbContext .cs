@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SzakDolgozat.SQL.Services;
 
 namespace SzakDolgozat.SQL.Models
 {
@@ -11,9 +12,9 @@ namespace SzakDolgozat.SQL.Models
         {
             modelBuilder.Entity<Admin_felhasznalok_View>().ToView("Admin_felhasznalok_View").HasNoKey();
             modelBuilder.Entity<Admin_munkalapok_View>().ToView("Admin_munkalapok_View").HasNoKey();
-            modelBuilder.Entity<Admin_tulajok_View>().ToView("Admin_tulajok_View");
-            modelBuilder.Entity<Autok_TulajNev_View>().ToView("Autok_TulajNev_View");
-
+            modelBuilder.Entity<Admin_tulajok_View>().ToView("Admin_tulajok_View").HasNoKey();
+            modelBuilder.Entity<Titkar_Munkalapok_View>().ToView("Titkar_Munkalapok_View").HasNoKey();
+            modelBuilder.Entity<Szerelo_Munka_View>().ToView("Szerelo_Munka_View").HasNoKey();
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Auto> autok { get; set; }
@@ -26,7 +27,8 @@ namespace SzakDolgozat.SQL.Models
         public DbSet<Admin_felhasznalok_View> admin_felhasznalok_Viewes { get; set; }
         public DbSet<Admin_munkalapok_View> admin_munkalapok_Viewes { get; set; }
         public DbSet<Admin_tulajok_View> admin_tulajok_Viewes { get; set; }
-        public DbSet<Autok_TulajNev_View> autok_TulajNev_Viewes { get; set; }
+        public DbSet<Titkar_Munkalapok_View> titkar_Munkalapok_Viewes { get; set; }
+        public DbSet<Szerelo_Munka_View> szerelo_Munka_Viewes { get; set; }
 
     }
 }

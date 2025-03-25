@@ -13,7 +13,7 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required string Email { get; set; }
         [Required]
-        public required string Statusz { get; set; }
+        public required int Statusz { get; set; }
         [Required]
         public required string AlvazSzam { get; set; }
         [Required]

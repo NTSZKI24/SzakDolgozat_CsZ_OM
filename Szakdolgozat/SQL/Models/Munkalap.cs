@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Models
 {
@@ -20,6 +21,8 @@ namespace SzakDolgozat.SQL.Models
 
         [Required]
         public int MunkaIdo { get; set; }
+        [Required]
+        public StatuszEnum Statusz { get; set; }
 
         [Required]
         public DateTime Keltezes { get; set; }

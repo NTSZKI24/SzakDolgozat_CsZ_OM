@@ -24,6 +24,8 @@ namespace SzakDolgozat.SQL.Models
         public string Rendszam { get; set; }
         [Required]
         public string Osszkoltseg { get; set; }
+        [Required]
+        public required int Statusz { get; set; }
 
     }
 }

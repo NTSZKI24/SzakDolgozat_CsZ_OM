@@ -13,7 +13,7 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required string Email { get; set; }
         [Required]
-        public required string StatuszNev { get; set; }
+        public required string Statusz { get; set; }
         [Required]
         public required string AlvazSzam { get; set; }
         [Required]
@@ -25,6 +25,10 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required string MunkaIdo { get; set; }
         [Required]
+        public required string Keltezes { get; set; }
+        [Required]
         public required string Osszkoltseg { get; set; }
+        [Required]
+        public required string TitkarNev { get; set; }
     }
 }

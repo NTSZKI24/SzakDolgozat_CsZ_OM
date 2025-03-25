@@ -42,6 +42,6 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required DateTime Keltezes { get; set; }
         [Required]
-        public required string StatuszNev { get; set; }
+        public required string Statusz { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace SzakDolgozat.SQL.Services
 
         public async Task<List<Szerelo_Munka_View>> GetSzerelo_Munka_Viewok()
         {
-            return await _context.szerelo_Munka_Viewes.ToListAsync;
+            return await _context.szerelo_Munka_Viewes.ToListAsync();
         }
     }
 }

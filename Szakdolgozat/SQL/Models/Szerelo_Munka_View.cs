@@ -6,6 +6,9 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public string TitkarNev { get; set; }
 
+        [Required]
+        public string SzereloNev { get; set; }
+
         public string Leiras { get; set; }
         [Required]
         public string Marka { get; set; }
@@ -21,5 +24,6 @@ namespace SzakDolgozat.SQL.Models
         public string Rendszam { get; set; }
         [Required]
         public string Osszkoltseg { get; set; }
+
     }
 }

@@ -17,7 +17,7 @@ namespace SzakDolgozat.SQL.Services
         public async Task<List<Titkar_SzereloDropDown_View>> GetTitkar_SzereloDropDown_Viewok()
         {
             var szerelokStatusz = await _context.titkar_SzereloDropDown_Viewes
-                .Where(u => u.RoleNev == Enum.RoleEnum.szerelo)
+                .Where(u => u.RoleNev == RoleEnum.szerelo)
                 .Select(u => new Titkar_SzereloDropDown_View
                 {
                     SzereloNev = u.SzereloNev,

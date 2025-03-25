@@ -57,18 +57,18 @@
 </div>
 
 @code {
-    private List<ITitkar_SzereloDropDown_View> szerelok = new();
+    private List<Titkar_SzereloDropDown_View> szerelok = new();
     private string selectedSzereloNev;
-    private ITitkar_SzereloDropDown_View selectedSzerelo;
+    private Titkar_SzereloDropDown_View selectedSzerelo;
 
     protected override async Task OnInitializedAsync()
     {
-        szerelok = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
+        szerelok = await Titkar_SzereloDropDown_View_Service.();
 
         if (szerelok.Any())
         {
             selectedSzerelo = szerelok.First();
-            selectedSzereloNev = selectedSzerelo.Name;
+            selectedSzereloNev = selectedSzerelo.GetTitkar_SzereloDropDown_Viewok().
         }
     }
 }

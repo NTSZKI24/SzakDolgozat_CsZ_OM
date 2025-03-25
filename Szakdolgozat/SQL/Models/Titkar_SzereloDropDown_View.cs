@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SzakDolgozat.SQL.Enum;
+using SzakDolgozat.SQL.Interfaces;
 
 namespace SzakDolgozat.SQL.Models
 {

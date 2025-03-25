@@ -17,5 +17,7 @@ namespace SzakDolgozat.SQL.Services
         {
             return await _context.titkar_Munkalapok_Viewes.ToListAsync();
         }
+
+
     }
 }

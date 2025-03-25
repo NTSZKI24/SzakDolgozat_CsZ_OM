@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Models
 {
@@ -10,6 +11,6 @@ namespace SzakDolgozat.SQL.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public string RoleNev { get; set; }
+        public RoleEnum RoleNev { get; set; }
     }
 }

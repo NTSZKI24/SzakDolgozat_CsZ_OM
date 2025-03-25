@@ -31,6 +31,7 @@ namespace SzakDolgozat
             builder.Services.AddScoped<IMunkaKapcsolat, MunkaKapcsolat_Service>();
             builder.Services.AddScoped<IMunkalap, Munkalap_Service>();
             builder.Services.AddScoped<IRole, Role_Service>();
+            builder.Services.AddScoped<ITitkar_SzereloDropDown_View, Titkar_SzereloDropDown_View_Service>();
 
 
             var app = builder.Build();

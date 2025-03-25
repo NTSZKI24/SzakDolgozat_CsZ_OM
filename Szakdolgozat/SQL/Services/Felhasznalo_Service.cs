@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SzakDolgozat.SQL.Models;
 using SzakDolgozat.SQL.Interfaces;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Services
 {
@@ -49,5 +50,27 @@ namespace SzakDolgozat.SQL.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<List<UserWithStatusDto>> GetSzerelokWithStatusAsync()
+        {
+            var szerelok = await _context.rolok
+                .Where(u => u.RoleNev == "Szerelő")
+                .Select(u => new UserWithStatusDto
+                {
+                    Nev = u.Name,
+                    Statusz = u.WorkRelations
+                        .Select(wr => wr.WorkOrder.Status) // Munkalap státuszok lekérése
+                    .DefaultIfEmpty(StatuszEnum.NincsMunka) // Ha nincs munkája, akkor "NincsMunka"
+                        .Max() // A legfontosabb státuszt választjuk ki
+                })
+                .ToListAsync();
+
+            return szerelok;
+        }
     }
+}
+public class UserWithStatusDto
+{
+    public string Nev { get; set; }
+    public StatuszEnum Statusz { get; set; }
 }

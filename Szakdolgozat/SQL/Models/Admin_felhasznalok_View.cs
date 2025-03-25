@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Models
 {
@@ -17,6 +18,6 @@ namespace SzakDolgozat.SQL.Models
         public required string Jelszo { get; set; }
 
         [Required]
-        public required string RoleNev { get; set; }
+        public required RoleEnum RoleNev { get; set; }
     }
 }

@@ -46,6 +46,8 @@
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
 
+
+
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
 
             </RadzenCard>
@@ -53,3 +55,21 @@
 
     </div>
 </div>
+
+@code {
+    private List<ITitkar_SzereloDropDown_View> szerelok = new();
+    private string selectedSzereloNev;
+    private ITitkar_SzereloDropDown_View selectedSzerelo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        szerelok = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
+
+        if (szerelok.Any())
+        {
+            selectedSzerelo = szerelok.First();
+            selectedSzereloNev = selectedSzerelo.Name;
+        }
+    }
+}
+

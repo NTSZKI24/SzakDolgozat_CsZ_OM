@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace SzakDolgozat.SQL
+namespace SzakDolgozat.SQL.Classes
 {
     [Table("AutoTulajok")]
     public class AutoTulaj

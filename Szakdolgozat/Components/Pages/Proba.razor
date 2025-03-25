@@ -1,43 +1,48 @@
 ﻿@page "/p"
-<RadzenTemplateForm TItem="MyObject" Data=@obj Submit=@OnSubmit>
-    <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telephone</RadzenText>
-        <RadzenMask Mask="(***) ***-****" CharacterPattern="[0-9]" Placeholder="(000) 000-0000" Name="Phone" @bind-Value=@obj.Phone Change=@(args => OnChange(args, "Telephone")) 
-            Style="width: 100%;" aria-label="Phone" />
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" class="rz-mt-6">Credit Card</RadzenText>
-        <RadzenMask Mask="**** **** **** ****" CharacterPattern="[0-9]" Placeholder="0000 0000 0000 0000" Name="CardNr" @bind-Value=@obj.CardNr
-            Change=@(args => OnChange(args, "Credit Card")) Style="width: 100%;" aria-label="Credit Card" />
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" class="rz-mt-6">SSN</RadzenText>
-        <RadzenMask Mask="***-**-****" CharacterPattern="[0-9]" Placeholder="000-00-0000" Name="SSN" @bind-Value=@obj.SSN Change=@(args => OnChange(args, "SSN")) 
-            Style="width: 100%;" aria-label="SSN"/>
-        <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" class="rz-mt-6">
-            <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" />
-            <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" Text="Cancel" />
-        </RadzenStack>
-    </RadzenCard>
-</RadzenTemplateForm>
+@inherits AppDbContext
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IAuto Auto_Service
+<h3>Club Table</h3>
 
-<EventConsole @ref=@console />
-
-@code { 
-    public class MyObject
-    {
-        public string Phone { get; set; }
-        public string CardNr { get; set; }
-        public string SSN { get; set; }
-    }
-
-    MyObject obj = new MyObject();
-
-    EventConsole console;
-
-    void OnChange(string value, string name)
-    {
-        Console.WriteLine($"{name} value changed to {value}");
-    }
-
-    void OnSubmit(MyObject arg)
-    {
-        Console.WriteLine($"Form submitted with values {JsonSerializer.Serialize(arg)}");
-    }
+@if (autok == null)
+{
+    <p><em>Loading...</em></p>
 }
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Márka</th>
+                <th>Rendszám</th>
+                <th>Tipus</th>
+                <th>Üzemanyag</th>
+                <th>Motor</th>
+                <th>AlvaóázSzám</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var auto in autok)
+            {
+                <tr>
+                    <td>@auto.Marka</td>
+                    <td>@auto.Rendszam</td>
+                    <td>@auto.Tipus</td>
+                    <td>@auto.Uzemanyag</td>
+                    <td>@auto.Motor</td>
+                    <td>@auto.AlvazSzam</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+@* <button class="btn btn-primary" @onclick="OpenAddClubModal">Add New Club</button>*@
+
+@* @code {
+    private List<SQL.Classes.Auto> autok;
+
+
+} *@

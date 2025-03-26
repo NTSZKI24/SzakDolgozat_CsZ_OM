@@ -17,75 +17,79 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SzakDolgozat
 build_property.RootNamespace = SzakDolgozat
-build_property.ProjectDir = C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat\
+build_property.ProjectDir = C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\Szakdolgozat\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat
+build_property.MSBuildProjectDirectory = C:\Users\csonk\OneDrive\Asztali gép\SzakDolgozat_CsZ_OM\Szakdolgozat
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Component.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/AdminFelhasznalok.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkZlbGhhc3puYWxvay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Component.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Error.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/EventConsole.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/EventConsole.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudENvbnNvbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Finished.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Finished.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaW5pc2hlZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Hozzaad.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Hozzaad.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb3p6YWFkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Munkalapok.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNdW5rYWxhcG9rLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Started.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Started.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFydGVkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Szerelo.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Szerelo.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTemVyZWxvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Work.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/TitkarMunkalapok.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaXRrYXJNdW5rYWxhcG9rLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Work.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXb3JrLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Workflow.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Workflow.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXb3JrZmxvdy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Routes.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/_Imports.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/App.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-qx9drh8u4j
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Layout/MainLayout.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-yzlp9qlq2i
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Home.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-s3e0n5bl3f
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Login.razor]
+[C:/Users/csonk/OneDrive/Asztali gép/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0qpt97wp5p

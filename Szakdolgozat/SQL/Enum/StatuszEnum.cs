@@ -2,10 +2,11 @@
 {
     public enum StatuszEnum
     {
-        NincsMunka,
-        ElfogadasraVar,
-        Szereles,
-        AlkatreszreVar,
-        Kesz
+        NincsMunka = 1,
+        MunkaElfogadasraVar = 2,
+        Szereles = 3,
+        AlkatreszreVar = 4,
+        NyomtatasraVar = 5,
+        Befejezett = 6
     }
 }

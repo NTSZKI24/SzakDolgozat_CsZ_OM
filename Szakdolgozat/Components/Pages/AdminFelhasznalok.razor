@@ -1,0 +1,81 @@
+﻿<h3>AdminFelhasznalok</h3>
+@page "/admin/felhasznalok"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IAdmin_felhasznalok_View Admin_felhasznalok_View_Service
+@using SzakDolgozat.SQL.Models
+@using SzakDolgozat.SQL.Enum
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">
+        Felhasználók kezelése
+    </RadzenText>
+
+    <RadzenDataGrid @ref="grid" Data="@users" FilterMode="FilterMode.Simple"
+                    AllowFiltering="true" AllowPaging="true" AllowSorting="true"
+                    ColumnWidth="200px">
+        <Columns>
+            <RadzenDataGridColumn TItem="Titkar_Munkalapok_View" Width="100px">
+                <Template Context="munkalap">
+                        
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="Felhasznalonev" Title="Felhasználónév"
+                                  FilterValue="@usernameFilter">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="usernameFilter" Style="width:100%;"
+                                   InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by username" } })" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Nev" Title="Név"
+                                  FilterValue="@nameFilter">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="nameFilter" Style="width:100%;"
+                                   InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by name" } })" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Email" Title="Email"
+                                  FilterValue="@emailFilter">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="emailFilter" Style="width:100%;"
+                                   InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by email" } })" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="RoleNev" Title="Szerepkör"
+                                  FilterValue="@selectedRole" FilterOperator="FilterOperator.Equals">
+                <FilterTemplate>
+                    <RadzenDropDown @bind-Value="selectedRole" Data="@roles"
+                                    AllowClear="true" Style="width:100%;"
+                                    InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by role" } })" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+        </Columns>
+    </RadzenDataGrid>
+}
+@code {
+    RadzenDataGrid<Admin_felhasznalok_View> grid;
+    IEnumerable<Admin_felhasznalok_View> users;
+
+    string usernameFilter;
+    string nameFilter;
+    string emailFilter;
+    string selectedRole;
+
+    List<string> roles = new List<string> { "Admin", "User", "Guest", "Manager" };
+
+    [Inject] IAdmin_felhasznalok_View AdminService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await AdminService.GetAdmin_felhasznalok_Viewok();
+    }
+}

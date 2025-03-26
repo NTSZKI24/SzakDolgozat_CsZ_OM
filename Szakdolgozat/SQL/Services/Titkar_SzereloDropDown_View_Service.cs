@@ -17,14 +17,19 @@ namespace SzakDolgozat.SQL.Services
         public async Task<List<Titkar_SzereloDropDown_View>> GetTitkar_SzereloDropDown_Viewok()
         {
             var szerelokStatusz = await _context.titkar_SzereloDropDown_Viewes
-                .Where(u => u.RoleNev == RoleEnum.szerelo)
-                .Select(u => new Titkar_SzereloDropDown_View
-                {
-                    SzereloNev = u.SzereloNev,
-                    Statusz = u.Statusz,
-
-                })
-                .ToListAsync();
+            .Where(u => u.RoleNev == "szerelo" &&
+                       (u.Statusz == StatuszEnum.NincsMunka ||
+                        u.Statusz == StatuszEnum.MunkaElfogadasraVar ||
+                        u.Statusz == StatuszEnum.AlkatreszreVar ||
+                        u.Statusz == StatuszEnum.Szereles))
+            .GroupBy(u => u.SzereloNev) // Csoportosítjuk a szerelőket, hogy minden szerelő csak egyszer szerepeljen
+            .Select(g => new Titkar_SzereloDropDown_View
+            {
+                SzereloNev = g.Key,
+                Statusz = DetermineSzereloStatus(g.Select(u => u.Statusz).ToList()) // Az összes státusz listáját átadjuk
+            })
+            .OrderBy(u => (int)u.Statusz) // Prioritási sorrend: 1-NincsMunka, 2-AlkatreszreVar, 3-Szereles
+            .ToListAsync();
 
             return szerelokStatusz;
         }
@@ -33,8 +38,10 @@ namespace SzakDolgozat.SQL.Services
         {
             if (munkalapStatusok.Any(s => s == StatuszEnum.Szereles))
                 return StatuszEnum.Szereles;
-            if (munkalapStatusok.All(s => s == StatuszEnum.AlkatreszreVar))
+            if (munkalapStatusok.Any(s => s == StatuszEnum.AlkatreszreVar))
                 return StatuszEnum.AlkatreszreVar;
+            if (munkalapStatusok.Any(s => s == StatuszEnum.MunkaElfogadasraVar))
+                return StatuszEnum.MunkaElfogadasraVar;
             return StatuszEnum.NincsMunka;
         }
     }

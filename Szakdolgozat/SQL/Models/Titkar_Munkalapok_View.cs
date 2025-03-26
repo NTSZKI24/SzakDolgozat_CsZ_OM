@@ -21,11 +21,11 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required string Marka { get; set; }
         [Required]
-        public required string MunkaKezdete { get; set; }
+        public required DateTime MunkaKezdete { get; set; }
         [Required]
         public required string MunkaIdo { get; set; }
         [Required]
-        public required string Keltezes { get; set; }
+        public required DateTime Keltezes { get; set; }
         [Required]
         public required string Osszkoltseg { get; set; }
         [Required]

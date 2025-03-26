@@ -18,6 +18,6 @@ namespace SzakDolgozat.SQL.Models
         public required string Jelszo { get; set; }
 
         [Required]
-        public required RoleEnum RoleNev { get; set; }
+        public required string RoleNev { get; set; }
     }
 }

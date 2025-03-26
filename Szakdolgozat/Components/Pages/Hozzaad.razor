@@ -2,7 +2,9 @@
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject NotificationService NotificationService
+@inject SzakDolgozat.SQL.Interfaces.ITitkar_SzereloDropDown_View Titkar_SzereloDropDown_View_Service
 @using SzakDolgozat.SQL.Models
+
 <PageTitle>Hozzaad</PageTitle>
 
 <div class="container">
@@ -45,8 +47,11 @@
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
-
-
+                <RadzenDropDown @bind-Value="selectedSzerelo"
+                                Data="@szerelokListaja"
+                                TextProperty="DisplayText"
+                                ValueProperty="SzereloNev"
+                                Style="width: 300px;"/>
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
 
@@ -57,18 +62,18 @@
 </div>
 
 @code {
-    private List<Titkar_SzereloDropDown_View> szerelok = new();
-    private string selectedSzereloNev;
+    private List<Titkar_SzereloDropDown_View> szerelokListaja;
     private Titkar_SzereloDropDown_View selectedSzerelo;
 
     protected override async Task OnInitializedAsync()
     {
-        szerelok = await Titkar_SzereloDropDown_View_Service.();
+        szerelokListaja = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
 
-        if (szerelok.Any())
+        // Automatikusan kiválasztja az első szerelőt a listában
+        if (szerelokListaja.Any())
         {
-            selectedSzerelo = szerelok.First();
-            selectedSzereloNev = selectedSzerelo.GetTitkar_SzereloDropDown_Viewok().
+            selectedSzerelo = szerelokListaja.First();
+
         }
     }
 }

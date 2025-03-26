@@ -14,7 +14,8 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public StatuszEnum Statusz { get; set; }
 
-        public RoleEnum RoleNev { get; set; }
+        public string RoleNev { get; set; }
 
+        public string DisplayText => $"{SzereloNev} - {Statusz}";
     }
 }

@@ -1,0 +1,84 @@
+﻿<h3>TitkarMunkalapok</h3>
+@page "/munkalapok"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.ITitkar_Munkalapok_View Titkar_Munkalapok_View_Service
+@using SzakDolgozat.SQL.Models
+@using SzakDolgozat.SQL.Enum
+
+@if (munkalapok == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">Munkalapok kezelése</RadzenText>
+    <RadzenDataGrid @ref="grid" Data=@munkalapok FilterMode="FilterMode.Advanced" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
+        <Columns>
+            <RadzenDataGridColumn TItem="Titkar_Munkalapok_View" Width="100px">
+                <Template Context="munkalap">
+                    @if (munkalap.Statusz == (int)StatuszEnum.NyomtatasraVar)
+                    {
+                        <RadzenButton Text="Nyomtatás" Click="() => Nyomtatas(munkalap)" ButtonStyle="ButtonStyle.Primary" />
+                    }else{
+                        <RadzenButton Text="Nyomtatás" ButtonStyle="ButtonStyle.Warning" />
+                    }
+                </Template>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Statusz" Title="Státusz">
+                <FilterTemplate>
+                    <RadzenDropDown @bind-Value="selectedStatusz" Data="@statuszLista" TextProperty="Text" ValueProperty="Value" AllowClear="true" Style="width:100%" />
+                </FilterTemplate>
+                <Template Context="munkalap">
+                    @(Enum.GetName(typeof(StatuszEnum), munkalap.Statusz))
+                </Template>
+            </RadzenDataGridColumn>
+
+            @foreach (var column in new[] { "SzereloNev", "TulajNev", "Telefonszam", "Email", "AlvazSzam", "Rendszam", "Marka", "MunkaIdo", "Osszkoltseg", "TitkarNev" })
+            {
+                <RadzenDataGridColumn Property="@column" Title="@column">
+                    <FilterTemplate>
+                        <RadzenTextBox @bind-Value="searchFilters[column]" Style="width:100%" Placeholder="Keresés..." />
+                    </FilterTemplate>
+                </RadzenDataGridColumn>
+            }
+
+            <RadzenDataGridColumn Property="MunkaKezdete" Title="Munka kezdete" FormatString="{0:yyyy-MM-dd}">
+                <FilterTemplate>
+                    <RadzenDatePicker @bind-Value="selectedMunkaKezdete" Style="width:100%" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Keltezes" Title="Keltetés" FormatString="{0:yyyy-MM-dd}">
+                <FilterTemplate>
+                    <RadzenDatePicker @bind-Value="selectedKeltezes" Style="width:100%" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+        </Columns>
+    </RadzenDataGrid>
+}
+
+@code {
+    RadzenDataGrid<Titkar_Munkalapok_View> grid;
+    List<Titkar_Munkalapok_View> munkalapok;
+    int? selectedStatusz;
+    DateTime? selectedMunkaKezdete;
+    DateTime? selectedKeltezes;
+    Dictionary<string, string> searchFilters = new();
+
+    List<object> statuszLista = Enum.GetValues(typeof(StatuszEnum))
+        .Cast<StatuszEnum>()
+        .Select(s => new { Text = s.ToString(), Value = (int)s })
+        .ToList<object>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        munkalapok = await Titkar_Munkalapok_View_Service.GetTitkar_Munkalapok_Viewok();
+    }
+
+    void Nyomtatas(Titkar_Munkalapok_View munkalap)
+    {
+        // Ide jön a nyomtatási logika
+    }
+}

@@ -1,16 +1,9 @@
-﻿
-@inherits AppDbContext
+﻿@page "/started"
 @rendermode InteractiveServer
-@inject NavigationManager Navigation
-@inject SzakDolgozat.SQL.Interfaces.IAuto Auto_Service
 
-
-
-
-@page "/started"
 
 <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
-<RadzenDataGrid style="height: 335px" @ref="grid" IsLoading=@isLoading Count="@count" Data="autok" LoadData ="@LoadData" AllowSorting="true" AllowFiltering="true" AllowPaging="true" PageSize="4" PagerHorizontalAlign="HorizontalAlign.Center" ColumnWidth="200px" TItem="Auto">
+<RadzenDataGrid style="height: 335px" @ref="grid" IsLoading=@isLoading Count="@count" Data="autok"  AllowSorting="true" AllowFiltering="true" AllowPaging="true" PageSize="4" PagerHorizontalAlign="HorizontalAlign.Center" ColumnWidth="200px" TItem="Auto">
     <Columns>
         <RadzenDataGridColumn Property="@nameof(Auto)" Filterable="false" Title="ID" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
         <RadzenDataGridColumn Title="Photo" Frozen="true" Sortable="false" Filterable="false" Width="80px" TextAlign="TextAlign.Center">
@@ -19,10 +12,7 @@
         <RadzenDataGridColumn Property="@nameof(Auto.Rendszam)" Title="Last Name" Width="160px" />
         <RadzenDataGridColumn Property="@nameof(Auto.Tipus)" Title="Job Title"
                               Type="typeof(IEnumerable<string>)" FilterValue="@selectedTitles" FilterOperator="FilterOperator.Contains" Width="200px">
-            <FilterTemplate>
-                <RadzenDropDown @bind-Value=@selectedTitles Style="width:100%" InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "select title" }})"
-                                Change=@OnSelectedTitlesChange Data="@(titles)" AllowClear="true" Multiple="true" />
-            </FilterTemplate>
+            
         </RadzenDataGridColumn>
         <RadzenDataGridColumn Property="@nameof(Auto.Marka)" Title="Márka" Width="120px" />
         <RadzenDataGridColumn Property="@nameof(Auto.Rendszam)" Title="Rendszám" FormatString="{0:d}" Width="160px" />
@@ -34,63 +24,4 @@
 
 
 
-@code {
-    RadzenDataGrid<Auto> grid;
-    int count;
-    IEnumerable<Auto> autok;
-    bool isLoading = false;
-
-    List<string> titles = new List<string> { "Sales Representative", "Vice President, Sales", "Sales Manager", "Inside Sales Coordinator" };
-    IEnumerable<string> selectedTitles;
-
-    async Task OnSelectedTitlesChange(object value)
-    {
-        if (selectedTitles != null && !selectedTitles.Any())
-        {
-            selectedTitles = null;
-        }
-
-        await grid.FirstPage();
-    }
-
-    async Task Reset()
-    {
-        grid.Reset(true);
-        await grid.FirstPage(true);
-    }
-
-    async Task LoadData(LoadDataArgs args)
-    {
-        isLoading = true;
-
-        await Task.Yield();
-
-        var query = AppDbContext.Auto.AsQueryable();
-
-        if (!string.IsNullOrEmpty(args.Filter))
-        {
-            // Filter via the Where method
-            query = query.Where(grid.ColumnsCollection);
-        }
-
-        if (!string.IsNullOrEmpty(args.OrderBy))
-        {
-            // Sort via the OrderBy method
-            query = query.OrderBy(args.OrderBy);
-        }
-
-        // Important!!! Make sure the Count property of RadzenDataGrid is set.
-        count = query.Count();
-
-        // Perform paging via Skip and Take.
-        autok = query.Skip(args.Skip.Value).Take(args.Top.Value).ToList();
-
-        isLoading = false;
-    }
-
-    public void LoadData()
-    {
-        autok = Auto_Service.GetAutok();
-    }
-}
 

@@ -26,8 +26,8 @@ namespace SzakDolgozat.SQL.Models
         public required int MunkaIdo { get; set; } = 0;
         
         public  DateTime Keltezes { get; set; }
-
-        public  long Osszkoltseg { get; set; } = 0;
+        [Required]
+        public required long Osszkoltseg { get; set; } = 0;
         [Required]
         public required string TitkarNev { get; set; }
     }

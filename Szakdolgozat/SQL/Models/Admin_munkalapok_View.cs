@@ -1,21 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SzakDolgozat.SQL.Classes
+namespace SzakDolgozat.SQL.Models
 {
-    public class Admin__munkalapok__View
+    public class Admin_munkalapok_View
     {
 
         [Required]
-        public required string AutoTulaj { get; set; }
-
+        public required string TulajNev { get; set; }
         [Required]
-        public required string Marka { get; set; }
+        public required string SzereloNev { get; set; }
+        [Required]
+        public required string TitkarNev { get; set; }
 
         [Required]
         public required string Rendszam { get; set; }
 
         [Required]
         public required string Tipus { get; set; }
+
+        [Required]
+        public required string Marka { get; set; }
 
         [Required]
         public required string Uzemanyag { get; set; }
@@ -25,12 +29,6 @@ namespace SzakDolgozat.SQL.Classes
 
         [Required]
         public required string AlvazSzam { get; set; }
-
-        [Required]
-        public required string SzereloNev { get; set; }
-
-        [Required]
-        public required string TitkarNev { get; set; }
 
         [Required]
         public required long Osszkoltseg { get; set; }
@@ -43,5 +41,7 @@ namespace SzakDolgozat.SQL.Classes
 
         [Required]
         public required DateTime Keltezes { get; set; }
+        [Required]
+        public required int Statusz { get; set; }
     }
 }

@@ -26,6 +26,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\CsonkaZo\Desktop\SzakDolgozat_CsZ_OM\Szakdolgozat
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/AdminFelhasznalok.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbkZlbGhhc3puYWxvay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Bejelentkezes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCZWplbGVudGtlemVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,16 +54,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb3p6YWFkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Munkalapok.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNdW5rYWxhcG9rLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Started.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGFydGVkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Szerelo.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTemVyZWxvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/TitkarMunkalapok.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaXRrYXJNdW5rYWxhcG9rLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/CsonkaZo/Desktop/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Work.razor]

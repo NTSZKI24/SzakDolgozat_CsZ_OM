@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {}
+    "C:\\Users\\CsonkaZo\\Desktop\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {
+    "C:\\Users\\CsonkaZo\\Desktop\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+        "projectUniqueName": "C:\\Users\\CsonkaZo\\Desktop\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
         "projectName": "SzakDolgozat",
-        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
+        "projectPath": "C:\\Users\\CsonkaZo\\Desktop\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\SzakDolgozat.csproj",
+        "packagesPath": "C:\\Users\\CsonkaZo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CsonkaZo\\Desktop\\SzakDolgozat_CsZ_OM\\Szakdolgozat\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\CsonkaZo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

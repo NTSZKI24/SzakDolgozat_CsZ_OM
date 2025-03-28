@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SzakDolgozat.SQL.Classes
+namespace SzakDolgozat.SQL.Models
 {
     [Table("Munkalapok")]
     public class Munkalap
@@ -16,6 +16,9 @@ namespace SzakDolgozat.SQL.Classes
         public Guid AutoID { get; set; }
 
         [Required]
+        public int Statusz { get; set; }
+
+        [Required]
         public DateTime MunkaKezdete { get; set; }
 
         [Required]
@@ -23,5 +26,6 @@ namespace SzakDolgozat.SQL.Classes
 
         [Required]
         public DateTime Keltezes { get; set; }
+
     }
 }

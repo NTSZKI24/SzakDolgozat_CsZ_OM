@@ -1,4 +1,4 @@
-﻿using SzakDolgozat.SQL.Classes;
+﻿using SzakDolgozat.SQL.Models;
 
 namespace SzakDolgozat.SQL.Interfaces
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace SzakDolgozat.SQL.Classes
+namespace SzakDolgozat.SQL.Models
 {
     [Table("AutoTulajok")]
     public class AutoTulaj
@@ -9,20 +9,19 @@ namespace SzakDolgozat.SQL.Classes
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required string Telefonszam { get; set; }
+        public string Telefonszam { get; set; }
 
 
         [Required]
-        public required string Nev { get; set; }
+        public string Nev { get; set; }
+
+        public string? Leiras { get; set; }
 
         [Required]
-        public required string Leiras { get; set; }
+        public string Email { get; set; }
 
         [Required]
-        public required string Email { get; set; }
-
-        [Required]
-        public required Guid AutoID { get; set; }
+        public Guid AutoID { get; set; }
 
     }
 }

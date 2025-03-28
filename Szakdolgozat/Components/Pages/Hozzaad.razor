@@ -1,5 +1,10 @@
 ﻿@page "/Munkalapok/Hozzaad"
-<RadzenTheme Theme="material" />
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject NotificationService NotificationService
+@inject SzakDolgozat.SQL.Interfaces.ITitkar_SzereloDropDown_View Titkar_SzereloDropDown_View_Service
+@using SzakDolgozat.SQL.Models
+
 <PageTitle>Hozzaad</PageTitle>
 
 <div class="container">
@@ -8,44 +13,68 @@
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
             <h1 style="color:black">Hozzáadás</h1> <br />
-            <RadzenTemplateForm TItem="MyObject" Data=@obj Submit=@OnSubmit>
-                <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
-                    <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
-                                Name="Phone" @bind-Value=@obj.Phone Change=@(args => OnChange(args, "Telefonszám"))
-                                Style="width: 100%;" aria-label="Telefonszám" />
-                    <RadzenRequiredValidator Component="Phone" Text="A telefonszám megadása kötelező!" />
-                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tulajdonos Neve</RadzenText>
-                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Style="width: 100%" aria-label="Default TextBox" />
-                    <RadzenRequiredValidator Component="TulajNeve" Text="A tulaj nevének megadása kötelező!" />
-                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" />
-                </RadzenCard>
-            </RadzenTemplateForm>
+            <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tulajdonos Neve</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="TulajNeve" @bind-Value="autoTulaj.Nev"/>
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email cim</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="autoTulaj.Email" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
+                <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
+                        Name="Phone"
+                        Style="width: 100%;" aria-label="Telefonszám" @bind-Value="autoTulaj.Telefonszam" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Leírás</RadzenText>
+                <RadzenTextArea Style="width: 100%" aria-label="TextArea" Placeholder="Adja meg ha tud valamit az autó esetleges hibáiról " @bind-Value="autoTulaj.Leiras" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Márka</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Marka" @bind-Value="auto.Marka" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Rendszám</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Rendszam" @bind-Value="auto.Rendszam" />
+
+                <RadzenMask Mask="*****************"  Placeholder="XXXXXXXXXXXXXXXXX"
+                        Name="Alvazszam"
+                        Style="width: 100%;" aria-label="Telefonszám" @bind-Value="auto.AlvazSzam" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tipus</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Tipus" @bind-Value="auto.Tipus" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Üzemanyag</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Uzemanyag" @bind-Value="auto.Uzemanyag" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
+                <RadzenDropDown @bind-Value="selectedSzerelo"
+                                Data="@szerelokListaja"
+                                TextProperty="DisplayText"
+                                ValueProperty="SzereloNev"
+                                Style="width: 300px;"/>
+
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+
+            </RadzenCard>
         </div>
 
     </div>
 </div>
 
-<EventConsole @ref=@console />
-
 @code {
-    public class MyObject
+    private List<Titkar_SzereloDropDown_View> szerelokListaja;
+    private Titkar_SzereloDropDown_View selectedSzerelo;
+
+    protected override async Task OnInitializedAsync()
     {
-        public string Phone { get; set; }
-        public string TulajNeve { get; set; }
-    }
+        szerelokListaja = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
 
-    MyObject obj = new MyObject();
+        // Automatikusan kiválasztja az első szerelőt a listában
+        if (szerelokListaja.Any())
+        {
+            selectedSzerelo = szerelokListaja.First();
 
-    EventConsole console;
-
-    void OnChange(string value, string name)
-    {
-        Console.WriteLine($"{name} value changed to {value}");
-    }
-
-    void OnSubmit(MyObject arg)
-    {
-        Console.WriteLine($"Form submitted with values {JsonSerializer.Serialize(arg)}");
+        }
     }
 }
+

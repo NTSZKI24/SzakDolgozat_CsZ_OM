@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SzakDolgozat.SQL.Classes;
+using SzakDolgozat.SQL.Models;
 using SzakDolgozat.SQL.Interfaces;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Services
 {
@@ -49,5 +50,7 @@ namespace SzakDolgozat.SQL.Services
                 await _context.SaveChangesAsync();
             }
         }
+
     }
 }
+

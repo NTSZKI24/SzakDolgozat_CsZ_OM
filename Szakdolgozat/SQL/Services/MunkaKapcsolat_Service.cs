@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SzakDolgozat.SQL.Classes;
+using SzakDolgozat.SQL.Models;
 using SzakDolgozat.SQL.Interfaces;
 
 namespace SzakDolgozat.SQL.Services

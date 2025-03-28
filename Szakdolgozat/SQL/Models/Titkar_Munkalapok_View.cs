@@ -20,14 +20,14 @@ namespace SzakDolgozat.SQL.Models
         public required string Rendszam { get; set; }
         [Required]
         public required string Marka { get; set; }
+        
+        public DateTime MunkaKezdete { get; set; }
         [Required]
-        public required DateTime MunkaKezdete { get; set; }
-        [Required]
-        public required int MunkaIdo { get; set; }
-        [Required]
-        public required DateTime Keltezes { get; set; }
-        [Required]
-        public required string Osszkoltseg { get; set; }
+        public required int MunkaIdo { get; set; } = 0;
+        
+        public  DateTime Keltezes { get; set; }
+
+        public  long Osszkoltseg { get; set; } = 0;
         [Required]
         public required string TitkarNev { get; set; }
     }

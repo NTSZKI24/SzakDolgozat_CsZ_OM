@@ -32,7 +32,7 @@ namespace SzakDolgozat.SQL.Models
         public required string AlvazSzam { get; set; }
 
         [Required]
-        public required string Osszkoltseg { get; set; }
+        public required long Osszkoltseg { get; set; }
 
         [Required]
         public required DateTime MunkaKezdete { get; set; }

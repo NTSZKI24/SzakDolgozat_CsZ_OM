@@ -23,7 +23,7 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required DateTime MunkaKezdete { get; set; }
         [Required]
-        public required string MunkaIdo { get; set; }
+        public required int MunkaIdo { get; set; }
         [Required]
         public required DateTime Keltezes { get; set; }
         [Required]

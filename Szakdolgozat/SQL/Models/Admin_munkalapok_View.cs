@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Models
 {
@@ -31,7 +32,7 @@ namespace SzakDolgozat.SQL.Models
         public required string AlvazSzam { get; set; }
 
         [Required]
-        public required long Osszkoltseg { get; set; }
+        public required string Osszkoltseg { get; set; }
 
         [Required]
         public required DateTime MunkaKezdete { get; set; }
@@ -42,6 +43,6 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required DateTime Keltezes { get; set; }
         [Required]
-        public required int Statusz { get; set; }
+        public required StatuszEnum Statusz { get; set; }
     }
 }

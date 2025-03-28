@@ -2,7 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using Radzen.Blazor;
 using Radzen;
-using SzakDolgozat.SQL.Classes;
+using SzakDolgozat.SQL.Models;
 using SzakDolgozat.SQL.Interfaces;
 
 namespace SzakDolgozat.Components.Pages

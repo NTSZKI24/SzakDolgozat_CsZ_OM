@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Models
 {
@@ -16,7 +17,7 @@ namespace SzakDolgozat.SQL.Models
         public Guid AutoID { get; set; }
 
         [Required]
-        public int Statusz { get; set; }
+        public StatuszEnum Statusz { get; set; }
 
         [Required]
         public DateTime MunkaKezdete { get; set; }

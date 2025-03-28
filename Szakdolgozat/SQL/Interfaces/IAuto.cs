@@ -9,5 +9,6 @@ namespace SzakDolgozat.SQL.Interfaces
         Task AddAuto(Auto auto);
         Task UpdateAuto(Auto auto);
         Task DeleteAuto(Guid Id);
+
     }
 }

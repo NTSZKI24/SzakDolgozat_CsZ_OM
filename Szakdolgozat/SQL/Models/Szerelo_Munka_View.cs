@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SzakDolgozat.SQL.Enum;
 namespace SzakDolgozat.SQL.Models
 {
     public class Szerelo_Munka_View
@@ -23,9 +24,9 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public string Rendszam { get; set; }
         [Required]
-        public string Osszkoltseg { get; set; }
+        public long Osszkoltseg { get; set; }
         [Required]
-        public required int Statusz { get; set; }
+        public required StatuszEnum Statusz { get; set; }
 
     }
 }

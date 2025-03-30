@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SzakDolgozat.SQL.Enum;
 
 namespace SzakDolgozat.SQL.Models
 {
@@ -13,7 +14,7 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required string Email { get; set; }
         [Required]
-        public required int Statusz { get; set; }
+        public required StatuszEnum Statusz { get; set; }
         [Required]
         public required string AlvazSzam { get; set; }
         [Required]
@@ -22,13 +23,17 @@ namespace SzakDolgozat.SQL.Models
         public required string Marka { get; set; }
         
         public DateTime MunkaKezdete { get; set; }
+        
         [Required]
         public required int MunkaIdo { get; set; } = 0;
         
         public  DateTime Keltezes { get; set; }
+
         [Required]
         public required long Osszkoltseg { get; set; } = 0;
-        [Required]
-        public required string TitkarNev { get; set; }
+
+        public string TitkarNev { get; set; }
+
+
     }
 }

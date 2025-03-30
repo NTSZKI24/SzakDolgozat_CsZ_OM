@@ -1,0 +1,57 @@
+﻿<h3>Proba</h3>
+@page "/p"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.ITitkar_Munkalapok_View Titkar_Munkalapok_View_Service
+@using SzakDolgozat.SQL.Models
+@using SzakDolgozat.SQL.Enum
+
+
+<p>Eddig jó</p>
+@if (clubs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Club Name</th>
+                <th>Year Founded</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var club in clubs)
+            {
+                <tr>
+                    <td>@club.TulajNev</td>
+                    <td>@club.AlvazSzam</td>
+                    <td>@club.Marka</td>
+                    <td>@club.Marka</td>
+                    <td>
+                        <p>Akciók</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
+
+@code {
+    private List<Titkar_Munkalapok_View> clubs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        // Load the club when the component is initialized
+        clubs = await Titkar_Munkalapok_View_Service.GetTitkar_Munkalapok_Viewok();
+
+    }
+}

@@ -49,9 +49,9 @@
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
                 <RadzenDropDown @bind-Value="selectedSzerelo"
                                 Data="@szerelokListaja"
-                                TextProperty="DisplayText"
-                                ValueProperty="SzereloNev"
-                                Style="width: 300px;"/>
+                                TextProperty="Nev"
+                                ValueProperty="ID"
+                                Style="width: 300px; color:black;"/>
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
 
@@ -62,8 +62,8 @@
 </div>
 
 @code {
-    private List<Titkar_SzereloDropDown_View> szerelokListaja;
-    private Titkar_SzereloDropDown_View selectedSzerelo;
+    private List<Felhasznalo> szerelokListaja;
+    private Felhasznalo selectedSzerelo;
 
     protected override async Task OnInitializedAsync()
     {

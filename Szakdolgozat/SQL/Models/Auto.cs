@@ -7,7 +7,7 @@ namespace SzakDolgozat.SQL.Models
     public class Auto
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid ID { get; set; } = Guid.NewGuid();
 
         [Required]
         public string Marka { get; set; }

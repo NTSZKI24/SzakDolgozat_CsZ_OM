@@ -11,11 +11,6 @@ namespace SzakDolgozat.SQL.Models
 
         public string TitkarNev { get; set; }
 
-        [Required]
-        public StatuszEnum Statusz { get; set; }
-
         public string RoleNev { get; set; }
-
-        public string DisplayText => $"{SzereloNev} - {Statusz}";
     }
 }

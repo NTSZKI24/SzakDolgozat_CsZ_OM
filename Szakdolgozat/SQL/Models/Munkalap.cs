@@ -8,7 +8,7 @@ namespace SzakDolgozat.SQL.Models
     public class Munkalap
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid ID { get; set; } = Guid.NewGuid();
 
         [Required]
         public Guid AutoTulajID { get; set; }
@@ -16,16 +16,16 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public Guid AutoID { get; set; }
 
-        [Required]
+        
         public StatuszEnum Statusz { get; set; }
 
-        [Required]
+       
         public DateTime MunkaKezdete { get; set; }
 
-        [Required]
+        
         public int MunkaIdo { get; set; }
 
-        [Required]
+        
         public DateTime Keltezes { get; set; }
 
     }

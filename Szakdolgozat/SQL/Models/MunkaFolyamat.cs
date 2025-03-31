@@ -8,7 +8,7 @@ namespace SzakDolgozat.SQL.Models
     public class MunkaFolyamat
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid ID { get; set; } = Guid.NewGuid();
 
         [Required]
         public Guid MunkaID { get; set; }

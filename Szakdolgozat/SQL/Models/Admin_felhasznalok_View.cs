@@ -19,5 +19,7 @@ namespace SzakDolgozat.SQL.Models
 
         [Required]
         public required string RoleNev { get; set; }
+        
+        public string ID { get; set; }
     }
 }

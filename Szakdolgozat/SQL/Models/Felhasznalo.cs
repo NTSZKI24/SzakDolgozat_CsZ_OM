@@ -7,7 +7,7 @@ namespace SzakDolgozat.SQL.Models
     public class Felhasznalo
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid ID { get; set; } = Guid.NewGuid();
 
         [Required]
         public string Felhasznalonev { get; set; }

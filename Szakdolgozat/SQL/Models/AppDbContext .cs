@@ -30,7 +30,7 @@ namespace SzakDolgozat.SQL.Models
         public DbSet<Admin_tulajok_View> admin_tulajok_Viewes { get; set; }
         public DbSet<Titkar_Munkalapok_View> titkar_Munkalapok_Viewes { get; set; }
         public DbSet<Szerelo_Munka_View> szerelo_Munka_Viewes { get; set; }
-        public DbSet<Titkar_SzereloDropDown_View> titkar_SzereloDropDown_Viewes { get; set; }
+        public DbSet<Felhasznalo> titkar_SzereloDropDown_Viewes { get; set; }
 
     }
 }

@@ -2,84 +2,74 @@
 @page "/admin/felhasznalok"
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
-@inject SzakDolgozat.SQL.Interfaces.IFelhasznalo Felhasznalo_Service
+@inject SzakDolgozat.SQL.Interfaces.IAdmin_felhasznalok_View Admin_felhasznalok_View_Service
 @using SzakDolgozat.SQL.Models
 @using SzakDolgozat.SQL.Enum
 
-@if (users == null)
+<h3>Club Table</h3>
+/*
+@if (clubs == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">
-    Felhasználók kezelése
-</RadzenText>
-
-<RadzenButton Text="Hozzáadás" Class="rz-button rz-button-primary rz-my-4"
-              Click="@(() => Navigation.NavigateTo("/admin/felhasznalok/hozzaadas"))" />
-
-<RadzenDataGrid @ref="grid" Data="@users" FilterMode="FilterMode.Simple"
-                AllowFiltering="true" AllowPaging="true" AllowSorting="true"
-                ColumnWidth="200px">
-    <Columns>
-        <!-- Gombok oszlopa -->
-        <RadzenDataGridColumn TItem="Felhasznalo" Width="150px" Title="Műveletek">
-            <Template Context="user">
-                <RadzenButton Text="Módosítás" Class="rz-button rz-button-warning rz-mr-2"
-                              Click="@(() => NavigateToEdit(user.ID))" />
-            </Template>
-        </RadzenDataGridColumn>
-
-        <RadzenDataGridColumn Property="Felhasznalonev" Title="Felhasználónév"
-                              FilterValue="@usernameFilter">
-            <FilterTemplate>
-                <RadzenTextBox @bind-Value="usernameFilter" Style="width:100%;"
-                               InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by username" } })" />
-            </FilterTemplate>
-        </RadzenDataGridColumn>
-
-        <RadzenDataGridColumn Property="Nev" Title="Név"
-                              FilterValue="@nameFilter">
-            <FilterTemplate>
-                <RadzenTextBox @bind-Value="nameFilter" Style="width:100%;"
-                               InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by name" } })" />
-            </FilterTemplate>
-        </RadzenDataGridColumn>
-
-        <RadzenDataGridColumn Property="Email" Title="Email"
-                              FilterValue="@emailFilter">
-            <FilterTemplate>
-                <RadzenTextBox @bind-Value="emailFilter" Style="width:100%;"
-                               InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by email" } })" />
-            </FilterTemplate>
-        </RadzenDataGridColumn>
-
-        <RadzenDataGridColumn Property="RoleNev" Title="Szerepkör"
-                              FilterValue="@selectedRole" FilterOperator="FilterOperator.Equals">
-            <FilterTemplate>
-                <RadzenDropDown @bind-Value="selectedRole" Data="@roles"
-                                AllowClear="true" Style="width:100%;"
-                                InputAttributes="@(new Dictionary<string, object>(){ { "aria-label", "filter by role" } })" />
-            </FilterTemplate>
-        </RadzenDataGridColumn>
-
-    </Columns>
-</RadzenDataGrid>
-
+    <table class="table">
+        <thead>
+            <tr>
+                <th>FelhasznaloNev</th>
+                <th>Nev</th>
+                <th>Email</th>
+                <th>Rolok</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var club in clubs)
+            {
+                <tr>
+                    <td>@club.Id</td>
+                    <td>@club.ClubName</td>
+                    <td>@club.YearFounded</td>
+                    <td>@club.Country</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" @onclick="() => NavigateToUpdate(club)">Update</button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteClub(club.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 }
-@code {
-    RadzenDataGrid<Felhasznalo> grid;
-    private List<Felhasznalo> users = new List<Felhasznalo>();
-    private string usernameFilter;
-    private string nameFilter;
-    private string emailFilter;
-    private string selectedRole;
-    private List<string> roles = new List<string> { "Admin", "Szerelo", "Titkar" };
 
-    void NavigateToEdit(Guid userId)
+<button class="btn btn-primary" @onclick="OpenAddClubModal">Add New Club</button>
+
+@code {
+    private List<Admin_felhasznalok_View> clubs;
+
+    protected override async Task OnInitializedAsync()
     {
-        Navigation.NavigateTo($"/admin/felhasznalok/modositas/{userId}");
+        // Load the club when the component is initialized
+        clubs = await Admin_felhasznalok_View_Service.GetAdmin_felhasznalok_Viewok();
+
+    }
+
+    private void OpenAddClubModal()
+    {
+        Navigation.NavigateTo("/add-club");
+    }
+
+    private void NavigateToUpdate(int clubId)
+    {
+        Navigation.NavigateTo($"/update/{clubId}");
+    }
+
+    private async Task DeleteClub(int clubId)
+    {
+
+        await ClubService.DeleteClub(clubId);
+
+        clubs = await ClubService.GetClubs();
     }
 }

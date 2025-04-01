@@ -1,0 +1,161 @@
+﻿<h3>AdminHozzaad</h3>
+@page "/admin/felhasznalok/hozzaad"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IFelhasznalo Felhasznalo_Service
+@inject SzakDolgozat.SQL.Interfaces.IRole Role_Service
+@using SzakDolgozat.SQL.Models
+@using SzakDolgozat.SQL.Enum
+@using Microsoft.AspNetCore.Components;
+@using Radzen;
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4 col-lg-4 col-sm-12">
+            <h1 style="color:black">Hozzáadás</h1> <br />
+            <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Felhasználónév</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Felhasznalonev" @bind-Value="felhasznalo.Felhasznalonev" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Név</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Név" @bind-Value="felhasznalo.Nev" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="felhasznalo.Email" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">RoleNév</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="RoleNév" @bind-Value="role.RoleNev" />
+
+                <RadzenDropDown @bind-Value="selectedSzerelo"
+                                Data="@szerelokListaja"
+                                TextProperty="RoleNev"
+                                ValueProperty="Id"
+                                Style="width: 300px;" />
+
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+
+            </RadzenCard>
+        </div>
+
+    </div>
+</div>
+
+@code {
+
+    private List<Role> szerelokListaja;
+    private Role selectedSzerelo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        szerelokListaja = await Role_Service.GetRolek();
+
+        if (szerelokListaja.Any())
+        {
+            selectedSzerelo = szerelokListaja.First();
+
+        }
+
+    }
+
+    [Inject]
+    public NotificationService notificationService { get; set; }
+
+    Felhasznalo felhasznalo = new Felhasznalo();
+    Role role = new Role();
+
+    void ShowNotification(NotificationMessage message)
+    {
+        notificationService.Notify(message);
+    }
+
+    private async Task OnSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(felhasznalo.Felhasznalonev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A felhasználónév megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+
+        else if (string.IsNullOrWhiteSpace(felhasznalo.Nev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A név megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+
+        else if (string.IsNullOrWhiteSpace(felhasznalo.Email))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Az email megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+
+        else if (!felhasznalo.Email.Contains("@") || !felhasznalo.Email.Contains("."))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Érvénytelen email cím formátum!",
+                    Duration = 3000
+                });
+            return;
+        }
+
+        else if (string.IsNullOrWhiteSpace(role.RoleNev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A role megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+
+        else
+        {
+            felhasznalo.RoleID = role.Id;
+            await Felhasznalo_Service.AddFelhasznalo(felhasznalo);
+            await Role_Service.AddRole(role);
+            Navigation.NavigateTo("/admin/felhasznalok");
+
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Sikeres",
+                    Detail = "Sikeres adatfelvitel",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+    }
+}
+}

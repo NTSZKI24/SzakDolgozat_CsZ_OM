@@ -6,70 +6,105 @@
 @using SzakDolgozat.SQL.Models
 @using SzakDolgozat.SQL.Enum
 
-<h3>Club Table</h3>
-/*
-@if (clubs == null)
+<h3>Munkalapok</h3>
+
+<!-- Hozzáadás gomb a weboldal tetején -->
+<RadzenButton class="my-3" Icon="add_circle" Text="Hozzáadás" Click="@OnAddClick" />
+<br />
+<RadzenButton class="my-3" Icon="add_circle" Text="Vissza" Click="@OnBackClick" />
+<br />
+<RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
+
+@if (felhasznaloklistaja == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>FelhasznaloNev</th>
-                <th>Nev</th>
-                <th>Email</th>
-                <th>Rolok</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var club in clubs)
-            {
-                <tr>
-                    <td>@club.Id</td>
-                    <td>@club.ClubName</td>
-                    <td>@club.YearFounded</td>
-                    <td>@club.Country</td>
-                    <td>
-                        <button class="btn btn-warning btn-sm" @onclick="() => NavigateToUpdate(club)">Update</button>
-                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteClub(club.Id)">Delete</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">Munkalapok</RadzenText>
+    <RadzenDataGrid @ref="grid" Data="@felhasznaloklistaja" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
+        <Columns>
+             <RadzenDataGridColumn Title="Módositás" Sortable="false">
+                <Template Context="data">
+                    <RadzenButton Icon="print" Text="Módositás" ButtonStyle="ButtonStyle.Primary" Click="@OnUpdateClick" />
+                </Template>
+            </RadzenDataGridColumn>
 
+            <RadzenDataGridColumn Property="Felhasznalonev" Title="Felhasználó Név" FilterValue="@selectedFelhasznalonev">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedFelhasznalonev" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="Nev" Title="Név" FilterValue="@selectedNev">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedNev" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="Email" Title="Email" FilterValue="@selectedEmail">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedEmail" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="Jelszo" Title="Jelszó" FilterValue="@selectedJelszo">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedJelszo" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="RoleNev" Title="Szerepkör" FilterValue="@selectedRoleNev">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedRoleNev" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+        </Columns>
+    </RadzenDataGrid>
 }
-
-<button class="btn btn-primary" @onclick="OpenAddClubModal">Add New Club</button>
-
 @code {
-    private List<Admin_felhasznalok_View> clubs;
+    RadzenDataGrid<Admin_felhasznalok_View> grid;
+    IEnumerable<Admin_felhasznalok_View> felhasznaloklistaja;
+    // Szűrő változók
+    private string selectedFelhasznalonev;
+    private string selectedNev;
+    private string selectedEmail;
+    private string selectedJelszo;
+    private string selectedRoleNev;
+
 
     protected override async Task OnInitializedAsync()
     {
-        // Load the club when the component is initialized
-        clubs = await Admin_felhasznalok_View_Service.GetAdmin_felhasznalok_Viewok();
+        felhasznaloklistaja = await Admin_felhasznalok_View_Service.GetAdmin_felhasznalok_Viewok();
 
     }
 
-    private void OpenAddClubModal()
+    void OnAddClick()
     {
-        Navigation.NavigateTo("/add-club");
+        // A hozzáadás gomb kattintása után végrehajtandó művelet
+        // Itt például egy modális ablakot nyithatsz meg, vagy új oldalt jeleníthetsz meg
+        Navigation.NavigateTo("/admin/felhasznalok/hozzaad");
+    }
+    void OnBackClick()
+    {
+        // A hozzáadás gomb kattintása után végrehajtandó művelet
+        // Itt például egy modális ablakot nyithatsz meg, vagy új oldalt jeleníthetsz meg
+        Navigation.NavigateTo("/admin");
     }
 
-    private void NavigateToUpdate(int clubId)
+    void OnUpdateClick()
     {
-        Navigation.NavigateTo($"/update/{clubId}");
+        // A hozzáadás gomb kattintása után végrehajtandó művelet
+        // Itt például egy modális ablakot nyithatsz meg, vagy új oldalt jeleníthetsz meg
+        Navigation.NavigateTo("/admin");
     }
 
-    private async Task DeleteClub(int clubId)
+    async Task OnClearFiltersClick()
     {
+        selectedFelhasznalonev = null;
+        selectedNev = null;
+        selectedEmail = null;
+        selectedJelszo = null;
+        selectedRoleNev = null;
 
-        await ClubService.DeleteClub(clubId);
-
-        clubs = await ClubService.GetClubs();
+        // Adatok újra lekérése
+        felhasznaloklistaja = await Admin_felhasznalok_View_Service.GetAdmin_felhasznalok_Viewok();
     }
 }

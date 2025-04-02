@@ -3,51 +3,6 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
-      "Route": "SzakDolgozat.kknwige2jg.styles.css",
-      "AssetFile": "SzakDolgozat.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1865"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"rM5+XpgDuDOIdX1KggKnpqNAOWpBaAd+E5DWmc/o5sY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:32:19 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "kknwige2jg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-rM5+XpgDuDOIdX1KggKnpqNAOWpBaAd+E5DWmc/o5sY="
-        },
-        {
-          "Name": "label",
-          "Value": "SzakDolgozat.styles.css"
-        }
-      ]
-    },
-    {
       "Route": "SzakDolgozat.styles.css",
       "AssetFile": "SzakDolgozat.styles.css",
       "Selectors": [],
@@ -62,7 +17,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1865"
+          "Value": "1867"
         },
         {
           "Name": "Content-Type",
@@ -70,17 +25,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rM5+XpgDuDOIdX1KggKnpqNAOWpBaAd+E5DWmc/o5sY=\""
+          "Value": "\"CvYC5nnn+0lqQc15gaDnYrwNEvzCH0yv2yXnQ3zBm9k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:32:19 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rM5+XpgDuDOIdX1KggKnpqNAOWpBaAd+E5DWmc/o5sY="
+          "Value": "sha256-CvYC5nnn+0lqQc15gaDnYrwNEvzCH0yv2yXnQ3zBm9k="
+        }
+      ]
+    },
+    {
+      "Route": "SzakDolgozat.yyi0m8qk9f.styles.css",
+      "AssetFile": "SzakDolgozat.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1867"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CvYC5nnn+0lqQc15gaDnYrwNEvzCH0yv2yXnQ3zBm9k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yyi0m8qk9f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CvYC5nnn+0lqQc15gaDnYrwNEvzCH0yv2yXnQ3zBm9k="
+        },
+        {
+          "Name": "label",
+          "Value": "SzakDolgozat.styles.css"
         }
       ]
     },
@@ -2981,7 +2981,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3018,7 +3018,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3063,7 +3063,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3108,7 +3108,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3145,7 +3145,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3190,7 +3190,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3227,7 +3227,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [
@@ -3272,7 +3272,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 17:21:41 GMT"
+          "Value": "Wed, 02 Apr 2025 13:27:37 GMT"
         }
       ],
       "EndpointProperties": [

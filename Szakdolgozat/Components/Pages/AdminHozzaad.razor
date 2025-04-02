@@ -4,6 +4,7 @@
 @inject NavigationManager Navigation
 @inject SzakDolgozat.SQL.Interfaces.IFelhasznalo Felhasznalo_Service
 @inject SzakDolgozat.SQL.Interfaces.IRole Role_Service
+@inject AppDbContext DbContext
 @using SzakDolgozat.SQL.Models
 @using SzakDolgozat.SQL.Enum
 @using Microsoft.AspNetCore.Components;
@@ -32,10 +33,10 @@
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="RoleNév" @bind-Value="role.RoleNev" />
 
                 <RadzenDropDown @bind-Value="selectedSzerelo"
-                                Data="@szerelokListaja"
-                                TextProperty="RoleNev"
-                                ValueProperty="Id"
-                                Style="width: 300px;" />
+                Data="@szerelokListaja"
+                TextProperty="RoleNev"
+                ValueProperty="ID"
+                Style="width: 300px;" />
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
 
@@ -87,7 +88,20 @@
                 });
             return;
         }
+        /*
+        else if (DbContext.felhasznalok.AnyAsync(u => u.Felhasznalonev == felhasznalo.Felhasznalonev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A felhasználónév foglalt",
+                    Duration = 3000,
 
+                });
+            return;
+        }
+        */
         else if (string.IsNullOrWhiteSpace(felhasznalo.Nev))
         {
             ShowNotification(new NotificationMessage
@@ -141,7 +155,7 @@
 
         else
         {
-            felhasznalo.RoleID = role.Id;
+            felhasznalo.RoleID = role.ID;
             await Felhasznalo_Service.AddFelhasznalo(felhasznalo);
             await Role_Service.AddRole(role);
             Navigation.NavigateTo("/admin/felhasznalok");

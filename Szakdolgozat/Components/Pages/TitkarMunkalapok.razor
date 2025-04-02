@@ -137,33 +137,9 @@ else
     protected override async Task OnInitializedAsync()
     {
         // Adatok lekérése
-        munkalapok = await GetMunkalapok();
+        munkalapok = await Titkar_Munkalapok_View_Service.GetTitkar_Munkalapok_Viewok();
     }
 
-    private Task<List<Titkar_Munkalapok_View>> GetMunkalapok()
-    {
-        // Az adatokat a Titkar_Munkalapok_View_Service osztályból kell lekérni
-        // Ebben a példában azt feltételezem, hogy a szolgáltatás elérhető és a megfelelő adatokat hozza vissza.
-        return Task.FromResult(new List<Titkar_Munkalapok_View>
-        {
-            new Titkar_Munkalapok_View
-            {
-                SzereloNev = "János",
-                TulajNev = "Péter",
-                Telefonszam = "123456789",
-                Email = "janos.peter@example.com",
-                Statusz = StatuszEnum.Befejezett,
-                AlvazSzam = "ABCD123456",
-                Rendszam = "XYZ-123",
-                Marka = "Toyota",
-                MunkaKezdete = DateTime.Now,
-                MunkaIdo = 5,  // MunkaIdo int típusú
-                Keltezes = DateTime.Now,
-                Osszkoltseg = 15000,
-                TitkarNev = "Kiss Ádám"
-            }
-        });
-    }
 
     void OnPrintClick(Titkar_Munkalapok_View data)
     {
@@ -193,6 +169,6 @@ else
         selectedOsszkoltseg = null;
 
         // Adatok újra lekérése
-        munkalapok = await GetMunkalapok();
+        munkalapok = await Titkar_Munkalapok_View_Service.GetTitkar_Munkalapok_Viewok();
     }
 }

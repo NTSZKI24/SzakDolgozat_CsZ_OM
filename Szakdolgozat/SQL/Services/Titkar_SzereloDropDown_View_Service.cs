@@ -16,23 +16,19 @@ namespace SzakDolgozat.SQL.Services
 
         public async Task<List<Felhasznalo>> GetTitkar_SzereloDropDown_Viewok()
         {
-            var roleId = _context.rolok.Single(a => a.RoleNev == "Szerelo").ID;
-            var szerelokStatusz = _context.felhasznalok
-            .Where(u => u.RoleID == roleId)
-            .ToList();
 
-            return szerelokStatusz;
+            if (!_context.rolok.Any())
+            {
+                return new List<Felhasznalo>();
+            }
+                var roleId = _context.rolok.Single(a => a.RoleNev == "Szerelo").ID;
+                var szerelokStatusz = _context.felhasznalok
+                .Where(u => u.RoleID == roleId)
+                .ToList();
+
+                return szerelokStatusz;
+
         }
 
-        public StatuszEnum DetermineSzereloStatus(List<StatuszEnum> munkalapStatusok)
-        {
-            if (munkalapStatusok.Any(s => s == StatuszEnum.Szereles))
-                return StatuszEnum.Szereles;
-            if (munkalapStatusok.Any(s => s == StatuszEnum.AlkatreszreVar))
-                return StatuszEnum.AlkatreszreVar;
-            if (munkalapStatusok.Any(s => s == StatuszEnum.MunkaElfogadasraVar))
-                return StatuszEnum.MunkaElfogadasraVar;
-            return StatuszEnum.NincsMunka;
-        }
     }
 }

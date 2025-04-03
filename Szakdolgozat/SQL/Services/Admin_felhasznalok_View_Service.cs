@@ -18,6 +18,5 @@ namespace SzakDolgozat.SQL.Services
             return await _context.admin_felhasznalok_Viewes.ToListAsync();
         }
 
-     
     }
 }

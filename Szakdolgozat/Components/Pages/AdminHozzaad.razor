@@ -30,8 +30,6 @@
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="felhasznalo.Email" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">RoleNév</RadzenText>
-                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="RoleNév" @bind-Value="role.RoleNev" />
-
                 <RadzenDropDown @bind-Value="selectedSzerelo"
                 Data="@szerelokListaja"
                 TextProperty="RoleNev"
@@ -48,16 +46,16 @@
 
 @code {
 
-    private List<Role> szerelokListaja;
-    private Role selectedSzerelo;
+    private List<Role> szerelokListaja = new(); 
+    private string selectedSzerelo;
 
     protected override async Task OnInitializedAsync()
     {
         szerelokListaja = await Role_Service.GetRolek();
 
-        if (szerelokListaja.Any())
+        if (string.IsNullOrEmpty(selectedSzerelo) &&  szerelokListaja.Any())
         {
-            selectedSzerelo = szerelokListaja.First();
+            selectedSzerelo = szerelokListaja.First().RoleNev;
 
         }
 
@@ -139,8 +137,8 @@
                 });
             return;
         }
-
-        else if (string.IsNullOrWhiteSpace(role.RoleNev))
+        /*
+        else if (string.IsNullOrEmpty(role.RoleNev))
         {
             ShowNotification(new NotificationMessage
                 {
@@ -152,7 +150,7 @@
                 });
             return;
         }
-
+        */
         else
         {
             felhasznalo.RoleID = role.ID;

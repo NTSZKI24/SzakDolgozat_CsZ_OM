@@ -26,7 +26,7 @@ else
         <Columns>
              <RadzenDataGridColumn Title="Módositás" Sortable="false">
                 <Template Context="data">
-                    <RadzenButton Icon="print" Text="Módositás" ButtonStyle="ButtonStyle.Primary" Click="@OnUpdateClick" />
+                    <RadzenButton Icon="print" Text="Módositás" ButtonStyle="ButtonStyle.Primary" Click="@(() => OnUpdateClick(data.ID))" />
                 </Template>
             </RadzenDataGridColumn>
 
@@ -58,10 +58,11 @@ else
 
         </Columns>
     </RadzenDataGrid>
+
 }
 @code {
     RadzenDataGrid<Admin_felhasznalok_View> grid;
-    IEnumerable<Admin_felhasznalok_View> felhasznaloklistaja;
+    private List<Admin_felhasznalok_View> felhasznaloklistaja = new();
     // Szűrő változók
     private string selectedFelhasznalonev;
     private string selectedNev;
@@ -69,6 +70,7 @@ else
     private string selectedJelszo;
     private string selectedRoleNev;
 
+    
 
     protected override async Task OnInitializedAsync()
     {
@@ -89,11 +91,10 @@ else
         Navigation.NavigateTo("/admin");
     }
 
-    void OnUpdateClick()
+    void OnUpdateClick(Guid ID)
     {
-        // A hozzáadás gomb kattintása után végrehajtandó művelet
-        // Itt például egy modális ablakot nyithatsz meg, vagy új oldalt jeleníthetsz meg
-        Navigation.NavigateTo("/admin");
+        
+        Navigation.NavigateTo($"/admin/felhasznalok/{ID}");
     }
 
     async Task OnClearFiltersClick()

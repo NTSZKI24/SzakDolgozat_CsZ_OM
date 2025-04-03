@@ -1,0 +1,27 @@
+﻿<h3>UsersHome</h3>
+@page "/users"
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IRole Role_Service
+
+
+@if (bejelentkezettRoleID == Guid.Parse("3049d879-6b75-4e69-94c1-9d23f282d912"))//Titkar
+{
+    <RadzenButton class="my-3" Icon="assignment" Text="Munkalapok" Click="@(() => OnNavigateTo("/munkalapok"))" />
+    <RadzenButton class="my-3" Icon="build" Text="Szerelők" Click="@(() => OnNavigateTo("/szerelok"))" />
+    <RadzenButton class="my-3" Icon="person" Text="Profil" Click="@(() => OnNavigateTo("/profil"))" />
+}else{//Szerelo
+    <RadzenButton class="my-3" Icon="assignment_ind" Text="Munkalapok és Profil" Click="@(() => OnNavigateTo("/munkalapok-profil"))" />
+    <RadzenButton class="my-3" Icon="account_box" Text="Profil és Munkalapok" Click="@(() => OnNavigateTo("/profil-munkalapok"))" />
+}
+
+
+
+@code {
+    [CascadingParameter]
+    public string bejelentkezettfelhasznalo { get; set; }
+
+    [CascadingParameter]
+    public Guid bejelentkezettRoleID { get; set; }
+
+    void OnNavigateTo(string page) => Navigation.NavigateTo(page);
+}

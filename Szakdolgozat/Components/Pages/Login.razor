@@ -16,24 +16,29 @@
             <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Felhasználónév</RadzenText>
-                <RadzenTextBox Style="width: 100%" aria-label="Felhasználónév" @bind-Value="felhasznalonev" />
+                <RadzenTextBox Style="width: 100%" aria-label="Felhasználónév" @bind-Value="bejelentkezettfelhasznalo" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Jelszó</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Jelszó" @bind-Value="jelszo" Type="Radzen.TextBoxType.Password" />
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="login" Text="Bejelentkezés" Click="OnLogin" Style="margin-top:10px; width:100%;" />
-                
+
             </RadzenCard>
         </div>
     </div>
 </div>
 
+<CascadingValue Value="bejelentkezettfelhasznalo">
+</CascadingValue>
+
+<CascadingValue Value="bejelentkezettRoleID">
+</CascadingValue>
 
 @code {
-    private static string felhasznalonev;
-    private static string jelszo;
-
-    private static readonly Guid ADMIN_ROLE_GUID = Guid.Parse("f4e3b2a1-78d9-4c6b-83f5-2e1a7d9c5b46"); // Itt cseréld le az admin role ID-t
+    public static string bejelentkezettfelhasznalo;
+    public static string jelszo;
+    public static Guid bejelentkezettRoleID;
+    //private static readonly Guid ADMIN_ROLE_GUID = ; // Itt cseréld le az admin role ID-t
     void ShowNotification(NotificationMessage message)
     {
         NotificationService.Notify(message);
@@ -42,9 +47,8 @@
     private async Task OnLogin()
     {
         var felhasznalo = (await Felhasznalo_Service.GetFelhasznalok())
-            .FirstOrDefault(f => f.Felhasznalonev == felhasznalonev && f.Jelszo == jelszo);
-
-        if (felhasznalonev == null)
+            .FirstOrDefault(f => f.Felhasznalonev == bejelentkezettfelhasznalo && f.Jelszo == jelszo);
+        if (bejelentkezettfelhasznalo == null)
         {
             ShowNotification(new NotificationMessage
                 {
@@ -80,13 +84,15 @@
         }
         else
         {
-            if (felhasznalo.RoleID == ADMIN_ROLE_GUID)
+            bejelentkezettfelhasznalo = felhasznalo.Felhasznalonev;
+            bejelentkezettRoleID = felhasznalo.RoleID;
+            if (bejelentkezettRoleID == Guid.Parse("9df11d9d-c1bf-40a1-9599-e2333e630583"))
             {
                 Navigation.NavigateTo("/admin");
             }
             else
             {
-                Navigation.NavigateTo("/user");
+                Navigation.NavigateTo("/users");
             }
         }
         

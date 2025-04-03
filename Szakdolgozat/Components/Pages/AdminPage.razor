@@ -6,14 +6,24 @@
 <RadzenCard>
     <h3>Admin Felület</h3>
     <div class="d-flex flex-column gap-2">
-        <RadzenButton Text="Felhasználók" Class="rz-button rz-button-danger" Click="NavigateToFelhasznalok" />
-        <RadzenButton Text="Munkalapok" Class="rz-button rz-button-danger" Click="NavigateToMunkalapok" />
-        <RadzenButton Text="Tulajok" Class="rz-button rz-button-danger" Click="NavigateToTulajok" />
+        <RadzenButton Text="Felhasználók" class="rz-button rz-button-danger" Click="@NavigateToFelhasznalok" />
+        <RadzenButton Text="Munkalapok" class="rz-button rz-button-danger" Click="@NavigateToMunkalapok" />
+        <RadzenButton Text="Tulajok" class="rz-button rz-button-danger" Click="@NavigateToTulajok" />
     </div>
 </RadzenCard>
 
 @code {
-    void NavigateToFelhasznalok() => Navigation.NavigateTo("/admin/felhasznalok");
-    void NavigateToMunkalapok() => Navigation.NavigateTo("/admin/munkalapok");
-    void NavigateToTulajok() => Navigation.NavigateTo("/admin/tulajok");
+    void NavigateToFelhasznalok()
+    {
+        Navigation.NavigateTo("/admin/felhasznalok");
+    }
+
+    void NavigateToMunkalapok()
+    {
+        Navigation.NavigateTo("/admin/munkalapok");
+    } 
+    void NavigateToTulajok()
+    {
+        Navigation.NavigateTo("/admin/tulajok");
+    }
 }

@@ -1,0 +1,31 @@
+﻿@page "/admin/felhasznalok/{ID:guid}"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IFelhasznalo Felhasznalo_Service
+@inject SzakDolgozat.SQL.Interfaces.IRole Role_Service
+@inject SzakDolgozat.SQL.Interfaces.IAdmin_felhasznalok_View Admin_felhasznalok_View_Service
+@using SzakDolgozat.SQL.Models
+@using SzakDolgozat.SQL.Interfaces
+
+<h3>Felhasználó módosítása</h3>
+
+
+@code {
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+    private async Task OnSubmit()
+    {
+
+        Navigation.NavigateTo("/admin/felhasznalok");
+    }
+
+    private void OnCancel()
+    {
+        Navigation.NavigateTo("/admin/felhasznalok");
+    }
+}

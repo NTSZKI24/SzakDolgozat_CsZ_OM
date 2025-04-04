@@ -1,4 +1,5 @@
 ﻿@page "/Bejelentkezes"
+
 <RadzenTheme Theme="material" />
 <PageTitle>Bejelentkezés</PageTitle>
 @rendermode InteractiveServer
@@ -16,7 +17,7 @@
             <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Felhasználónév</RadzenText>
-                <RadzenTextBox Style="width: 100%" aria-label="Felhasználónév" @bind-Value="bejelentkezettfelhasznalo" />
+                <RadzenTextBox Style="width: 100%" aria-label="Felhasználónév" @bind-Value="bejelentkezettfelhasznaloNev" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Jelszó</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Jelszó" @bind-Value="jelszo" Type="Radzen.TextBoxType.Password" />
@@ -28,16 +29,14 @@
     </div>
 </div>
 
-<CascadingValue Value="bejelentkezettfelhasznalo">
-</CascadingValue>
 
-<CascadingValue Value="bejelentkezettRoleID">
-</CascadingValue>
 
 @code {
-    public static string bejelentkezettfelhasznalo;
-    public static string jelszo;
+    public string bejelentkezettfelhasznaloNev;
     public static Guid bejelentkezettRoleID;
+    public static string jelszo;
+
+
     //private static readonly Guid ADMIN_ROLE_GUID = ; // Itt cseréld le az admin role ID-t
     void ShowNotification(NotificationMessage message)
     {
@@ -47,8 +46,8 @@
     private async Task OnLogin()
     {
         var felhasznalo = (await Felhasznalo_Service.GetFelhasznalok())
-            .FirstOrDefault(f => f.Felhasznalonev == bejelentkezettfelhasznalo && f.Jelszo == jelszo);
-        if (bejelentkezettfelhasznalo == null)
+            .FirstOrDefault(f => f.Felhasznalonev == bejelentkezettfelhasznaloNev && f.Jelszo == jelszo);
+        if (bejelentkezettfelhasznaloNev == null)
         {
             ShowNotification(new NotificationMessage
                 {
@@ -84,15 +83,16 @@
         }
         else
         {
-            bejelentkezettfelhasznalo = felhasznalo.Felhasznalonev;
+            bejelentkezettfelhasznaloNev = felhasznalo.Felhasznalonev;
             bejelentkezettRoleID = felhasznalo.RoleID;
-            if (bejelentkezettRoleID == Guid.Parse("9df11d9d-c1bf-40a1-9599-e2333e630583"))
+
+        if (bejelentkezettRoleID == Guid.Parse("9df11d9d-c1bf-40a1-9599-e2333e630583"))
             {
                 Navigation.NavigateTo("/admin");
             }
             else
             {
-                Navigation.NavigateTo("/users");
+                Navigation.NavigateTo("/users/{bejelentkezettfelhasznaloNev}/{bejelentkezettRoleID}");
             }
         }
         

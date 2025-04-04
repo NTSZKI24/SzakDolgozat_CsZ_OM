@@ -21,20 +21,24 @@
             <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Felhasználónév</RadzenText>
-                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Felhasznalonev" @bind-Value="felhasznalo.Felhasznalonev" />
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Felhasznalonev" @bind-Value="ujfelhasznalo.Felhasznalonev" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Név</RadzenText>
-                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Név" @bind-Value="felhasznalo.Nev" />
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Név" @bind-Value="ujfelhasznalo.Nev" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email</RadzenText>
-                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="felhasznalo.Email" />
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="ujfelhasznalo.Email" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Jelszó</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Jelszo" @bind-Value="ujfelhasznalo.Jelszo" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">RoleNév</RadzenText>
-                <RadzenDropDown @bind-Value="selectedSzerelo"
-                Data="@szerelokListaja"
+                <RadzenDropDown TValue="Guid"
+                @bind-Value="ujfelhasznalo.RoleID"
+                Data="@rolokListaja"
                 TextProperty="RoleNev"
                 ValueProperty="ID"
-                Style="width: 300px;" />
+                Style="width: 300px; color:black;" />
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
 
@@ -45,27 +49,26 @@
 </div>
 
 @code {
-
-    private List<Role> szerelokListaja = new(); 
-    private string selectedSzerelo;
+    private Felhasznalo ujfelhasznalo = new();
+    private List<Role> rolokListaja = new();
 
     protected override async Task OnInitializedAsync()
     {
-        szerelokListaja = await Role_Service.GetRolek();
+        rolokListaja = await Role_Service.GetRolek();
 
-        if (string.IsNullOrEmpty(selectedSzerelo) &&  szerelokListaja.Any())
+        // automatikusan kiválasztja az első szerepkört, ha van
+        if (rolokListaja.Any())
         {
-            selectedSzerelo = szerelokListaja.First().RoleNev;
-
+            ujfelhasznalo.RoleID = rolokListaja.First().ID;
         }
-
     }
+
+
 
     [Inject]
     public NotificationService notificationService { get; set; }
 
-    Felhasznalo felhasznalo = new Felhasznalo();
-    Role role = new Role();
+
 
     void ShowNotification(NotificationMessage message)
     {
@@ -74,7 +77,7 @@
 
     private async Task OnSubmit()
     {
-        if (string.IsNullOrWhiteSpace(felhasznalo.Felhasznalonev))
+        if (string.IsNullOrWhiteSpace(ujfelhasznalo.Felhasznalonev))
         {
             ShowNotification(new NotificationMessage
                 {
@@ -86,21 +89,19 @@
                 });
             return;
         }
-        /*
-        else if (DbContext.felhasznalok.AnyAsync(u => u.Felhasznalonev == felhasznalo.Felhasznalonev))
+        else if (await DbContext.felhasznalok.AnyAsync(u => u.Felhasznalonev == ujfelhasznalo.Felhasznalonev))
         {
             ShowNotification(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Error,
-                    Summary = "Hiba",
-                    Detail = "A felhasználónév foglalt",
-                    Duration = 3000,
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "Hiba",
+                Detail = "A felhasználónév foglalt",
+                Duration = 3000,
 
                 });
             return;
         }
-        */
-        else if (string.IsNullOrWhiteSpace(felhasznalo.Nev))
+        else if (string.IsNullOrWhiteSpace(ujfelhasznalo.Nev))
         {
             ShowNotification(new NotificationMessage
                 {
@@ -113,7 +114,7 @@
             return;
         }
 
-        else if (string.IsNullOrWhiteSpace(felhasznalo.Email))
+        else if (string.IsNullOrWhiteSpace(ujfelhasznalo.Email))
         {
             ShowNotification(new NotificationMessage
                 {
@@ -126,7 +127,7 @@
             return;
         }
 
-        else if (!felhasznalo.Email.Contains("@") || !felhasznalo.Email.Contains("."))
+        else if (!ujfelhasznalo.Email.Contains("@") || !ujfelhasznalo.Email.Contains("."))
         {
             ShowNotification(new NotificationMessage
                 {
@@ -137,26 +138,9 @@
                 });
             return;
         }
-        /*
-        else if (string.IsNullOrEmpty(role.RoleNev))
-        {
-            ShowNotification(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Error,
-                    Summary = "Hiba",
-                    Detail = "A role megadása kötelező!",
-                    Duration = 3000,
-
-                });
-            return;
-        }
-        */
         else
         {
-            felhasznalo.RoleID = role.ID;
-            await Felhasznalo_Service.AddFelhasznalo(felhasznalo);
-            await Role_Service.AddRole(role);
-            Navigation.NavigateTo("/admin/felhasznalok");
+            await Felhasznalo_Service.AddFelhasznalo(ujfelhasznalo);
 
             ShowNotification(new NotificationMessage
                 {
@@ -166,7 +150,10 @@
                     Duration = 3000,
 
                 });
+            Navigation.NavigateTo("/admin/felhasznalok");
             return;
+
+            
         }
     }
 }

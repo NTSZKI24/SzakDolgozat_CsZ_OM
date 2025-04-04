@@ -1,7 +1,9 @@
 ﻿<h3>UsersHome</h3>
-@page "/users"
+@page "/users/{bejelentkezettfelhasznaloNev}/{bejelentkezettRoleID}"
+@rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject SzakDolgozat.SQL.Interfaces.IRole Role_Service
+
 
 
 @if (bejelentkezettRoleID == Guid.Parse("3049d879-6b75-4e69-94c1-9d23f282d912"))//Titkar
@@ -17,11 +19,10 @@
 
 
 @code {
-    [CascadingParameter]
-    public string bejelentkezettfelhasznalo { get; set; }
-
-    [CascadingParameter]
-    public Guid bejelentkezettRoleID { get; set; }
+    [Parameter]
+    public string bejelentkezettfelhasznaloNev { get; set; }
+    [Parameter]
+    public static Guid bejelentkezettRoleID { get; set; }
 
     void OnNavigateTo(string page) => Navigation.NavigateTo(page);
 }

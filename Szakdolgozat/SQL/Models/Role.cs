@@ -8,7 +8,7 @@ namespace SzakDolgozat.SQL.Models
     public class Role
     {
         [Key]
-        public Guid ID { get; set; } = Guid.NewGuid();
+        public Guid ID { get; set; }
 
         [Required]
         public string RoleNev { get; set; }

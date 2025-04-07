@@ -32,17 +32,16 @@ namespace SzakDolgozat.SQL.Models
         public required string AlvazSzam { get; set; }
 
         [Required]
-        public required long Osszkoltseg { get; set; }
+        public long Osszkoltseg { get; set; } = 0;
 
-        [Required]
-        public required DateTime MunkaKezdete { get; set; }
+        public DateTime? MunkaKezdete { get; set; }
 
-        [Required]
-        public required int MunkaIdo { get; set; }
 
-        [Required]
-        public required DateTime Keltezes { get; set; }
-        [Required]
-        public required StatuszEnum Statusz { get; set; }
+        public  int? MunkaIdo { get; set; }
+
+
+        public DateTime? Keltezes { get; set; }
+
+        public StatuszEnum? Statusz { get; set; }
     }
 }

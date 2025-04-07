@@ -24,9 +24,9 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public string Rendszam { get; set; }
         [Required]
-        public long Osszkoltseg { get; set; }
+        public long Osszkoltseg { get; set; } = 0;
+        public  StatuszEnum? Statusz { get; set; }
         [Required]
-        public required StatuszEnum Statusz { get; set; }
-
+        public Guid ID { get; set; } //MunkaID
     }
 }

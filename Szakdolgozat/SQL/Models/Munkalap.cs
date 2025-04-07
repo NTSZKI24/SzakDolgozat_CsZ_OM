@@ -17,16 +17,16 @@ namespace SzakDolgozat.SQL.Models
         public Guid AutoID { get; set; }
 
         
-        public StatuszEnum Statusz { get; set; }
+        public StatuszEnum? Statusz { get; set; }
 
        
-        public DateTime MunkaKezdete { get; set; }
+        public DateTime? MunkaKezdete { get; set; }
 
         
-        public int MunkaIdo { get; set; }
+        public int? MunkaIdo { get; set; }
 
         
-        public DateTime Keltezes { get; set; }
+        public DateTime? Keltezes { get; set; }
 
     }
 }

@@ -1,8 +1,12 @@
-﻿@page "/Munkalapok/Hozzaad"
+﻿@page "/users/Munkalapok/Hozzaad"
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject NotificationService NotificationService
 @inject SzakDolgozat.SQL.Interfaces.ITitkar_SzereloDropDown_View Titkar_SzereloDropDown_View_Service
+@inject SzakDolgozat.SQL.Interfaces.IAuto Auto_Service
+@inject SzakDolgozat.SQL.Interfaces.IAutoTulaj AutoTulaj_Service
+@inject SzakDolgozat.SQL.Interfaces.IMunkalap Munkalap_Service
+@inject SzakDolgozat.SQL.Interfaces.IMunkaKapcsolat MunkaKapcsolat_Service
 @using SzakDolgozat.SQL.Models
 
 <PageTitle>Hozzaad</PageTitle>
@@ -23,8 +27,8 @@
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefonszám</RadzenText>
                 <RadzenMask Mask="+** ** *** ****" CharacterPattern="[0-9]" Placeholder="+36 00 000 0000"
-                        Name="Phone"
-                        Style="width: 100%;" aria-label="Telefonszám" @bind-Value="autoTulaj.Telefonszam" />
+                Name="Phone"
+                Style="width: 100%;" aria-label="Telefonszám" @bind-Value="autoTulaj.Telefonszam" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Leírás</RadzenText>
                 <RadzenTextArea Style="width: 100%" aria-label="TextArea" Placeholder="Adja meg ha tud valamit az autó esetleges hibáiról " @bind-Value="autoTulaj.Leiras" />
@@ -35,9 +39,10 @@
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Rendszám</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Rendszam" @bind-Value="auto.Rendszam" />
 
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">AlvázSzám</RadzenText>
                 <RadzenMask Mask="*****************"  Placeholder="XXXXXXXXXXXXXXXXX"
-                        Name="Alvazszam"
-                        Style="width: 100%;" aria-label="Telefonszám" @bind-Value="auto.AlvazSzam" />
+                Name="Alvazszam"
+                Style="width: 100%;" aria-label="Telefonszám" @bind-Value="auto.AlvazSzam" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Tipus</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Tipus" @bind-Value="auto.Tipus" />
@@ -47,11 +52,12 @@
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
-                <RadzenDropDown @bind-Value="selectedSzerelo"
-                                Data="@szerelokListaja"
-                                TextProperty="Nev"
-                                ValueProperty="ID"
-                                Style="width: 300px; color:black;"/>
+                <RadzenDropDown TValue="Guid"
+                @bind-Value="selectedSzerelo.ID"
+                Data="@szerelokListaja"
+                TextProperty="Felhasznalonev"
+                ValueProperty="ID"
+                Style="width: 300px; color:black;"/>
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
 
@@ -62,18 +68,193 @@
 </div>
 
 @code {
-    private List<Felhasznalo> szerelokListaja;
-    private Felhasznalo selectedSzerelo;
-
+    private List<Felhasznalo> szerelokListaja = new();
+    private Felhasznalo selectedSzerelo = new();
+    public static string bejelentkezettfelhasznaloNev;
+    public static Guid bejelentkezettID;
     protected override async Task OnInitializedAsync()
     {
         szerelokListaja = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
 
         // Automatikusan kiválasztja az első szerelőt a listában
-        if (szerelokListaja.Any())
-        {
-            selectedSzerelo = szerelokListaja.First();
 
+        var uri = new Uri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
+ 
+        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
+
+
+    }
+
+    Auto auto = new Auto();
+    AutoTulaj autoTulaj = new AutoTulaj();
+    Munkalap munkalap = new Munkalap();
+    MunkaKapcsolat munkaKapcsolat = new MunkaKapcsolat();
+    void ShowNotification(NotificationMessage message)
+    {
+        NotificationService.Notify(message);
+    }
+    private async Task OnSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(autoTulaj.Nev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A név megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(autoTulaj.Email))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Az email cím megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (!autoTulaj.Email.Contains("@") || !autoTulaj.Email.Contains("."))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Érvénytelen email cím formátum!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(autoTulaj.Telefonszam))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Telefonszám megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (autoTulaj.Telefonszam.Length != 15)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Túl rövid Telefonszám formátum!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(auto.Marka))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Márka megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(auto.Rendszam))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Rendszám megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(auto.AlvazSzam))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Az Alvázszám megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (auto.AlvazSzam.Length != 17)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Az Alvázszám formátuma érvénytelen!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(auto.Tipus))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Tipus megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(auto.Uzemanyag))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Az Üzemanyag megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(auto.Motor))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Motor megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else
+        {
+            // Mentés az adatbázisba
+            autoTulaj.AutoID = auto.ID;
+            munkalap.AutoTulajID = autoTulaj.ID;
+            await Auto_Service.AddAuto(auto);
+            munkalap.AutoID = auto.ID;
+            await AutoTulaj_Service.AddAutoTulaj(autoTulaj);
+            await Munkalap_Service.AddMunkalap(munkalap);
+            munkaKapcsolat.MunkaID = munkalap.ID;
+            munkaKapcsolat.SzereloID = selectedSzerelo.ID;
+            munkaKapcsolat.TitkarID = bejelentkezettID;
+            await MunkaKapcsolat_Service.AddMunkaKapcsolat(munkaKapcsolat);
+
+            // Értesítés a sikeres mentésről
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Siker",
+                    Detail = "Sikeres adatfelvitel!",
+                    Duration = 3000
+                });
+            Navigation.NavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}");
+            return;
         }
     }
 }

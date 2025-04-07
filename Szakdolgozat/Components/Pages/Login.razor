@@ -7,7 +7,7 @@
 @inject NotificationService NotificationService
 @inject SzakDolgozat.SQL.Interfaces.IFelhasznalo Felhasznalo_Service
 @using SzakDolgozat.SQL.Models
-
+@using SzakDolgozat.SQL.Security
 
 <div class="container">
     <div class="row">
@@ -20,7 +20,7 @@
                 <RadzenTextBox Style="width: 100%" aria-label="Felhasználónév" @bind-Value="bejelentkezettfelhasznaloNev" />
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Jelszó</RadzenText>
-                <RadzenTextBox Style="width: 100%" aria-label="Jelszó" @bind-Value="jelszo" Type="Radzen.TextBoxType.Password" />
+                <RadzenPassword Style="width: 100%" aria-label="Jelszó" @bind-Value="jelszo"/>
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="login" Text="Bejelentkezés" Click="OnLogin" Style="margin-top:10px; width:100%;" />
 
@@ -34,6 +34,7 @@
 @code {
     public string bejelentkezettfelhasznaloNev;
     public static Guid bejelentkezettRoleID;
+    public static Guid bejelentkezettID;
     public static string jelszo;
 
 
@@ -46,7 +47,7 @@
     private async Task OnLogin()
     {
         var felhasznalo = (await Felhasznalo_Service.GetFelhasznalok())
-            .FirstOrDefault(f => f.Felhasznalonev == bejelentkezettfelhasznaloNev && f.Jelszo == jelszo);
+            .FirstOrDefault(f => f.Felhasznalonev == bejelentkezettfelhasznaloNev && PasswordSecurity.ValidatePassword(jelszo,f.Jelszo));
         if (bejelentkezettfelhasznaloNev == null)
         {
             ShowNotification(new NotificationMessage
@@ -85,14 +86,16 @@
         {
             bejelentkezettfelhasznaloNev = felhasznalo.Felhasznalonev;
             bejelentkezettRoleID = felhasznalo.RoleID;
+            bejelentkezettID = felhasznalo.ID;
 
-        if (bejelentkezettRoleID == Guid.Parse("9df11d9d-c1bf-40a1-9599-e2333e630583"))
+            if (bejelentkezettRoleID == Guid.Parse("9df11d9d-c1bf-40a1-9599-e2333e630583"))
             {
                 Navigation.NavigateTo("/admin");
             }
             else
             {
-                Navigation.NavigateTo("/users/{bejelentkezettfelhasznaloNev}/{bejelentkezettRoleID}");
+                var url = $"/users?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}&bejelentkezettID={bejelentkezettID}";
+                Navigation.NavigateTo(url);
             }
         }
         

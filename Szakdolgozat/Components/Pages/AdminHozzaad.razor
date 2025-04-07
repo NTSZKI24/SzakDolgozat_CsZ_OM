@@ -9,6 +9,7 @@
 @using SzakDolgozat.SQL.Enum
 @using Microsoft.AspNetCore.Components;
 @using Radzen;
+@using SzakDolgozat.SQL.Security;
 
 
 
@@ -51,11 +52,10 @@
 @code {
     private Felhasznalo ujfelhasznalo = new();
     private List<Role> rolokListaja = new();
-
     protected override async Task OnInitializedAsync()
     {
-        rolokListaja = await Role_Service.GetRolek();
 
+        rolokListaja = await Role_Service.GetRolek();
         // automatikusan kiválasztja az első szerepkört, ha van
         if (rolokListaja.Any())
         {
@@ -113,7 +113,18 @@
                 });
             return;
         }
+        else if (string.IsNullOrWhiteSpace(ujfelhasznalo.Jelszo))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Jelszó megadása kötelező!",
+                    Duration = 3000,
 
+                });
+            return;
+        }
         else if (string.IsNullOrWhiteSpace(ujfelhasznalo.Email))
         {
             ShowNotification(new NotificationMessage
@@ -140,6 +151,7 @@
         }
         else
         {
+            ujfelhasznalo.Jelszo = PasswordSecurity.HashPassword(ujfelhasznalo.Jelszo);
             await Felhasznalo_Service.AddFelhasznalo(ujfelhasznalo);
 
             ShowNotification(new NotificationMessage

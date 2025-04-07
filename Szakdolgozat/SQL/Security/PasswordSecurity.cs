@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookLibrary_libs.Security
+namespace SzakDolgozat.SQL.Security
 {
     public static class PasswordSecurity
     {

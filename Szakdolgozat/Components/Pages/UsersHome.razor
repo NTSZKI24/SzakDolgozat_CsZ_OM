@@ -1,5 +1,5 @@
 ﻿<h3>UsersHome</h3>
-@page "/users/{bejelentkezettfelhasznaloNev}/{bejelentkezettRoleID}"
+@page "/users"
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject SzakDolgozat.SQL.Interfaces.IRole Role_Service
@@ -8,21 +8,34 @@
 
 @if (bejelentkezettRoleID == Guid.Parse("3049d879-6b75-4e69-94c1-9d23f282d912"))//Titkar
 {
-    <RadzenButton class="my-3" Icon="assignment" Text="Munkalapok" Click="@(() => OnNavigateTo("/munkalapok"))" />
-    <RadzenButton class="my-3" Icon="build" Text="Szerelők" Click="@(() => OnNavigateTo("/szerelok"))" />
-    <RadzenButton class="my-3" Icon="person" Text="Profil" Click="@(() => OnNavigateTo("/profil"))" />
+    <RadzenButton class="my-3" Icon="assignment" Text="Munkalapok" Click="@(() => OnNavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}"))" />
+    <RadzenButton class="my-3" Icon="build" Text="Szerelők" Click="@(() => OnNavigateTo($"/users/Szerelok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}"))" />
+    <RadzenButton class="my-3" Icon="person" Text="Profil" Click="@(() => OnNavigateTo($"/users/Profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}"))" />
 }else{//Szerelo
-    <RadzenButton class="my-3" Icon="assignment_ind" Text="Munkalapok és Profil" Click="@(() => OnNavigateTo("/munkalapok-profil"))" />
-    <RadzenButton class="my-3" Icon="account_box" Text="Profil és Munkalapok" Click="@(() => OnNavigateTo("/profil-munkalapok"))" />
+    <RadzenButton class="my-3" Icon="assignment_ind" Text="Munkalapok és Profil" Click="@(() => OnNavigateTo($"/users/munkalapok-profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}"))" />
+    <RadzenButton class="my-3" Icon="account_box" Text="Profil és Munkalapok" Click="@(() => OnNavigateTo($"/users/profil-munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}"))" />
 }
 
 
 
 @code {
-    [Parameter]
-    public string bejelentkezettfelhasznaloNev { get; set; }
-    [Parameter]
-    public static Guid bejelentkezettRoleID { get; set; }
+    public static string bejelentkezettfelhasznaloNev;
+    public static Guid bejelentkezettRoleID;
+    public static Guid bejelentkezettID;
 
-    void OnNavigateTo(string page) => Navigation.NavigateTo(page);
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = new Uri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
+        Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
+        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
+    }
+
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
+
 }

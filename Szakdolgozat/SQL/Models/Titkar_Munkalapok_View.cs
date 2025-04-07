@@ -13,8 +13,7 @@ namespace SzakDolgozat.SQL.Models
         public required string Telefonszam { get; set; }
         [Required]
         public required string Email { get; set; }
-        [Required]
-        public required StatuszEnum Statusz { get; set; }
+        public StatuszEnum? Statusz { get; set; }
         [Required]
         public required string AlvazSzam { get; set; }
         [Required]
@@ -22,18 +21,13 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public required string Marka { get; set; }
         
-        public DateTime MunkaKezdete { get; set; }
+        public DateTime? MunkaKezdete { get; set; }
         
-        [Required]
-        public required int MunkaIdo { get; set; } = 0;
+        public int? MunkaIdo { get; set; }
         
-        public  DateTime Keltezes { get; set; }
-
+        public  DateTime? Keltezes { get; set; }
         [Required]
-        public required long Osszkoltseg { get; set; } = 0;
-
-        public string TitkarNev { get; set; }
-
+        public long Osszkoltseg { get; set; } = 0;
 
     }
 }

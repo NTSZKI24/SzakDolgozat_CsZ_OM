@@ -29,5 +29,8 @@ namespace SzakDolgozat.SQL.Models
         [Required]
         public long Osszkoltseg { get; set; } = 0;
 
+        [Required]
+        public string TitkarNev { get; set; }
+
     }
 }

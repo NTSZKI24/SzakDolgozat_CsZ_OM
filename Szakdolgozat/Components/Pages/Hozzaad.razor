@@ -82,7 +82,7 @@
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
- 
+
         Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
 
 
@@ -234,6 +234,7 @@
         else
         {
             // Mentés az adatbázisba
+            munkalap.Statusz = StatuszEnum.MunkaElfogadasraVar;
             autoTulaj.AutoID = auto.ID;
             munkalap.AutoTulajID = autoTulaj.ID;
             await Auto_Service.AddAuto(auto);

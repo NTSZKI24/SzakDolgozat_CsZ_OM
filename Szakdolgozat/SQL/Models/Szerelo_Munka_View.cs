@@ -5,28 +5,41 @@ namespace SzakDolgozat.SQL.Models
     public class Szerelo_Munka_View
     {
         [Required]
-        public string TitkarNev { get; set; }
-
-        [Required]
         public string SzereloNev { get; set; }
 
-        public string Leiras { get; set; }
         [Required]
-        public string Marka { get; set; }
+        public string TulajNev { get; set; }
+
         [Required]
-        public string Tipus { get; set; }
+        public string Telefonszam { get; set; }
         [Required]
-        public string Uzemanyag { get; set; }
-        [Required]
-        public string Motor { get; set; }
+        public string Email { get; set; }
+
+        public StatuszEnum? Statusz { get; set; }
+
         [Required]
         public string AlvazSzam { get; set; }
         [Required]
         public string Rendszam { get; set; }
         [Required]
-        public long Osszkoltseg { get; set; } = 0;
-        public  StatuszEnum? Statusz { get; set; }
+        public string Marka { get; set; }
+
+        public DateTime? MunkaKezdete { get; set; }
+
+        public int? MunkaIdo { get; set; }
+
+        public DateTime? Keltezes { get; set; }
+
         [Required]
-        public Guid ID { get; set; } //MunkaID
+        public long Osszkoltseg { get; set; } = 0;
+
+        [Required]
+        public string TitkarNev { get; set; }
+
+        public string? Leiras { get; set; }
+
+        [Required]
+        public Guid ID { get; set; }
+
     }
 }

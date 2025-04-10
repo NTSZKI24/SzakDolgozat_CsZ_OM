@@ -1,4 +1,4 @@
-﻿@page "/users/SzereloMunkalapok"
+﻿@page "/users/SzereloMunkalapok/Hozzaad"
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject SzakDolgozat.SQL.Interfaces.ISzerelo_Munka_View Szerelo_Munka_View_Service
@@ -22,7 +22,10 @@ else
             <!-- Nyomtatás gomb -->
             <RadzenDataGridColumn Title="Gombok" Sortable="false">
                 <Template Context="data">
-                    <RadzenButton Icon="print" Text="MunkaFolyamatok " ButtonStyle="ButtonStyle.Primary" Click="@(args => OnNavigateTo(data))" />
+                    @if (data.Statusz == StatuszEnum.AlkatreszreVar || data.Statusz == StatuszEnum.Szereles)
+                    {
+                        <RadzenButton Icon="print" Text="MunkaFolyamatok " ButtonStyle="ButtonStyle.Primary" Click="@(args => OnNavigateTo(data))" />
+                    }
                     @if (data.Statusz == StatuszEnum.MunkaElfogadasraVar)
                     {
                         <RadzenButton Icon="print" Text="Elfogadas" ButtonStyle="ButtonStyle.Primary" Click="@(args => OnAcceptClick())" />
@@ -126,7 +129,7 @@ else
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Property="Leiras" Title="Leiras">
                 <FilterTemplate>
-
+                    
                 </FilterTemplate>
             </RadzenDataGridColumn>
         </Columns>
@@ -166,6 +169,7 @@ else
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
         Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
+
         // Adatok lekérése
         munkalapok = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
     }

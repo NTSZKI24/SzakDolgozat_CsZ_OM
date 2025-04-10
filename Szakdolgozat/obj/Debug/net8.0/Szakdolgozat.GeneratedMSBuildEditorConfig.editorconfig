@@ -68,12 +68,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb3p6YWFkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/user/Documents/GitHub/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/MunkaFolyamatHozzaadas.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNdW5rYUZvbHlhbWF0SG96emFhZGFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/Documents/GitHub/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/MunkaFolyamatok.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNdW5rYUZvbHlhbWF0b2sucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/Documents/GitHub/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Proba.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9iYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Documents/GitHub/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Profil.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9maWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/Documents/GitHub/SzakDolgozat_CsZ_OM/Szakdolgozat/Components/Pages/Started.razor]

@@ -1,3 +1,78 @@
 ﻿@page "/users/SzereloMunkalapok/MunkaFolyamatok"
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IMunkaFolyamat MunkaFolyamat_Service
+
+<h3>Munkalapok</h3>
+
+<!-- Hozzáadás gomb a weboldal tetején -->
+<br />
+<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
+<RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
+<RadzenButton Icon="print" Text="Munkafolyamat Hozzaadas " ButtonStyle="ButtonStyle.Primary" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
+@if (munkalapok == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">Munkalapok</RadzenText>
+    <RadzenDataGrid @ref="grid" Data="@szurtMunkalapok" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
+        <Columns>
+            <RadzenDataGridColumn Title="Gombok" Sortable="false">
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="Folyamat" Title="Munka Leírása" FilterValue="@selectedFolyamat">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedFolyamat" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn Property="Koltseg" Title="Kültség" FilterValue="@selectedKoltseg">
+                <FilterTemplate>
+                    <RadzenNumeric @bind-Value="@selectedKoltseg" ShowUpDown="false" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+        </Columns>
+    </RadzenDataGrid>
+}
+
+@code {
+    RadzenDataGrid<MunkaFolyamat> grid;
+    private List<MunkaFolyamat> munkalapok = new();
+    private List<MunkaFolyamat> szurtMunkalapok = new();
+    private Munkalap munka2 = new();
+    private List<StatuszEnum> statuszOptions = new();
+    DateTime dateTime = DateTime.Now;
+
+    public static string bejelentkezettfelhasznaloNev;
+    public static Guid aktualisMunkaFolyamatID;
+    public static Guid bejelentkezettID;
+    // Szűrő változók
+    private string selectedFolyamat;
+    private long selectedKoltseg;
+
+    protected override async Task OnInitializedAsync()
+    {
+        statuszOptions = Enum.GetValues(typeof(StatuszEnum)).Cast<StatuszEnum>().ToList();
+        var uri = new Uri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
+        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
+        Guid.TryParse(query["aktualisMunkaFolyamatID"], out aktualisMunkaFolyamatID);
+        // Adatok lekérése
+        munkalapok = await MunkaFolyamat_Service.GetMunkaFolyamatok();
+        szurtMunkalapok = munkalapok.Where(mbox => mbox.MunkaID == aktualisMunkaFolyamatID).ToList();
+    }
+
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
+
+    async Task OnClearFiltersClick()
+    {
+
+        // Adatok újra lekérése
+        munkalapok = await MunkaFolyamat_Service.GetMunkaFolyamatok();
+    }
+}

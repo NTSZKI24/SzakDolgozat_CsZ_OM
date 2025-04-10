@@ -1,0 +1,121 @@
+﻿@page "/users/SzereloMunkalapok/MunkaFolyamatok/Hozzaad"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IMunkaFolyamat MunkaFolyamat_Service
+@inject NotificationService NotificationService
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4 col-lg-4 col-sm-12">
+            <h1 style="color:black">Hozzáadás</h1> <br />
+            <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
+            <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Felhasználónév</RadzenText>
+                <RadzenTextArea Style="width: 100%" aria-label="Default TextBox" Name="Folyamat leirasa" @bind-Value="munkaFolyamat.Folyamat" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Név</RadzenText>
+                <RadzenNumeric Style="width: 100%" aria-label="Default TextBox" Name="Név" @bind-Value="munkaFolyamat.Koltseg" />
+
+
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+
+            </RadzenCard>
+        </div>
+
+    </div>
+</div>
+
+@code {
+    private MunkaFolyamat munkaFolyamat = new();
+
+    public static string bejelentkezettfelhasznaloNev;
+    public static Guid aktualisMunkaFolyamatID;
+    public static Guid bejelentkezettID;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = new Uri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
+        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
+        Guid.TryParse(query["aktualisMunkaFolyamatID"], out aktualisMunkaFolyamatID);
+        // Adatok lekérése
+
+    }
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
+    void ShowNotification(NotificationMessage message)
+    {
+        NotificationService.Notify(message);
+    }
+    private async Task OnSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(munkaFolyamat.Folyamat))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Folyamat leírásának megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+        else if (munkaFolyamat.Koltseg == null)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Költség megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (munkaFolyamat.Koltseg <= 0)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Költség egy nullánál nagyobb pozitiv egész szám!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (munkaFolyamat.Koltseg % 1 != 0)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Költség egy pozitiv egész szám!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else
+        {
+            // Mentés az adatbázisba
+            munkaFolyamat.MunkaID = aktualisMunkaFolyamatID;
+            await MunkaFolyamat_Service.AddMunkaFolyamat(munkaFolyamat);
+            // Értesítés a sikeres mentésről
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Siker",
+                    Detail = "Sikeres adatfelvitel!",
+                    Duration = 3000
+                });
+            Navigation.NavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}");
+            return;
+        }
+    }
+}

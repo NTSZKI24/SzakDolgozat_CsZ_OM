@@ -1,0 +1,139 @@
+﻿<h3>UsersHome</h3>
+@page "/users/Profil"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IAdmin_felhasznalok_View Admin_felhasznalok_View_Service
+@inject NotificationService NotificationService
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4 col-lg-4 col-sm-12">
+            <h1 style="color:black">Hozzáadás</h1> <br />
+            <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" Text=""></RadzenText>
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3"></RadzenText>
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3"></RadzenText>
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3"></RadzenText>
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Jelszó</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Jelszo" @bind-Value="modFelhasznalo.Jelszo" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Új Jelszó</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name=""/>
+
+                <!--<RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />-->
+
+            </RadzenCard>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@code {
+    private List<Admin_felhasznalok_View> felhasznalok = new();
+    private Admin_felhasznalok_View modFelhasznalo;
+    public static string bejelentkezettfelhasznaloNev;
+    private string kivalasztottFelhasznaloNev;
+    private string kivalasztottNev;
+    private string kivalasztottRole;
+    private string kivalasztottEmail;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = new Uri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
+
+
+        modFelhasznalo = felhasznalok.FirstOrDefault(x => x.Felhasznalonev == bejelentkezettfelhasznaloNev);
+        string kivalasztottFelhasznaloNev = modFelhasznalo.Felhasznalonev;
+        string kivalasztottNev = modFelhasznalo.Nev;
+        string kivalasztottRole = modFelhasznalo.RoleNev;
+        string kivalasztottEmail = modFelhasznalo.Email;
+    }
+
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
+    void ShowNotification(NotificationMessage message)
+    {
+        NotificationService.Notify(message);
+    }
+    /*
+    private async Task OnSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(.Folyamat))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Folyamat leírásának megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+        else if (munkaFolyamat.Koltseg == null)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Költség megadása kötelező!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (munkaFolyamat.Koltseg <= 0)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Költség egy nullánál nagyobb pozitiv egész szám!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else if (munkaFolyamat.Koltseg % 1 != 0)
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Költség egy pozitiv egész szám!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else
+        {
+            // Mentés az adatbázisba
+
+            // Értesítés a sikeres mentésről
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Siker",
+                    Detail = "Sikeres adatfelvitel!",
+                    Duration = 3000
+                });
+            Navigation.NavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}");
+            return;
+        }
+        */
+
+}

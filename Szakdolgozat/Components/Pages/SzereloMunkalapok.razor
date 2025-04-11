@@ -1,4 +1,4 @@
-﻿@page "/users/SzereloMunkalapok/Hozzaad"
+﻿@page "/users/SzereloMunkalapok"
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
 @inject SzakDolgozat.SQL.Interfaces.ISzerelo_Munka_View Szerelo_Munka_View_Service
@@ -10,49 +10,46 @@
 <!-- Hozzáadás gomb a weboldal tetején -->
 <br />
 <RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
-@if (munkalapok == null)
+@if (datagrid == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">Munkalapok</RadzenText>
-    <RadzenDataGrid @ref="grid" Data="@munkalapok" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
+    <RadzenDataGrid @ref="grid" Data="@datagrid" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
         <Columns>
             <!-- Nyomtatás gomb -->
-            <RadzenDataGridColumn Title="Gombok" Sortable="false">
-                <Template Context="data">
-                    @if (data.Statusz == StatuszEnum.AlkatreszreVar || data.Statusz == StatuszEnum.Szereles)
-                    {
-                        <RadzenButton Icon="print" Text="MunkaFolyamatok " ButtonStyle="ButtonStyle.Primary" Click="@(args => OnNavigateTo(data))" />
-                    }
-                    @if (data.Statusz == StatuszEnum.MunkaElfogadasraVar)
-                    {
-                        <RadzenButton Icon="print" Text="Elfogadas" ButtonStyle="ButtonStyle.Primary" Click="@(args => OnAcceptClick())" />
-                    }
-                    else if (data.Statusz == StatuszEnum.Szereles)
-                    {
-                        <RadzenButton Icon="print" Text="MunkaFélbehagyása" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnWaitingClick())" />
-                    }
-                    else if (data.Statusz == StatuszEnum.AlkatreszreVar)
-                    {
-                        <RadzenButton Icon="print" Text="MunkaFolytatása" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnWorkingClick())" />
-                    }
-                    @if ((data.Statusz == StatuszEnum.Szereles || data.Statusz == StatuszEnum.AlkatreszreVar) && data.MunkaIdo == null)
-                    {
-                        <RadzenDataGridColumn Property="MunkaIdo" Title="Munkaideje">
-                            <FilterTemplate>
-                                <RadzenNumeric @bind-Value="@selectedMunkaIdo2" Style="width:100%;" />
-                                <RadzenButton Icon="print" Text="MunkaIdő" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnTimeClick())" />
-                                <RadzenTextBox @bind-Value="@error" Style="width:100%;" />
-                            </FilterTemplate>
-                        </RadzenDataGridColumn>
-                    }
-                    @if ( data.MunkaIdo != null && data.MunkaKezdete != null)
-                    {
-                        <RadzenButton Icon="print" Text="MunkaFolytatása" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnFinishClick())" />
-                    }
-
+            <RadzenDataGridColumn Title="Gombok" Sortable="false" Width="1000px">
+                <Template Context="data" >
+                    <div style="white-space: nowrap;">
+                        @if (data.Statusz == (StatuszEnum)StatuszEnum.AlkatreszreVar || data.Statusz == (StatuszEnum) StatuszEnum.Szereles)
+                        {
+                            <RadzenButton Icon="print" Text="MunkaFolyamatok " ButtonStyle="ButtonStyle.Primary" Click="@(args => OnNavigateTo(data))" />
+                        }
+                        @if (data.Statusz == (StatuszEnum)StatuszEnum.MunkaElfogadasraVar)
+                        {
+                            <RadzenButton Icon="print" Text="Elfogadas" ButtonStyle="ButtonStyle.Primary" Click="@(args => OnAcceptClick(data))" />
+                        }
+                        else if (data.Statusz ==(StatuszEnum) StatuszEnum.Szereles)
+                        {
+                            <RadzenButton Icon="print" Text="MunkaFélbehagyása" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnWaitingClick(data))" />
+                        }
+                        else if (data.Statusz == (StatuszEnum) StatuszEnum.AlkatreszreVar)
+                        {
+                            <RadzenButton Icon="print" Text="MunkaFolytatása" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnWorkingClick(data))" />
+                        }
+                        @if ((data.Statusz == (StatuszEnum)StatuszEnum.Szereles || data.Statusz == (StatuszEnum) StatuszEnum.AlkatreszreVar) && data.MunkaIdo == null)
+                        {
+                            <RadzenNumeric @bind-Value="@selectedMunkaIdo2" Style="width:100%;" />
+                            <RadzenButton Icon="print" Text="MunkaIdő" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnTimeClick(data))" />
+                            <RadzenTextBox @bind-Value="@error" Style="width:100%;" />
+                        }
+                        @if (data.MunkaIdo != null && data.MunkaKezdete != null)
+                        {
+                            <RadzenButton Icon="print" Text="MunkaFolytatása" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnFinishClick(data))" />
+                        }
+                    </div>
                 </Template>
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Property="TulajNev" Title="Tulajdonos Neve" FilterValue="@selectedTulajNev">
@@ -129,7 +126,7 @@ else
             </RadzenDataGridColumn>
             <RadzenDataGridColumn Property="Leiras" Title="Leiras">
                 <FilterTemplate>
-                    
+
                 </FilterTemplate>
             </RadzenDataGridColumn>
         </Columns>
@@ -138,7 +135,8 @@ else
 
 @code {
     RadzenDataGrid<Szerelo_Munka_View> grid;
-    private List<Szerelo_Munka_View> munkalapok = new();
+    private List<Szerelo_Munka_View> datagrid = new();
+    private List<Munkalap> munkalapok = new();
     private Munkalap munka2 = new();
     private List<StatuszEnum> statuszOptions = new();
     DateTime dateTime = DateTime.Now;
@@ -171,30 +169,38 @@ else
         Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
 
         // Adatok lekérése
-        munkalapok = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
+        datagrid = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
+        munkalapok = await Munkalap_Service.GetMunkalapok(); 
     }
-    public async void OnAcceptClick()
+    public async void OnAcceptClick(Szerelo_Munka_View data)
     {
-
+        var dataID = data.ID;
+        var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
         munka2.Statusz = StatuszEnum.Szereles;
         munka2.MunkaKezdete = dateTime;
         await Munkalap_Service.UpdateMunkalap(munka2);
+        datagrid = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
     }
-    public async void OnWorkingClick()
+    public async void OnWorkingClick(Szerelo_Munka_View data)
     {
-
+        var dataID = data.ID;
+        var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
         munka2.Statusz = StatuszEnum.Szereles;
         await Munkalap_Service.UpdateMunkalap(munka2);
+        datagrid = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
     }
-    public async void OnWaitingClick()
+    public async void OnWaitingClick(Szerelo_Munka_View data)
     {
-
+        var dataID = data.ID;
+        var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
         munka2.Statusz = StatuszEnum.AlkatreszreVar;
         await Munkalap_Service.UpdateMunkalap(munka2);
+        datagrid = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
     }
-    public async void OnTimeClick()
+    public async void OnTimeClick(Szerelo_Munka_View data)
     {
-
+        var dataID = data.ID;
+        var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
         if (selectedMunkaIdo == null)
         {
             error = "NIncs megadva Munkaidő";
@@ -206,14 +212,17 @@ else
         else
         {
             munka2.MunkaIdo = selectedMunkaIdo2;
+            datagrid = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
         }
     }
-    public async void OnFinishClick()
+    public async void OnFinishClick(Szerelo_Munka_View data)
     {
-
+        var dataID = data.ID;
+        var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
         munka2.Keltezes = dateTime;
         munka2.Statusz = StatuszEnum.NyomtatasraVar;
         await Munkalap_Service.UpdateMunkalap(munka2);
+        datagrid = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
     }
     public async void OnNavigateTo(Szerelo_Munka_View data)
     {
@@ -237,6 +246,6 @@ else
         selectedTitkarNev = null;
 
         // Adatok újra lekérése
-        munkalapok = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
+        datagrid = await Szerelo_Munka_View_Service.GetSzerelo_Munka_Viewok();
     }
 }

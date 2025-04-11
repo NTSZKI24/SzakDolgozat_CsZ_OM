@@ -38,7 +38,7 @@ namespace SzakDolgozat.SQL.Models
 
         public string? Leiras { get; set; }
 
-        [Required]
+        [Key]
         public Guid ID { get; set; }
 
     }

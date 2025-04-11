@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Data;
 using SzakDolgozat.SQL.Interfaces;
 using SzakDolgozat.SQL.Models;
 
@@ -16,27 +17,6 @@ namespace SzakDolgozat.SQL.Services
         public async Task<List<Szerelo_Munka_View>> GetSzerelo_Munka_Viewok()
         {
             return await _context.szerelo_Munka_Viewes.ToListAsync();
-        }
-
-        public async Task UpdateSzerelo_Munka_View(Szerelo_Munka_View updatedItem)
-        {
-            var existing = await _context.szerelo_Munka_Viewes.FirstOrDefaultAsync(x => x.ID == updatedItem.ID);
-            if (existing == null)
-                return;
-
-            existing.Statusz = updatedItem.Statusz;
-
-            if (existing.MunkaKezdete == null)
-                existing.MunkaKezdete = updatedItem.MunkaKezdete;
-
-            if (existing.MunkaIdo == null)
-                existing.MunkaIdo = updatedItem.MunkaIdo;
-
-            if (existing.Keltezes == null)
-                existing.Keltezes = updatedItem.Keltezes;
-
-
-            await _context.SaveChangesAsync();
         }
     }
 }

@@ -108,7 +108,7 @@ else
 
             <RadzenDataGridColumn Property="Osszkoltseg" Title="Összköltség">
                 <FilterTemplate>
-                    
+
                 </FilterTemplate>
             </RadzenDataGridColumn>
         </Columns>
@@ -118,10 +118,12 @@ else
 @code {
     RadzenDataGrid<Titkar_Munkalapok_View> grid;
     private List<Titkar_Munkalapok_View> munkalapok = new();
+    private List<Titkar_Munkalapok_View> filteredMunkalapok = new();
     private List<StatuszEnum> statuszOptions = new();
 
     public static string bejelentkezettfelhasznaloNev;
     public static Guid bejelentkezettID;
+    public static Guid bejelentkezettRoleID;
     // Szűrő változók
     private string selectedSzereloNev;
     private string selectedTulajNev;
@@ -132,7 +134,7 @@ else
     private string selectedRendszam;
     private string selectedMarka;
     private DateTime? selectedMunkaKezdete;
-    private int? selectedMunkaIdo;  // int típusú szűrő
+    private int? selectedMunkaIdo;  
     private DateTime? selectedKeltezes;
     private long selectedOsszkoltseg;
     protected override async Task OnInitializedAsync()
@@ -143,8 +145,12 @@ else
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
         Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
+
         // Adatok lekérése
         munkalapok = await Titkar_Munkalapok_View_Service.GetTitkar_Munkalapok_Viewok();
+        filteredMunkalapok = munkalapok
+        .Where(u => u.TitkarNev == bejelentkezettfelhasznaloNev)  // Itt történik a szűrés
+        .ToList();
     }
 
 
@@ -177,5 +183,8 @@ else
 
         // Adatok újra lekérése
         munkalapok = await Titkar_Munkalapok_View_Service.GetTitkar_Munkalapok_Viewok();
+        filteredMunkalapok = munkalapok
+        .Where(u => u.TitkarNev == bejelentkezettfelhasznaloNev)  // Itt történik a szűrés
+        .ToList();
     }
 }

@@ -43,5 +43,10 @@ namespace SzakDolgozat.SQL.Models
         public DateTime? Keltezes { get; set; }
 
         public StatuszEnum? Statusz { get; set; }
+
+        public bool? Befejezhetetlen { get; set; } = false;
+
+        [Required]
+        public required Guid ID { get; set; }
     }
 }

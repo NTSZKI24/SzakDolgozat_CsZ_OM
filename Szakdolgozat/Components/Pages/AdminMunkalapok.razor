@@ -1,6 +1,186 @@
 ﻿<h3>AdminMunkalapok</h3>
 @page "/admin/munkalapok"
 @rendermode InteractiveServer
-@code {
+@inject NavigationManager Navigation
+@inject SzakDolgozat.SQL.Interfaces.IAdmin_munkalapok_View Admin_munkalapok_View_Service
+@inject SzakDolgozat.SQL.Interfaces.IMunkalap Munkalap_Service
 
+<RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
+@if (datagrid == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">Munkalapok</RadzenText>
+    <RadzenDataGrid @ref="grid" Data="@datagrid" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
+        <Columns>
+            <!-- Nyomtatás gomb -->
+            <RadzenDataGridColumn Title="Nyomtatás" Sortable="false" Width="300px">
+                <Template Context="data">
+                    <div style="white-space: nowrap;">
+                        @if (data.Befejezhetetlen == false || data.Befejezhetetlen == null)
+                        {
+                            <RadzenButton Text="Megoldhatatlan" ButtonStyle="ButtonStyle.Primary" Click="@(args => OnEraseClick(data))" />
+                        }
+
+                        else
+                        {
+                            <RadzenButton Text="Megoldhatatlan" ButtonStyle="ButtonStyle.Danger" />
+                        }
+                    </div>
+                    
+                </Template>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="TulajNev" Title="Tulajdonos Neve" FilterValue="@selectedTulajNev">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedTulajNev" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="SzereloNev" Title="Szerelő Neve" FilterValue="@selectedSzereloNev">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedSzereloNev" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="TitkarNev" Title="Titkár Neve" FilterValue="@selectedTitkarNev">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedTitkarNev" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Rendszam" Title="Rendszám" FilterValue="@selectedRendszam">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedRendszam" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Tipus" Title="Típus" FilterValue="@selectedTipus">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedTipus" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Marka" Title="Márka" FilterValue="@selectedMarka">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedMarka" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Uzemanyag" Title="Üzemanyag" FilterValue="@selectedUzemanyag">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedUzemanyag" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Motor" Title="Motor" FilterValue="@selectedMotor">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedMotor" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="AlvazSzam" Title="Alvázszám" FilterValue="@selectedAlvazSzam">
+                <FilterTemplate>
+                    <RadzenTextBox @bind-Value="@selectedAlvazSzam" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Osszkoltseg" Title="Összköltség">
+                <FilterTemplate>
+
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="MunkaKezdete" Title="Munka Kezdete" FormatString="{0:d}" FilterValue="@selectedMunkaKezdete">
+                <FilterTemplate>
+                    <RadzenDatePicker @bind-Value="@selectedMunkaKezdete" Style="width:100%;" AllowClear="true" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <!-- MunkaIdo, amely int típusú -->
+            <RadzenDataGridColumn Property="MunkaIdo" Title="Munkaidő (óra)" FilterValue="@selectedMunkaIdo">
+                <FilterTemplate>
+                    <RadzenNumeric @bind-Value="@selectedMunkaIdo" ShowUpDown="false" Style="width:100%;" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Keltezes" Title="Keltezés" FormatString="{0:d}" FilterValue="@selectedKeltezes">
+                <FilterTemplate>
+                    <RadzenDatePicker @bind-Value="@selectedKeltezes" Style="width:100%;" AllowClear="true" />
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+            <RadzenDataGridColumn Property="Statusz" Title="Státusz" FilterValue="@selectedStatusz">
+                <FilterTemplate>
+                    <RadzenDropDown Data="@statuszOptions" @bind-Value="@selectedStatusz" Style="width:100%;" /><!--Itt valami gondok vannak ha Tvaluet irok be-->
+                </FilterTemplate>
+            </RadzenDataGridColumn>
+
+        </Columns>
+    </RadzenDataGrid>
+}
+
+@code {
+    RadzenDataGrid<Admin_munkalapok_View> grid;
+    private List<Admin_munkalapok_View> datagrid = new();
+    private List<StatuszEnum> statuszOptions = new();
+    private List<Munkalap> munkalapok = new();
+    private Munkalap munka2 = new();
+
+    // Szűrő változók
+    private string selectedSzereloNev;
+    private string selectedTulajNev;
+    private string selectedTitkarNev;
+    private StatuszEnum? selectedStatusz;
+    private string selectedAlvazSzam;
+    private string selectedRendszam;
+    private string selectedTipus;
+    private string selectedMarka;
+    private string selectedUzemanyag;
+    private string selectedMotor;
+    private DateTime? selectedMunkaKezdete;
+    private int? selectedMunkaIdo;  // int típusú szűrő
+    private DateTime? selectedKeltezes;
+    private long selectedOsszkoltseg;
+
+    protected override async Task OnInitializedAsync()
+    {
+        statuszOptions = Enum.GetValues(typeof(StatuszEnum)).Cast<StatuszEnum>().ToList();
+        // Adatok lekérése
+        datagrid = await Admin_munkalapok_View_Service.GetAdmin_munkalapok_Viewok();
+        munkalapok = await Munkalap_Service.GetMunkalapok();
+    }
+
+
+    public async void OnEraseClick(Admin_munkalapok_View data)
+    {
+        var dataID = data.ID;
+        var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
+        munka2.Befejezhetetlen = true;
+        await Munkalap_Service.UpdateMunkalap(munka2);
+        datagrid = await Admin_munkalapok_View_Service.GetAdmin_munkalapok_Viewok();
+        
+    }
+
+    async Task OnClearFiltersClick()
+    {
+        selectedTulajNev = null;
+        selectedSzereloNev = null;
+        selectedTitkarNev = null;
+        selectedStatusz = null;
+        selectedAlvazSzam = null;
+        selectedRendszam = null;
+        selectedMarka = null;
+        selectedMunkaKezdete = null;
+        selectedMunkaIdo = null;
+        selectedTipus = null;
+        selectedUzemanyag = null;
+        selectedMotor = null;
+
+
+        // Adatok újra lekérése
+        datagrid = await Admin_munkalapok_View_Service.GetAdmin_munkalapok_Viewok();
+    }
 }

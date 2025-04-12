@@ -28,5 +28,7 @@ namespace SzakDolgozat.SQL.Models
         
         public DateTime? Keltezes { get; set; }
 
+        public bool? Befejezhetetlen { get; set; } = false;
+
     }
 }

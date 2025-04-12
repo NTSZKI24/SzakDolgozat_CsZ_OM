@@ -10,14 +10,14 @@
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
             <h1 style="color:black">Hozzáadás</h1> <br />
-            <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
+
             <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
-                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Felhasználónév</RadzenText>
-                <RadzenTextArea Style="width: 100%" aria-label="Default TextBox" Name="Folyamat leirasa" @bind-Value="munkaFolyamat.Folyamat" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Folyamat leirasa</RadzenText>
+                <RadzenTextArea Style="width: 100%" aria-label="Default TextBox" @bind-Value="munkaFolyamat.Folyamat" />
 
-                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Név</RadzenText>
-                <RadzenNumeric Style="width: 100%" aria-label="Default TextBox" Name="Név" @bind-Value="munkaFolyamat.Koltseg" />
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Költség</RadzenText>
+                <RadzenNumeric Style="width: 100%" aria-label="Default TextBox" @bind-Value="munkaFolyamat.Koltseg" />
 
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />

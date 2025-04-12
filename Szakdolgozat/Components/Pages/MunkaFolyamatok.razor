@@ -7,7 +7,7 @@
 
 <!-- Hozzáadás gomb a weboldal tetején -->
 <br />
-<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
+
 <RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
 <RadzenButton Icon="print" Text="Munkafolyamat Hozzaadas " ButtonStyle="ButtonStyle.Primary" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
 @if (szurtMunkalapok == null)
@@ -57,6 +57,7 @@ else
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
         Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
         Guid.TryParse(query["aktualisMunkaFolyamatID"], out aktualisMunkaFolyamatID);
+
         // Adatok lekérése
         munkalapok = await MunkaFolyamat_Service.GetMunkaFolyamatok();
         szurtMunkalapok = munkalapok.Where(mbox => mbox.MunkaID == aktualisMunkaFolyamatID).ToList();

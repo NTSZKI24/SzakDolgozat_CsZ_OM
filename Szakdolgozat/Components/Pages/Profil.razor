@@ -12,6 +12,7 @@
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
             <h1 style="color:black">Hozzáadás</h1> <br />
+            <RadzenButton Text="Vissza" Click="() => Navigation.NavigateTo(Navigation.Uri, true)" />
             <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" Text=""></RadzenText>
@@ -43,10 +44,9 @@
     private List<Admin_felhasznalok_View> felhasznalok = new();
     private Admin_felhasznalok_View modFelhasznalo;
     public static string bejelentkezettfelhasznaloNev;
+    public static Guid bejelentkezettRoleID;
     private string kivalasztottFelhasznaloNev;
-    private string kivalasztottNev;
-    private string kivalasztottRole;
-    private string kivalasztottEmail;
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -54,13 +54,11 @@
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
-
+        
 
         modFelhasznalo = felhasznalok.FirstOrDefault(x => x.Felhasznalonev == bejelentkezettfelhasznaloNev);
         string kivalasztottFelhasznaloNev = modFelhasznalo.Felhasznalonev;
-        string kivalasztottNev = modFelhasznalo.Nev;
-        string kivalasztottRole = modFelhasznalo.RoleNev;
-        string kivalasztottEmail = modFelhasznalo.Email;
+        Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
     }
 
     public void OnNavigateTo(string page)

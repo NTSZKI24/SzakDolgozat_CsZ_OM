@@ -4,28 +4,163 @@
 @inject SzakDolgozat.SQL.Interfaces.IFelhasznalo Felhasznalo_Service
 @inject SzakDolgozat.SQL.Interfaces.IRole Role_Service
 @inject SzakDolgozat.SQL.Interfaces.IAdmin_felhasznalok_View Admin_felhasznalok_View_Service
+@inject AppDbContext DbContext
 @using SzakDolgozat.SQL.Models
 @using SzakDolgozat.SQL.Interfaces
 
 <h3>Felhasználó módosítása</h3>
+<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/admin/felhasznalok"))" />
 
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4 col-lg-4 col-sm-12">
+            <h1 style="color:black">Módosítás</h1> <br />
+            <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Felhasználónév</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Felhasznalonev" @bind-Value="ujfelhasznalo.Felhasznalonev" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Név</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Név" @bind-Value="ujfelhasznalo.Nev" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Email" @bind-Value="ujfelhasznalo.Email" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Jelszó</RadzenText>
+                <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Jelszo" @ref="passwordTextbox" />
+
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+
+            </RadzenCard>
+        </div>
+
+    </div>
+</div>
 @code {
+    [Parameter]
+    public Guid ID { get; set; }
 
-
+    private RadzenTextBox passwordTextbox;
+    private Felhasznalo ujfelhasznalo = new();
+    private List<Role> rolokListaja = new();
+    public string regifelhasznaloNev;
     protected override async Task OnInitializedAsync()
     {
 
+        ujfelhasznalo = await Felhasznalo_Service.GetFelhasznalo(ID);
+        regifelhasznaloNev = ujfelhasznalo.Felhasznalonev;
+
+    }
+
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
+
+    [Inject]
+    public NotificationService notificationService { get; set; }
+
+
+
+    void ShowNotification(NotificationMessage message)
+    {
+        notificationService.Notify(message);
     }
 
     private async Task OnSubmit()
     {
+        
+        if (string.IsNullOrWhiteSpace(ujfelhasznalo.Felhasznalonev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A felhasználónév megadása kötelező!",
+                    Duration = 3000,
 
-        Navigation.NavigateTo("/admin/felhasznalok");
-    }
+                });
+            return;
+        }
+        else if (regifelhasznaloNev != ujfelhasznalo.Felhasznalonev && await DbContext.felhasznalok.AnyAsync(u => u.Felhasznalonev == ujfelhasznalo.Felhasznalonev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A felhasználónév foglalt",
+                    Duration = 3000,
 
-    private void OnCancel()
-    {
-        Navigation.NavigateTo("/admin/felhasznalok");
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(ujfelhasznalo.Nev))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A név megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(passwordTextbox.Value))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "A Jelszó megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+        else if (string.IsNullOrWhiteSpace(ujfelhasznalo.Email))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Az email megadása kötelező!",
+                    Duration = 3000,
+
+                });
+            return;
+        }
+
+        else if (!ujfelhasznalo.Email.Contains("@") || !ujfelhasznalo.Email.Contains("."))
+        {
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Hiba",
+                    Detail = "Érvénytelen email cím formátum!",
+                    Duration = 3000
+                });
+            return;
+        }
+        else
+        {
+            ujfelhasznalo.Jelszo = PasswordSecurity.HashPassword(passwordTextbox.Value.ToString());
+            await Felhasznalo_Service.UpdateFelhasznalo(ujfelhasznalo);
+
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Sikeres",
+                    Detail = "Sikeres adatfelvitel",
+                    Duration = 3000,
+
+                });
+            Navigation.NavigateTo("/admin/felhasznalok");
+            return;
+
+
+        }
     }
 }

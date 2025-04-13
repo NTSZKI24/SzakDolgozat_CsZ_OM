@@ -12,6 +12,8 @@
 }
 else
 {
+    <RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/admin"))" />
+     <br/>
     <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">Munkalapok</RadzenText>
     <RadzenDataGrid @ref="grid" Data="@datagrid" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
         <Columns>
@@ -21,9 +23,8 @@ else
                     <div style="white-space: nowrap;">
                         @if (data.Befejezhetetlen == false || data.Befejezhetetlen == null)
                         {
-                            <RadzenButton Text="Megoldhatatlan" ButtonStyle="ButtonStyle.Primary" Click="@(args => OnEraseClick(data))" />
+                            <RadzenButton Text="Megoldhatatlan" ButtonStyle="ButtonStyle.Primary" Click="@(() => OnEraseClick(data))" />
                         }
-
                         else
                         {
                             <RadzenButton Text="Megoldhatatlan" ButtonStyle="ButtonStyle.Danger" />
@@ -156,8 +157,9 @@ else
 
     public async void OnEraseClick(Admin_munkalapok_View data)
     {
-        var dataID = data.ID;
-        var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
+        
+        var munka2 = munkalapok.FirstOrDefault(x => x.ID == data.ID);
+        var dataID = munka2.ID;
         munka2.Befejezhetetlen = true;
         await Munkalap_Service.UpdateMunkalap(munka2);
         datagrid = await Admin_munkalapok_View_Service.GetAdmin_munkalapok_Viewok();
@@ -182,5 +184,9 @@ else
 
         // Adatok újra lekérése
         datagrid = await Admin_munkalapok_View_Service.GetAdmin_munkalapok_Viewok();
+    }
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
     }
 }

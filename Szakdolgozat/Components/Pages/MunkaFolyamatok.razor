@@ -9,7 +9,9 @@
 <br />
 
 <RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
-<RadzenButton Icon="print" Text="Munkafolyamat Hozzaadas " ButtonStyle="ButtonStyle.Primary" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
+<RadzenButton Icon="print" Text="Munkafolyamat Hozzaadas " ButtonStyle="ButtonStyle.Primary" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
+    <br />
+<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
 @if (szurtMunkalapok == null)
 {
     <p><em>Loading...</em></p>
@@ -44,6 +46,7 @@ else
     public static string bejelentkezettfelhasznaloNev;
     public static Guid aktualisMunkaFolyamatID;
     public static Guid bejelentkezettID;
+    public static Guid bejelentkezettRoleID;
     // Szűrő változók
     private string selectedFolyamat;
     private long selectedKoltseg;
@@ -55,7 +58,7 @@ else
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
-        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
+        Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
         Guid.TryParse(query["aktualisMunkaFolyamatID"], out aktualisMunkaFolyamatID);
 
         // Adatok lekérése

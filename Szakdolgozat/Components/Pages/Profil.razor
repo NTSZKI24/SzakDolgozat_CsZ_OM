@@ -12,7 +12,7 @@
         </div>
         <div class="col-4 col-lg-4 col-sm-12">
             <h1 style="color:black">Hozzáadás</h1> <br />
-            <RadzenButton Text="Vissza" Click="() => Navigation.NavigateTo(Navigation.Uri, true)" />
+            <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
             <RadzenCard class="rz-my-12 rz-mx-auto" Style="max-width: 400px;">
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3" Text=""></RadzenText>
@@ -45,7 +45,7 @@
     private Admin_felhasznalok_View modFelhasznalo;
     public static string bejelentkezettfelhasznaloNev;
     public static Guid bejelentkezettRoleID;
-    private string kivalasztottFelhasznaloNev;
+    public static Guid bejelentkezettID;
 
 
     protected override async Task OnInitializedAsync()
@@ -54,6 +54,8 @@
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
+        Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
+        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
         
 
         modFelhasznalo = felhasznalok.FirstOrDefault(x => x.Felhasznalonev == bejelentkezettfelhasznaloNev);
@@ -129,7 +131,7 @@
                     Detail = "Sikeres adatfelvitel!",
                     Duration = 3000
                 });
-            Navigation.NavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}");
+    //Fokozott figyelem        Navigation.NavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}");
             return;
         }
         */

@@ -42,6 +42,8 @@
                 Style="width: 300px; color:black;" />
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+                    <br />
+                <RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/admin/felhasznalok"))" />
 
             </RadzenCard>
         </div>
@@ -167,6 +169,10 @@
 
             
         }
+    }
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
     }
 }
 }

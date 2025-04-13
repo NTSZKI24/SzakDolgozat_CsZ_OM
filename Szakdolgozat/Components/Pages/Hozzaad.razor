@@ -7,7 +7,6 @@
 @inject SzakDolgozat.SQL.Interfaces.IAutoTulaj AutoTulaj_Service
 @inject SzakDolgozat.SQL.Interfaces.IMunkalap Munkalap_Service
 @inject SzakDolgozat.SQL.Interfaces.IMunkaKapcsolat MunkaKapcsolat_Service
-@using SzakDolgozat.SQL.Models
 
 <PageTitle>Hozzaad</PageTitle>
 
@@ -52,6 +51,8 @@
 
                 <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Motor</RadzenText>
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Motor" @bind-Value="auto.Motor" />
+
+                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Szerelő</RadzenText>
                 <RadzenDropDown TValue="Guid"
                 @bind-Value="selectedSzerelo.ID"
                 Data="@szerelokListaja"
@@ -60,7 +61,8 @@
                 Style="width: 300px; color:black;"/>
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
-                <RadzenButton Text="Vissza" Click="() => Navigation.NavigateTo(Navigation.Uri, true)" />
+                <br />
+                <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}&bejelentkezettID={bejelentkezettID}"))" />
 
             </RadzenCard>
         </div>
@@ -73,6 +75,7 @@
     private Felhasznalo selectedSzerelo = new();
     public static string bejelentkezettfelhasznaloNev;
     public static Guid bejelentkezettID;
+    public static Guid bejelentkezettRoleID;
     protected override async Task OnInitializedAsync()
     {
         szerelokListaja = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
@@ -83,12 +86,15 @@
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
-
+        Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
         Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
 
 
     }
-
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
     Auto auto = new Auto();
     AutoTulaj autoTulaj = new AutoTulaj();
     Munkalap munkalap = new Munkalap();
@@ -255,7 +261,7 @@
                     Detail = "Sikeres adatfelvitel!",
                     Duration = 3000
                 });
-            Navigation.NavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}");
+            Navigation.NavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}");
             return;
         }
     }

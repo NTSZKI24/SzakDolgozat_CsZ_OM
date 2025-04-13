@@ -8,13 +8,14 @@
 @if (bejelentkezettRoleID == Guid.Parse("3049d879-6b75-4e69-94c1-9d23f282d912"))//Titkar
 {
     <h3>Titkár Home</h3>
-    <RadzenButton Text="Vissza" Click="() => Navigation.NavigateTo(Navigation.Uri, true)" />
+    <RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/Bejelentkezes"))" />
     <RadzenButton class="my-3" Icon="assignment" Text="Munkalapok" Click="@(() => OnNavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
     //<RadzenButton class="my-3" Icon="build" Text="Szerelők" Click="@(() => OnNavigateTo($"/users/Szerelok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}"))" />
     <RadzenButton class="my-3" Icon="person" Text="Profil" Click="@(() => OnNavigateTo($"/users/Profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
 }else{//Szerelo
-    <h3>Szerelo Home</h3>
-    <RadzenButton Text="Vissza" Click="() => Navigation.NavigateTo(Navigation.Uri, true)" />
+<h3>Szerelo Home</h3>
+
+    <RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/Bejelentkezes"))" />
     <RadzenButton class="my-3" Icon="assignment_ind" Text="Munkalapok" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
     <RadzenButton class="my-3" Icon="account_box" Text="Profil és Munkalapok" Click="@(() => OnNavigateTo($"/users/Profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
 }

@@ -1,6 +1,7 @@
 ﻿@page "/users/Munkalapok"
 @rendermode InteractiveServer
 @inject NavigationManager Navigation
+@inject NotificationService NotificationService
 @inject SzakDolgozat.SQL.Interfaces.ITitkar_Munkalapok_View Titkar_Munkalapok_View_Service
 @using SzakDolgozat.SQL.Models
 @using SzakDolgozat.SQL.Enum
@@ -11,15 +12,17 @@
 <!-- Hozzáadás gomb a weboldal tetején -->
 <RadzenButton class="my-3" Icon="add_circle" Text="Hozzáadás" Click="@OnAddClick" />
 <br />
+<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
+<br />
 <RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
-@if (munkalapok == null)
+@if (filteredMunkalapok == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H2" class="rz-my-6">Munkalapok</RadzenText>
-    <RadzenDataGrid @ref="grid" Data="@munkalapok" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
+    <RadzenDataGrid @ref="grid" Data="@filteredMunkalapok" FilterMode="FilterMode.Simple" AllowFiltering="true" AllowPaging="true" AllowSorting="true" ColumnWidth="200px">
         <Columns>
             <!-- Nyomtatás gomb -->
             <RadzenDataGridColumn Title="Nyomtatás" Sortable="false">
@@ -34,7 +37,7 @@ else
                     }
                     else
                     {
-                        <RadzenButton Icon="print" Text="Nyomtatás" ButtonStyle="ButtonStyle.Danger" />
+                        <RadzenButton Icon="print" Text="Nyomtatás" ButtonStyle="ButtonStyle.Danger" Click="@(args => OnErrorClick())" />
                     }
                 </Template>
             </RadzenDataGridColumn>
@@ -117,8 +120,8 @@ else
 
 @code {
     RadzenDataGrid<Titkar_Munkalapok_View> grid;
-    private List<Titkar_Munkalapok_View> munkalapok = new();
-    private List<Titkar_Munkalapok_View> filteredMunkalapok = new();
+    private List<Titkar_Munkalapok_View> munkalapok;
+    private List<Titkar_Munkalapok_View> filteredMunkalapok;
     private List<StatuszEnum> statuszOptions = new();
 
     public static string bejelentkezettfelhasznaloNev;
@@ -144,6 +147,7 @@ else
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
+        Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
         Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
 
         // Adatok lekérése
@@ -159,12 +163,33 @@ else
         // Itt implementálhatod a nyomtatás logikáját, pl. egy PDF generálása vagy oldal nyomtatása
         Console.WriteLine($"Nyomtatás: {data.Rendszam}");
     }
+    void ShowNotification(NotificationMessage message)
+    {
+        NotificationService.Notify(message);
+    }
+
+    async void OnErrorClick()
+    {
+        ShowNotification(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "Hiba",
+                Detail = "Addig a Nyomtatás Gomb nem működik amíg a Szerelő nem nyílvánítja a Szerelés Státuszát NyomtatásraVár-nak",
+                Duration = 5000,
+
+            });
+        return;
+    }
 
     void OnAddClick()
     {
         // A hozzáadás gomb kattintása után végrehajtandó művelet
         // Itt például egy modális ablakot nyithatsz meg, vagy új oldalt jeleníthetsz meg
-        Navigation.NavigateTo($"/users/Munkalapok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}");
+        Navigation.NavigateTo($"/users/Munkalapok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}");
+    }
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
     }
     async Task OnClearFiltersClick()
     {

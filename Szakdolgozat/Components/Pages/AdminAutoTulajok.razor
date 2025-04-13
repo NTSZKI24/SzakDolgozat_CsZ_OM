@@ -1,6 +1,12 @@
 ﻿<h3>AdminAutoTulajok</h3>
 @page "/admin/tulajok"
 @rendermode InteractiveServer
-@code {
+@inject NavigationManager Navigation
 
+<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/admin"))" />
+@code {
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
 }

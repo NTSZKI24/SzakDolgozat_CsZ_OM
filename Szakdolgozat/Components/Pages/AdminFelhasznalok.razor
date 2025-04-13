@@ -11,7 +11,7 @@
 <!-- Hozzáadás gomb a weboldal tetején -->
 <RadzenButton class="my-3" Icon="add_circle" Text="Hozzáadás" Click="@OnAddClick" />
 <br />
-<RadzenButton class="my-3" Icon="add_circle" Text="Vissza" Click="@OnBackClick" />
+<RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/admin"))" />
 <br />
 <RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
 
@@ -108,5 +108,9 @@ else
 
         // Adatok újra lekérése
         felhasznaloklistaja = await Admin_felhasznalok_View_Service.GetAdmin_felhasznalok_Viewok();
+    }
+    public void OnNavigateTo(string page)
+    {
+        Navigation.NavigateTo(page);
     }
 }

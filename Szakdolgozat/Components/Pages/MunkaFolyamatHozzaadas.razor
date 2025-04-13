@@ -21,6 +21,8 @@
 
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+                    <br />
+                <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}"))" />
 
             </RadzenCard>
         </div>
@@ -33,7 +35,7 @@
 
     public static string bejelentkezettfelhasznaloNev;
     public static Guid aktualisMunkaFolyamatID;
-    public static Guid bejelentkezettID;
+    public static Guid bejelentkezettRoleID;
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,8 +43,8 @@
         var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
-        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
         Guid.TryParse(query["aktualisMunkaFolyamatID"], out aktualisMunkaFolyamatID);
+        Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
         // Adatok lekérése
 
     }
@@ -114,7 +116,7 @@
                     Detail = "Sikeres adatfelvitel!",
                     Duration = 3000
                 });
-            Navigation.NavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}");
+            Navigation.NavigateTo($"/users/SzereloMunkalapok/MunkaFolyamatok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}&aktualisMunkaFolyamatID={aktualisMunkaFolyamatID}");
             return;
         }
     }

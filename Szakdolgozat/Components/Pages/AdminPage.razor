@@ -7,24 +7,17 @@
 <RadzenCard>
     <h3>Admin Felület</h3>
     <div class="d-flex flex-column gap-2">
-        <RadzenButton Text="Felhasználók" class="rz-button rz-button-danger" Click="@NavigateToFelhasznalok" />
-        <RadzenButton Text="Munkalapok" class="rz-button rz-button-danger" Click="@NavigateToMunkalapok" />
-        <RadzenButton Text="Tulajok" class="rz-button rz-button-danger" Click="@NavigateToTulajok" />
+        <RadzenButton Text="Felhasználók" class="rz-button rz-button-danger" Click="@(() => OnNavigateTo($"/admin/felhasznalok"))" />
+        <RadzenButton Text="Munkalapok" class="rz-button rz-button-danger" Click="@(() => OnNavigateTo($"/admin/munkalapok"))" />
+        <RadzenButton Text="Tulajok" class="rz-button rz-button-danger" Click="@(() => OnNavigateTo($"/admin/tulajok"))" />
+        <RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/Bejelentkezes"))" />
     </div>
 </RadzenCard>
 
 @code {
-    void NavigateToFelhasznalok()
-    {
-        Navigation.NavigateTo("/admin/felhasznalok");
-    }
 
-    void NavigateToMunkalapok()
+    public void OnNavigateTo(string page)
     {
-        Navigation.NavigateTo("/admin/munkalapok");
-    } 
-    void NavigateToTulajok()
-    {
-        Navigation.NavigateTo("/admin/tulajok");
+        Navigation.NavigateTo(page);
     }
 }

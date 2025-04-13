@@ -9,7 +9,7 @@
 @using SzakDolgozat.SQL.Interfaces
 
 <h3>Felhasználó módosítása</h3>
-<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/admin/felhasznalok"))" />
+
 
 <div class="container">
     <div class="row">
@@ -32,6 +32,8 @@
                 <RadzenTextBox Style="width: 100%" aria-label="Default TextBox" Name="Jelszo" @ref="passwordTextbox" />
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
+                    <br />
+                <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/admin/felhasznalok"))" />
 
             </RadzenCard>
         </div>

@@ -9,15 +9,15 @@
 {
     <h3>Titkár Home</h3>
     <RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/Bejelentkezes"))" />
-    <RadzenButton class="my-3" Icon="assignment" Text="Munkalapok" Click="@(() => OnNavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
+    <RadzenButton class="my-3" Icon="assignment" Text="Munkalapok" Click="@(() => OnNavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
     //<RadzenButton class="my-3" Icon="build" Text="Szerelők" Click="@(() => OnNavigateTo($"/users/Szerelok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}"))" />
-    <RadzenButton class="my-3" Icon="person" Text="Profil" Click="@(() => OnNavigateTo($"/users/Profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
+    <RadzenButton class="my-3" Icon="person" Text="Profil" Click="@(() => OnNavigateTo($"/users/Profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
 }else{//Szerelo
 <h3>Szerelo Home</h3>
 
     <RadzenButton class="my-3" Icon="assignment_ind" Text="Vissza" Click="@(() => OnNavigateTo($"/Bejelentkezes"))" />
     <RadzenButton class="my-3" Icon="assignment_ind" Text="Munkalapok" Click="@(() => OnNavigateTo($"/users/SzereloMunkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
-    <RadzenButton class="my-3" Icon="account_box" Text="Profil és Munkalapok" Click="@(() => OnNavigateTo($"/users/Profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
+    <RadzenButton class="my-3" Icon="account_box" Text="Profil és Munkalapok" Click="@(() => OnNavigateTo($"/users/Profil?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
 }
 
 
@@ -25,7 +25,6 @@
 @code {
     public static string bejelentkezettfelhasznaloNev;
     public static Guid bejelentkezettRoleID;
-    public static Guid bejelentkezettID;
 
     protected override async Task OnInitializedAsync()
     {
@@ -34,7 +33,6 @@
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
         Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
-        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
     }
 
     public void OnNavigateTo(string page)

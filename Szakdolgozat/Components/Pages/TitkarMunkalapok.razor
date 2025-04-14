@@ -12,7 +12,7 @@
 <!-- Hozzáadás gomb a weboldal tetején -->
 <RadzenButton class="my-3" Icon="add_circle" Text="Hozzáadás" Click="@OnAddClick" />
 <br />
-<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
+<RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
 <br />
 <RadzenButton class="my-3" Icon="clear" Text="Szűrők törlése" ButtonStyle="ButtonStyle.Danger" Click="@OnClearFiltersClick" />
 @if (filteredMunkalapok == null)
@@ -125,7 +125,6 @@ else
     private List<StatuszEnum> statuszOptions = new();
 
     public static string bejelentkezettfelhasznaloNev;
-    public static Guid bejelentkezettID;
     public static Guid bejelentkezettRoleID;
     // Szűrő változók
     private string selectedSzereloNev;
@@ -148,13 +147,13 @@ else
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
         Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
-        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
 
         // Adatok lekérése
         munkalapok = await Titkar_Munkalapok_View_Service.GetTitkar_Munkalapok_Viewok();
         filteredMunkalapok = munkalapok
         .Where(u => u.TitkarNev == bejelentkezettfelhasznaloNev)  // Itt történik a szűrés
         .ToList();
+        await grid.Reload();
     }
 
 
@@ -185,7 +184,7 @@ else
     {
         // A hozzáadás gomb kattintása után végrehajtandó művelet
         // Itt például egy modális ablakot nyithatsz meg, vagy új oldalt jeleníthetsz meg
-        Navigation.NavigateTo($"/users/Munkalapok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}");
+        Navigation.NavigateTo($"/users/Munkalapok/Hozzaad?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}");
     }
     public void OnNavigateTo(string page)
     {
@@ -211,5 +210,6 @@ else
         filteredMunkalapok = munkalapok
         .Where(u => u.TitkarNev == bejelentkezettfelhasznaloNev)  // Itt történik a szűrés
         .ToList();
+        await grid.Reload();
     }
 }

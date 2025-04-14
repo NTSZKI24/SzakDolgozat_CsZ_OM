@@ -7,6 +7,7 @@
 @inject SzakDolgozat.SQL.Interfaces.IAutoTulaj AutoTulaj_Service
 @inject SzakDolgozat.SQL.Interfaces.IMunkalap Munkalap_Service
 @inject SzakDolgozat.SQL.Interfaces.IMunkaKapcsolat MunkaKapcsolat_Service
+@inject SzakDolgozat.SQL.Interfaces.IFelhasznalo Felhasznalo_Service
 
 <PageTitle>Hozzaad</PageTitle>
 
@@ -62,7 +63,7 @@
 
                 <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Click="@(() => OnSubmit())" />
                 <br />
-                <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}&bejelentkezettID={bejelentkezettID}"))" />
+                <RadzenButton class="my-3" Icon="assignment" Text="Vissza" Click="@(() => OnNavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}"))" />
 
             </RadzenCard>
         </div>
@@ -73,13 +74,12 @@
 @code {
     private List<Felhasznalo> szerelokListaja = new();
     private Felhasznalo selectedSzerelo = new();
+    private List<Felhasznalo> felhasznalok = new();
+    private Felhasznalo felhasznalo = new();
     public static string bejelentkezettfelhasznaloNev;
-    public static Guid bejelentkezettID;
     public static Guid bejelentkezettRoleID;
     protected override async Task OnInitializedAsync()
     {
-        szerelokListaja = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
-
         // Automatikusan kiválasztja az első szerelőt a listában
 
         var uri = new Uri(Navigation.Uri);
@@ -87,8 +87,9 @@
 
         bejelentkezettfelhasznaloNev = query["bejelentkezettfelhasznaloNev"];
         Guid.TryParse(query["bejelentkezettRoleID"], out bejelentkezettRoleID);
-        Guid.TryParse(query["bejelentkezettID"], out bejelentkezettID);
 
+        szerelokListaja = await Titkar_SzereloDropDown_View_Service.GetTitkar_SzereloDropDown_Viewok();
+        felhasznalok = await Felhasznalo_Service.GetFelhasznalok();
 
     }
     public void OnNavigateTo(string page)
@@ -250,7 +251,8 @@
             await Munkalap_Service.AddMunkalap(munkalap);
             munkaKapcsolat.MunkaID = munkalap.ID;
             munkaKapcsolat.SzereloID = selectedSzerelo.ID;
-            munkaKapcsolat.TitkarID = bejelentkezettID;
+            felhasznalo = felhasznalok.FirstOrDefault(x => x.Felhasznalonev == bejelentkezettfelhasznaloNev);
+            munkaKapcsolat.TitkarID = felhasznalo.ID;
             await MunkaKapcsolat_Service.AddMunkaKapcsolat(munkaKapcsolat);
 
             // Értesítés a sikeres mentésről
@@ -261,7 +263,7 @@
                     Detail = "Sikeres adatfelvitel!",
                     Duration = 3000
                 });
-            Navigation.NavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettID={bejelentkezettID}&bejelentkezettRoleID={bejelentkezettRoleID}");
+            Navigation.NavigateTo($"/users/Munkalapok?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}");
             return;
         }
     }

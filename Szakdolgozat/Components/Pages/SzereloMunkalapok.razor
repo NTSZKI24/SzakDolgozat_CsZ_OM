@@ -41,12 +41,12 @@ else
                         {
                             <RadzenButton Icon="print" Text="MunkaFolytatása" ButtonStyle="ButtonStyle.Dark" Click="@(args => OnWorkingClick(data))" />
                         }
-                        @if (data.Statusz == StatuszEnum.Szereles && data.MunkaIdo == null && data.Osszkoltseg != 0)
+                        @if (data.Statusz == StatuszEnum.Szereles && data.Osszkoltseg != 0)
                         {
                             <RadzenNumeric @bind-Value="data.MunkaIdo" Style="width:100px;" Name="MunkaIdo" />
-                            <RadzenButton Icon="print" Text="MunkaIdő" ButtonStyle="ButtonStyle.Dark"  Click="@(args => OnTimeClick(data))" />
+                            <RadzenButton Icon="print" Text="MunkaIdő" ButtonStyle="ButtonStyle.Dark"  Click="@(() => OnTimeClick(data))" />
                         }
-                        @if (data.Statusz == StatuszEnum.AlkatreszreVar || data.Statusz == StatuszEnum.Szereles)
+                        @if (data.Statusz == StatuszEnum.Szereles)
                         {
                             <RadzenButton Icon="print" Text="MunkaLezárása" ButtonStyle="ButtonStyle.Primary" Click="@(args => OnFinishClick(data))" />
                         }
@@ -261,14 +261,7 @@ else
         }
         else
         {
-            ShowNotification(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Success,
-                    Summary = "Sikeres",
-                    Detail = "Sikeres adatfelvitel",
-                    Duration = 3000,
-
-                });
+            
             munka2.MunkaIdo = dataMunkaido;
             await Munkalap_Service.UpdateMunkalap(munka2);
             munkalapok = await Munkalap_Service.GetMunkalapok();
@@ -277,6 +270,14 @@ else
             .Where(u => u.SzereloNev == bejelentkezettfelhasznaloNev && (u.Statusz == StatuszEnum.MunkaElfogadasraVar || u.Statusz == StatuszEnum.AlkatreszreVar || u.Statusz == StatuszEnum.Szereles))  // Itt történik a szűrés
             .ToList();
             await grid.Reload();
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Sikeres",
+                    Detail = "Sikeres adatfelvitel",
+                    Duration = 3000,
+
+                });
             return;
 
 
@@ -310,14 +311,7 @@ else
         }
         else
         {
-            ShowNotification(new NotificationMessage
-                {
-                    Severity = NotificationSeverity.Success,
-                    Summary = "Sikeres",
-                    Detail = "Sikeres adatfelvitel",
-                    Duration = 3000,
-
-                });
+            
             var dataID = data.ID;
             var munka2 = munkalapok.FirstOrDefault(x => x.ID == dataID);
             munka2.Keltezes = dateTime;
@@ -328,6 +322,14 @@ else
             .Where(u => u.SzereloNev == bejelentkezettfelhasznaloNev && (u.Statusz == StatuszEnum.MunkaElfogadasraVar || u.Statusz == StatuszEnum.AlkatreszreVar || u.Statusz == StatuszEnum.Szereles))  // Itt történik a szűrés
             .ToList();
             await grid.Reload();
+            ShowNotification(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Success,
+                    Summary = "Sikeres",
+                    Detail = "Sikeres adatfelvitel",
+                    Duration = 3000,
+
+                });
             return;
 
 

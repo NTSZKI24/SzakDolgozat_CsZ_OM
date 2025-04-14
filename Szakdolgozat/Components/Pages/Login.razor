@@ -34,7 +34,6 @@
 @code {
     public string bejelentkezettfelhasznaloNev;
     public static Guid bejelentkezettRoleID;
-    public static Guid bejelentkezettID;
     public static string jelszo;
 
 
@@ -86,7 +85,6 @@
         {
             bejelentkezettfelhasznaloNev = felhasznalo.Felhasznalonev;
             bejelentkezettRoleID = felhasznalo.RoleID;
-            bejelentkezettID = felhasznalo.ID;
 
             if (bejelentkezettRoleID == Guid.Parse("9df11d9d-c1bf-40a1-9599-e2333e630583"))
             {
@@ -94,7 +92,7 @@
             }
             else
             {
-                var url = $"/users?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}&bejelentkezettID={bejelentkezettID}";
+                var url = $"/users?bejelentkezettfelhasznaloNev={Uri.EscapeDataString(bejelentkezettfelhasznaloNev)}&bejelentkezettRoleID={bejelentkezettRoleID}";
                 Navigation.NavigateTo(url);
             }
         }

@@ -163,7 +163,7 @@ else
         munka2.Befejezhetetlen = true;
         await Munkalap_Service.UpdateMunkalap(munka2);
         datagrid = await Admin_munkalapok_View_Service.GetAdmin_munkalapok_Viewok();
-        
+        await grid.Reload();
     }
 
     async Task OnClearFiltersClick()
@@ -184,6 +184,7 @@ else
 
         // Adatok újra lekérése
         datagrid = await Admin_munkalapok_View_Service.GetAdmin_munkalapok_Viewok();
+        await grid.Reload();
     }
     public void OnNavigateTo(string page)
     {

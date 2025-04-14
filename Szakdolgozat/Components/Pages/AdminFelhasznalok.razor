@@ -108,6 +108,7 @@ else
 
         // Adatok újra lekérése
         felhasznaloklistaja = await Admin_felhasznalok_View_Service.GetAdmin_felhasznalok_Viewok();
+        await grid.Reload();
     }
     public void OnNavigateTo(string page)
     {
